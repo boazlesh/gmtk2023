@@ -3,7 +3,7 @@
 - minesweeper but you give the result of a click on a random tile (from a pile of random numbers, tetris style)
 - tower defense but you are a disgruntled employee that places buildings that heal /buff the orcs while other employees do the opposite
 
-- Bark Mrown presents: jrpg party but switch roles (both parties show intentions, and you give yours a role for that turn?)
+- Bark Mrown presents: .jrpg party but switch roles (both parties show intentions, and you give yours a role for that turn?)
     - hat pool / draw?
 	- hat of everyone on screen (party + enemies)
 	   - constant all battle?
