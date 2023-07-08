@@ -13,9 +13,11 @@ namespace Assets.Scripts
         [SerializeField] private HealthBar _healthBar;
         [SerializeField] private Role _bodyRole;
         [SerializeField] private Role _hatRole;
+        [SerializeField] private Transform _hatFloatPosition;
 
         private int _health;
         private Intention _currentIntention;
+        private Vector3 _originalHatPosition;
 
         public Sprite BodySprite
         {
@@ -43,6 +45,8 @@ namespace Assets.Scripts
 
         private void Start()
         {
+            _originalHatPosition = _hatSpriteRenderer.transform.position;
+
             _healthBar.SetMaxHealth(_maxHealth);
 
             SetHealth(_maxHealth);
@@ -91,12 +95,16 @@ namespace Assets.Scripts
         {
             Debug.Log($"{name} - Float hat");
 
+            _hatSpriteRenderer.transform.position = _hatFloatPosition.position;
+
             yield return null;
         }
 
         public IEnumerator UnfloatHatRoutine()
         {
             Debug.Log($"{name} - Unfloat hat");
+
+            _hatSpriteRenderer.transform.position = _originalHatPosition;
 
             yield return null;
         }
