@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Enums;
 using System.Collections;
+using System.Dynamic;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -20,6 +21,11 @@ namespace Assets.Scripts
         public Ability ResolveAbility()
         {
             return GameManager.Instance._verbPerRoleMapping.Mapping[Originator.HatRole].Mapping[Verb];
+        }
+
+        public Unit ResolveTargetUnit()
+        {
+            return GameManager.Instance.GetUnitByIntention(this);
         }
 
         public IEnumerator PerformIntetion()
