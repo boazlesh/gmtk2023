@@ -18,6 +18,30 @@ namespace Assets.Scripts
         private Intention _currentIntention;
         public bool _isPlayerUnit;
 
+        public Sprite BodySprite
+        {
+            get => _bodySpriteRenderer.sprite;
+            set => _bodySpriteRenderer.sprite = value;
+        }
+
+        public Sprite HatSprite
+        {
+            get => _hatSpriteRenderer.sprite;
+            set => _hatSpriteRenderer.sprite = value;
+        }
+
+        public Role BodyRole
+        {
+            get => _bodyRole;
+            set => _bodyRole = value;
+        }
+
+        public Role HatRole
+        {
+            get => _hatRole;
+            set => _hatRole = value;
+        }
+
         private void Start()
         {
             _healthBar.SetMaxHealth(_maxHealth);
@@ -70,6 +94,20 @@ namespace Assets.Scripts
             _bodySpriteRenderer.color = Color.white;
 
             SetHealth(Mathf.Max(_health - damage, 0));
+
+            yield return null;
+        }
+
+        public IEnumerator FloatHatRoutine()
+        {
+            Debug.Log($"{name} - Float hat");
+
+            yield return null;
+        }
+
+        public IEnumerator UnfloatHatRoutine()
+        {
+            Debug.Log($"{name} - Unfloat hat");
 
             yield return null;
         }

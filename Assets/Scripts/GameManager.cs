@@ -1,6 +1,8 @@
+using Assets.Scripts.Enums;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace Assets.Scripts
@@ -13,9 +15,18 @@ namespace Assets.Scripts
 
         public static GameManager Instance { get; private set; }
 
-        public void Awake()
+        private Input _input;
+        private Unit _currentSwappingHat;
+
+        private void Awake()
         {
             Instance = gameObject.GetComponent<GameManager>();
+
+            _input = new Input();
+
+            _input.Battle.MouseClick.performed += MouseClickPerformed;
+
+            _input.Enable();
         }
 
         public void Start()
@@ -82,6 +93,72 @@ namespace Assets.Scripts
             Debug.Log("Done fighting");
 
             StartCoroutine(BuildIntentionsRoutine());
+        }
+
+        private void MouseClickPerformed(InputAction.CallbackContext obj)
+        {
+            Vector2 mouseScreenPosition = Mouse.current.position.ReadValue();
+
+            Ray ray = Camera.main.ScreenPointToRay(mouseScreenPosition);
+
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+
+            if (hit.collider == null)
+            {
+                return;
+            }
+
+            Unit clickedUnit = hit.collider.gameObject.GetComponentInParent<Unit>();
+
+            if (clickedUnit == null)
+            {
+                StartCoroutine(ResetHatSwapRoutine());
+                return;
+            }
+
+            StartCoroutine(UnitClickedRoutine(clickedUnit));
+        }
+
+        private IEnumerator ResetHatSwapRoutine()
+        {
+            if (_currentSwappingHat == null)
+            {
+                yield break;
+            }
+
+            yield return _currentSwappingHat.UnfloatHatRoutine();
+            _currentSwappingHat = null;
+        }
+
+        private IEnumerator UnitClickedRoutine(Unit unit)
+        {
+            if (_currentSwappingHat == null)
+            {
+                _currentSwappingHat = unit;
+
+                yield return unit.FloatHatRoutine();
+                yield break;
+            }
+
+            yield return SwapHatsRoutine(_currentSwappingHat, unit);
+            _currentSwappingHat = null;
+        }
+
+        private IEnumerator SwapHatsRoutine(Unit unitA, Unit unitB)
+        {
+            Debug.Log($"Swapping hats - {unitA.name} x {unitB.name}");
+
+            yield return unitB.FloatHatRoutine();
+
+            Sprite spriteA = unitA.HatSprite;
+            unitA.HatSprite = unitB.HatSprite;
+            unitB.HatSprite = spriteA;
+
+            Role roleA = unitA.HatRole;
+            unitA.HatRole = unitB.HatRole;
+            unitB.HatRole = roleA;
+
+            yield return this.WhenAllRoutine(unitA.UnfloatHatRoutine(), unitB.UnfloatHatRoutine());
         }
 
         private IEnumerable<Unit> GetUnitsInOrder()
