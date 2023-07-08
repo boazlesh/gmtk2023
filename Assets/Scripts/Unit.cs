@@ -6,6 +6,8 @@ namespace Assets.Scripts
     {
         [SerializeField] private int _maxHealth;
         [SerializeField] private HealthBar _healthBar;
+        [SerializeField] private Role _bodyRole;
+        [SerializeField] private Role _hatRole;
 
         private int _health;
 

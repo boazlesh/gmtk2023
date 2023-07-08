@@ -4,8 +4,8 @@ namespace Assets.Scripts
 {
     public class GameManager : MonoBehaviour
     {
-        public Role[] PlayerUnits;
-        public Role[] EnemyUnits;
+        [SerializeField] private Role[] PlayerUnits;
+        [SerializeField] private Role[] EnemyUnits;
 
         public void Fight()
         {
