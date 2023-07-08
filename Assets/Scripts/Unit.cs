@@ -14,6 +14,7 @@ namespace Assets.Scripts
         [SerializeField] private Role _bodyRole;
         [SerializeField] private Role _hatRole;
         [SerializeField] private Transform _hatFloatPosition;
+        [SerializeField] private IntentionBubble _intentionBubble;
 
         private int _health;
         private Intention _currentIntention;
@@ -64,6 +65,8 @@ namespace Assets.Scripts
             _bodySpriteRenderer.color = Color.white;
 
             _currentIntention = PlanIntention();
+
+            _intentionBubble.SetIntention(_currentIntention.Verb, ActionType.FireBall);
 
             yield return null;
         }
