@@ -18,7 +18,8 @@ namespace Assets.Scripts
         private int _health;
         private Intention _currentIntention;
         private Vector3 _originalHatPosition;
-        public bool _isPlayerUnit;
+
+        public bool IsPlayerUnit { get; set; }
 
         public Sprite BodySprite
         {
@@ -146,8 +147,8 @@ namespace Assets.Scripts
 
         public Unit[] GetVerbPossibleTargetTeam(Verb verb)
         {
-            Unit[] friendlyUnits = _isPlayerUnit ? GameManager.Instance._playerUnits : GameManager.Instance._enemyUnits;
-            Unit[] enemyUnits = _isPlayerUnit ? GameManager.Instance._enemyUnits : GameManager.Instance._playerUnits;
+            Unit[] friendlyUnits = IsPlayerUnit ? GameManager.Instance._playerUnits : GameManager.Instance._enemyUnits;
+            Unit[] enemyUnits = IsPlayerUnit ? GameManager.Instance._enemyUnits : GameManager.Instance._playerUnits;
             Unit[] targetUnits = (verb == Verb.Defensive) ? friendlyUnits : enemyUnits;
 
             return targetUnits;

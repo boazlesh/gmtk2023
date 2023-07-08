@@ -160,7 +160,21 @@ namespace Assets.Scripts
             unitA.HatSpriteRenderer.transform.DOMove(bPosition, swapDuration);
             unitB.HatSpriteRenderer.transform.DOMove(aPosition, swapDuration);
 
+            bool shouldFlip = unitA.IsPlayerUnit != unitB.IsPlayerUnit;
+
+            if (shouldFlip)
+            {
+                unitA.HatSpriteRenderer.transform.DOScaleX(-unitA.HatSpriteRenderer.transform.localScale.x, swapDuration);
+                unitB.HatSpriteRenderer.transform.DOScaleX(-unitB.HatSpriteRenderer.transform.localScale.x, swapDuration);
+            }
+
             yield return new WaitForSeconds(swapDuration);
+
+            if (shouldFlip)
+            {
+                unitA.HatSpriteRenderer.transform.DOScaleX(-unitA.HatSpriteRenderer.transform.localScale.x, 0);
+                unitB.HatSpriteRenderer.transform.DOScaleX(-unitB.HatSpriteRenderer.transform.localScale.x, 0);
+            }
 
             Sprite spriteA = unitA.HatSpriteRenderer.sprite;
             unitA.HatSpriteRenderer.sprite = unitB.HatSpriteRenderer.sprite;
@@ -195,7 +209,7 @@ namespace Assets.Scripts
         {
             foreach (Unit unit in _playerUnits)
             {
-                unit._isPlayerUnit = true;
+                unit.IsPlayerUnit = true;
             }
         }
     }
