@@ -10,12 +10,11 @@ namespace Assets.Scripts
         [SerializeField] private SpriteRenderer _actionSpriteRenderer;
         [SerializeField] private SpriteRenderer _targetSpriteRenderer;
         [SerializeField] private VerbSpriteMapping _verbSpriteMapping;
-        [SerializeField] private ActionSpriteMapping _actionSpriteMapping;
 
-        public void SetIntention(Verb verb, ActionType actionType)
+        public void SetIntention(Verb verb, Ability ability)
         {
             _verbSpriteRenderer.sprite = _verbSpriteMapping._sprites[verb];
-            _actionSpriteRenderer.sprite = _actionSpriteMapping._sprites[actionType];
+            _actionSpriteRenderer.sprite = ability.Sprite;
             // TODO: Target icon
         }
     }

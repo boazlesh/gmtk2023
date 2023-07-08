@@ -5,5 +5,6 @@ namespace Assets.Scripts
     [CreateAssetMenu(menuName = "ScriptableObjects/Ability")]
     public class Ability : ScriptableObject
     {
+        public Sprite Sprite;
     }
 }
