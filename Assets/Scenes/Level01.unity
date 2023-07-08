@@ -614,6 +614,7 @@ MonoBehaviour:
   - {fileID: 198750706}
   - {fileID: 283166684}
   - {fileID: 966970082}
+  _verbPerRoleMapping: {fileID: 11400000, guid: bc67bfad50dae974c9ca16dd2ca19ef4, type: 2}
   _fightButton: {fileID: 83711244}
 --- !u!4 &727488151
 Transform:
