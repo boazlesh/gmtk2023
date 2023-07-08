@@ -18,6 +18,7 @@ namespace Assets.Scripts
         [SerializeField] private Button _fightButton;
         [SerializeField] private WinWindow _winWindowPrefab;
         [SerializeField] private LoseWindow _loseWindowPrefab;
+        [SerializeField] public ModifiedHealthNumberIndicator _modifiedHealthNumberIndicatorPrefab;
 
         public static GameManager Instance { get; private set; }
 

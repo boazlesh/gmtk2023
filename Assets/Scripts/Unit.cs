@@ -118,8 +118,16 @@ namespace Assets.Scripts
             {
                 actualDamage *= modifier;
             }
+            int actualDamageInt = (int)actualDamage;
 
-            SetHealth(Mathf.Max(_health - (int)actualDamage, 0));
+            SetHealth(Mathf.Max(_health - actualDamageInt, 0));
+
+            if (_health == 0)
+            {
+                Die();
+            }
+
+            Instantiate(GameManager.Instance._modifiedHealthNumberIndicatorPrefab, transform.position, Quaternion.identity).IndicateModifiedHealthNumber(actualDamageInt);
 
             yield return null;
         }
@@ -217,11 +225,6 @@ namespace Assets.Scripts
         {
             _health = Mathf.Clamp(health, 0, _maxHealth);
             _healthBar.SetHealth(_health);
-
-            if (_health == 0)
-            {
-                Die();
-            }
         }
 
         private void Die()
