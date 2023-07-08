@@ -2,15 +2,29 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private int _maxHealth;
+    [SerializeField] private HealthBar _healthBar;
+
+    private int _health;
+
+    private void Start()
     {
-        
+        _healthBar.SetMaxHealth(_maxHealth);
+
+        SetHealth(_maxHealth);
+    }
+    
+    public void Damage(int damage)
+    {
+        SetHealth(Mathf.Max(_health - damage, 0));
     }
 
-    // Update is called once per frame
-    void Update()
+    private void SetHealth(int health)
     {
-        
+        _health = health;
+        _healthBar.SetHealth(_health);
     }
+
+    [ContextMenu("Damage Ten")]
+    private void DamageTen() => Damage(10);
 }
