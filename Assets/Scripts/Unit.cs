@@ -228,7 +228,7 @@ namespace Assets.Scripts
             randomDirection = (randomDirection == 0) ? -1 : 1;
             while (!targetUnits[targetIndex].IsAlive())
             {
-                targetIndex += randomDirection;
+                targetIndex = (targetIndex + randomDirection) % targetUnits.Length;
             }
 
             return new Intention(this, verb, targetIndex);
