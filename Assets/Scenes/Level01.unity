@@ -594,6 +594,7 @@ MonoBehaviour:
   - {fileID: 198750706}
   - {fileID: 283166684}
   - {fileID: 966970082}
+  _fightButton: {fileID: 83711244}
 --- !u!4 &727488151
 Transform:
   m_ObjectHideFlags: 0
