@@ -345,8 +345,9 @@ MonoBehaviour:
   _hatSpriteRenderer: {fileID: 2612055409656997280}
   _maxHealth: 100
   _healthBar: {fileID: 1711652628383523413}
-  _bodyRole: 0
-  _hatRole: 0
+  _bodyRole: 2
+  _hatRole: 2
+  _isPlayerUnit: 0
 --- !u!1001 &1780189596861751683
 PrefabInstance:
   m_ObjectHideFlags: 0
