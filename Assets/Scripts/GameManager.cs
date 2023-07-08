@@ -211,33 +211,33 @@ namespace Assets.Scripts
 
             float swapDuration = 1f;
 
-            Vector3 aPosition = unitA.HatSpriteRenderer.transform.position;
-            Vector3 bPosition = unitB.HatSpriteRenderer.transform.position;
+            Vector3 aPosition = unitA.HatContainer.position;
+            Vector3 bPosition = unitB.HatContainer.position;
 
-            unitA.HatSpriteRenderer.transform.DOMove(bPosition, swapDuration);
-            unitB.HatSpriteRenderer.transform.DOMove(aPosition, swapDuration);
+            unitA.HatContainer.DOMove(bPosition, swapDuration);
+            unitB.HatContainer.DOMove(aPosition, swapDuration);
 
             bool shouldFlip = unitA.IsPlayerUnit != unitB.IsPlayerUnit;
 
             if (shouldFlip)
             {
-                unitA.HatSpriteRenderer.transform.DOScaleX(-unitA.HatSpriteRenderer.transform.localScale.x, swapDuration);
-                unitB.HatSpriteRenderer.transform.DOScaleX(-unitB.HatSpriteRenderer.transform.localScale.x, swapDuration);
+                unitA.HatContainer.DOScaleX(-unitA.HatContainer.localScale.x, swapDuration);
+                unitB.HatContainer.DOScaleX(-unitB.HatContainer.localScale.x, swapDuration);
             }
 
             yield return new WaitForSeconds(swapDuration);
 
             var unfloatDuration = 0.1f;
 
-            unitA.HatSpriteRenderer.transform.DOMove(unitB.OriginalHatPosition, unfloatDuration);
-            unitB.HatSpriteRenderer.transform.DOMove(unitA.OriginalHatPosition, unfloatDuration);
+            unitA.HatContainer.DOMove(unitB.OriginalHatPosition, unfloatDuration);
+            unitB.HatContainer.DOMove(unitA.OriginalHatPosition, unfloatDuration);
 
             yield return new WaitForSeconds(unfloatDuration);
 
             if (shouldFlip)
             {
-                unitA.HatSpriteRenderer.transform.DOScaleX(-unitA.HatSpriteRenderer.transform.localScale.x, 0);
-                unitB.HatSpriteRenderer.transform.DOScaleX(-unitB.HatSpriteRenderer.transform.localScale.x, 0);
+                unitA.HatContainer.DOScaleX(-unitA.HatContainer.localScale.x, 0);
+                unitB.HatContainer.DOScaleX(-unitB.HatContainer.localScale.x, 0);
             }
 
             Sprite spriteA = unitA.HatSpriteRenderer.sprite;
