@@ -41,6 +41,9 @@ namespace Assets.Scripts
 
             _fightButton.interactable = false;
             _isHatInteractble = false;
+
+            Debug.Log($"Loaded {_playerUnits.Length} players and {_enemyUnits.Length} enemies");
+
             BuildIntentions();
         }
 
