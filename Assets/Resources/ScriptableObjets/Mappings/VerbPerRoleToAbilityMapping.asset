@@ -12,36 +12,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 048c764f4c32e6a44823775d0c755050, type: 3}
   m_Name: VerbPerRoleToAbilityMapping
   m_EditorClassIdentifier: 
-  _mappings:
+  _roles:
     list:
     - Key: 0
       Value:
-      - _role: 0
-        _ability: {fileID: 11400000, guid: 9edf5144abdb1cd47aab0cfd91fa1ac2, type: 2}
-      - _role: 1
-        _ability: {fileID: 11400000, guid: 66aceb1d7c56f2f4d99876656901b087, type: 2}
-      - _role: 2
-        _ability: {fileID: 11400000, guid: d0aa73f4ca161b341b79c981644b7726, type: 2}
-      - _role: 3
-        _ability: {fileID: 11400000, guid: 0d19a02d4874f8549b96235bfcbd8a94, type: 2}
+        _verbToAbility:
+          list:
+          - Key: 0
+            Value: {fileID: 11400000, guid: 9edf5144abdb1cd47aab0cfd91fa1ac2, type: 2}
+          - Key: 1
+            Value: {fileID: 11400000, guid: b2fef59e478faf94cbd366c1ba3df2da, type: 2}
+          - Key: 2
+            Value: {fileID: 11400000, guid: 8bac60c43a6054b4ca2a8c38a7f20b55, type: 2}
+          keyCollision: 0
     - Key: 1
       Value:
-      - _role: 0
-        _ability: {fileID: 11400000, guid: b2fef59e478faf94cbd366c1ba3df2da, type: 2}
-      - _role: 1
-        _ability: {fileID: 11400000, guid: 0301ecb960d2cb54386b0e96d38e35ec, type: 2}
-      - _role: 2
-        _ability: {fileID: 11400000, guid: df9ec68f8db099247b281f713f9a63a5, type: 2}
-      - _role: 3
-        _ability: {fileID: 11400000, guid: d90955f2bd1a3eb44beac34d8721d59b, type: 2}
+        _verbToAbility:
+          list:
+          - Key: 0
+            Value: {fileID: 11400000, guid: 66aceb1d7c56f2f4d99876656901b087, type: 2}
+          - Key: 1
+            Value: {fileID: 11400000, guid: 0301ecb960d2cb54386b0e96d38e35ec, type: 2}
+          - Key: 2
+            Value: {fileID: 11400000, guid: c23dbaf246e004b44ac9128b7d1dde46, type: 2}
+          keyCollision: 0
     - Key: 2
       Value:
-      - _role: 0
-        _ability: {fileID: 11400000, guid: 8bac60c43a6054b4ca2a8c38a7f20b55, type: 2}
-      - _role: 1
-        _ability: {fileID: 11400000, guid: c23dbaf246e004b44ac9128b7d1dde46, type: 2}
-      - _role: 2
-        _ability: {fileID: 11400000, guid: 4889d43db44d2fd40a0b32640290abd2, type: 2}
-      - _role: 3
-        _ability: {fileID: 11400000, guid: 2a0b733a708c9c944957e47e8e31f652, type: 2}
+        _verbToAbility:
+          list:
+          - Key: 0
+            Value: {fileID: 11400000, guid: d0aa73f4ca161b341b79c981644b7726, type: 2}
+          - Key: 1
+            Value: {fileID: 11400000, guid: df9ec68f8db099247b281f713f9a63a5, type: 2}
+          - Key: 2
+            Value: {fileID: 11400000, guid: 4889d43db44d2fd40a0b32640290abd2, type: 2}
+          keyCollision: 0
+    - Key: 3
+      Value:
+        _verbToAbility:
+          list:
+          - Key: 0
+            Value: {fileID: 11400000, guid: 0d19a02d4874f8549b96235bfcbd8a94, type: 2}
+          - Key: 1
+            Value: {fileID: 11400000, guid: d90955f2bd1a3eb44beac34d8721d59b, type: 2}
+          - Key: 2
+            Value: {fileID: 11400000, guid: 2a0b733a708c9c944957e47e8e31f652, type: 2}
+          keyCollision: 0
     keyCollision: 0

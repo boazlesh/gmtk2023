@@ -6,15 +6,14 @@ using UnityEngine;
 namespace Assets.Scripts.Mappings
 {
     [Serializable]
-    public class RoleToAbility
+    public class VerbToAbility
     {
-        [SerializeField] private Role _role;
-        [SerializeField] private Ability _ability;
+        [NonReorderable] [SerializeField] private GenericDictionary<Verb, Ability> _verbToAbility;
     }
 
     [CreateAssetMenu(menuName = "ScriptableObjects/VerbPerRoleMapping")]
     public class VerbPerRoleMapping : ScriptableObject
     {
-        [NonReorderable] [SerializeField] private GenericDictionary<Verb, RoleToAbility[]> _mappings;
+        [NonReorderable] [SerializeField] private GenericDictionary<Role, VerbToAbility> _roles;
     }
 }
