@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Assets.Scripts.Enums;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,9 +11,21 @@ namespace Assets.Scripts
         [SerializeField] private Unit[] _enemyUnits;
         [SerializeField] private Button _fightButton;
 
+        public void SwapHats()
+        {
+            StartCoroutine(SwapHatsRoutine());
+        }
+
         public void Fight()
         {
             StartCoroutine(FightRoutine());
+        }
+
+        private IEnumerator SwapHatsRoutine()
+        {
+            Debug.Log("Swapping hats");
+
+            yield return null;
         }
 
         private IEnumerator FightRoutine()
