@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace Assets.Scripts
@@ -10,6 +11,17 @@ namespace Assets.Scripts
         [SerializeField] public Unit[] _playerUnits;
         [SerializeField] public Unit[] _enemyUnits;
         [SerializeField] private Button _fightButton;
+
+        private Input _input;
+
+        private void Awake()
+        {
+            _input = new Input();
+
+            _input.Battle.MouseClick.performed += MouseClickPerformed;
+
+            _input.Enable();
+        }
 
         public void Start()
         {
@@ -67,6 +79,29 @@ namespace Assets.Scripts
             Debug.Log("Done fighting");
 
             StartCoroutine(BuildIntentionsRoutine());
+        }
+
+        private void MouseClickPerformed(InputAction.CallbackContext obj)
+        {
+            Vector2 mouseScreenPosition = Mouse.current.position.ReadValue();
+
+            Ray ray = Camera.main.ScreenPointToRay(mouseScreenPosition);
+
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+
+            if (hit.collider == null)
+            {
+                return;
+            }
+
+            Unit clickedUnit = hit.collider.gameObject.GetComponentInParent<Unit>();
+
+            if (clickedUnit == null)
+            {
+                return;
+            }
+
+            StartCoroutine(clickedUnit.PrepareHatSwapRoutine());
         }
 
         private IEnumerable<Unit> GetUnitsInOrder()

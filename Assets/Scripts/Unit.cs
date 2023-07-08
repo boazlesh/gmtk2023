@@ -63,6 +63,13 @@ namespace Assets.Scripts
             yield return null;
         }
 
+        public IEnumerator PrepareHatSwapRoutine()
+        {
+            Debug.Log("Preparing hat swap");
+
+            yield return null;
+        }
+
         private void SetHealth(int health)
         {
             _health = Mathf.Clamp(health, 0, _maxHealth);
