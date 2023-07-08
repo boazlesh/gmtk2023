@@ -1,21 +1,15 @@
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+namespace Assets.Scripts
 {
-    // Start is called before the first frame update
-    void Start()
+    public class GameManager : MonoBehaviour
     {
-        
-    }
+        public Role[] PlayerUnits;
+        public Role[] EnemyUnits;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void Fight()
-    {
-        Debug.Log("Fight!");
+        public void Fight()
+        {
+            Debug.Log("Fight!");
+        }
     }
 }
