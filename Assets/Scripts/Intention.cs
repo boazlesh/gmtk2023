@@ -33,8 +33,17 @@ namespace Assets.Scripts
             yield return new WaitForSeconds(0.5f);
 
             Ability ability = ResolveAbility();
+            Unit targetUnit = ResolveTargetUnit();
 
-            yield return ResolveTargetUnit().DamageRoutine(ability.Damage);
+            yield return targetUnit.DamageRoutine(ability.Damage);
+
+            if (ability.NeighborDamage != 0)
+            {
+                foreach (Unit neighbor in targetUnit.GetNeighbors())
+                {
+                    yield return ResolveTargetUnit().DamageRoutine(ability.Damage);
+                }
+            }
         }
     }
 }

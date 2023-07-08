@@ -1,5 +1,6 @@
 using Assets.Scripts.Enums;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -21,6 +22,8 @@ namespace Assets.Scripts
         private Vector3 _originalHatPosition;
 
         public Sprite IconSprite => _iconSprite;
+
+        public int UnitIndex { get; set; }
 
         public bool IsPlayerUnit { get; set; }
 
@@ -94,13 +97,18 @@ namespace Assets.Scripts
 
         public IEnumerator DamageRoutine(int damage)
         {
-            _bodySpriteRenderer.color = (damage > 0) ? Color.red : Color.green;
+            if (!IsAlive())
+            {
+                yield break;
+            }
 
-            yield return new WaitForSeconds(0.5f);
+            _bodySpriteRenderer.color = (damage > 0) ? Color.red : Color.green;
 
             Debug.Log($"{name} - Damaged");
 
             _bodySpriteRenderer.color = Color.white;
+
+            yield return new WaitForSeconds(0.5f);
 
             SetHealth(Mathf.Max(_health - damage, 0));
 
@@ -123,6 +131,20 @@ namespace Assets.Scripts
             _hatSpriteRenderer.transform.position = _originalHatPosition;
 
             yield return null;
+        }
+
+        public Unit[] GetVerbPossibleTargetTeam(Verb verb)
+        {
+            Unit[] friendlyUnits = IsPlayerUnit ? GameManager.Instance._playerUnits : GameManager.Instance._enemyUnits;
+            Unit[] enemyUnits = IsPlayerUnit ? GameManager.Instance._enemyUnits : GameManager.Instance._playerUnits;
+            Unit[] targetUnits = (verb == Verb.Defensive) ? friendlyUnits : enemyUnits;
+
+            return targetUnits;
+        }
+
+        public IEnumerable<Unit> GetNeighbors()
+        {
+            throw new System.NotImplementedException();
         }
 
         private void SetHealth(int health)
@@ -148,15 +170,6 @@ namespace Assets.Scripts
             }
 
             return new Intention(this, verb, targetIndex);
-        }
-
-        public Unit[] GetVerbPossibleTargetTeam(Verb verb)
-        {
-            Unit[] friendlyUnits = IsPlayerUnit ? GameManager.Instance._playerUnits : GameManager.Instance._enemyUnits;
-            Unit[] enemyUnits = IsPlayerUnit ? GameManager.Instance._enemyUnits : GameManager.Instance._playerUnits;
-            Unit[] targetUnits = (verb == Verb.Defensive) ? friendlyUnits : enemyUnits;
-
-            return targetUnits;
         }
     }
 }

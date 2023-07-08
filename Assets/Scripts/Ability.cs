@@ -10,5 +10,8 @@ namespace Assets.Scripts
         public int Damage;
         public int NeighborDamage;
         public bool HitEveryone;
+
+        //public int BlockPercent;
+        //public int NeighborBlockPercent;
     }
 }
