@@ -17,5 +17,15 @@ namespace Assets.Scripts
             _actionSpriteRenderer.sprite = ability.IconSprite;
             _targetSpriteRenderer.sprite = unit.IconSprite;
         }
+
+        public void Show()
+        {
+            gameObject.SetActive(true);
+        }
+
+        public void Hide()
+        {
+            gameObject.SetActive(false);
+        }
     }
 }
