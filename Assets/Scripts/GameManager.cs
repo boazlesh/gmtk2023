@@ -16,6 +16,7 @@ namespace Assets.Scripts
         [SerializeField] public Unit[] _enemyUnits;
         [SerializeField] public VerbPerRoleMapping _verbPerRoleMapping;
         [SerializeField] private Button _fightButton;
+        [SerializeField] private WinWindow _winWindowPrefab;
 
         public static GameManager Instance { get; private set; }
 
@@ -239,6 +240,11 @@ namespace Assets.Scripts
             {
                 _enemyUnits[i].UnitIndex = i;
             }
+        }
+
+        private void Win()
+        {
+            Instantiate(_winWindowPrefab);
         }
     }
 }

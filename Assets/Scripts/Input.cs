@@ -25,6 +25,14 @@ public class @Input : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Continue"",
+                    ""type"": ""Button"",
+                    ""id"": ""ff04ca85-d8e1-4620-8f7c-3a347d3a1165"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -38,6 +46,17 @@ public class @Input : IInputActionCollection, IDisposable
                     ""action"": ""MouseClick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f436c1c5-840b-4183-8752-7e1cb00b29ac"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Continue"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -47,6 +66,7 @@ public class @Input : IInputActionCollection, IDisposable
         // Battle
         m_Battle = asset.FindActionMap("Battle", throwIfNotFound: true);
         m_Battle_MouseClick = m_Battle.FindAction("MouseClick", throwIfNotFound: true);
+        m_Battle_Continue = m_Battle.FindAction("Continue", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -97,11 +117,13 @@ public class @Input : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Battle;
     private IBattleActions m_BattleActionsCallbackInterface;
     private readonly InputAction m_Battle_MouseClick;
+    private readonly InputAction m_Battle_Continue;
     public struct BattleActions
     {
         private @Input m_Wrapper;
         public BattleActions(@Input wrapper) { m_Wrapper = wrapper; }
         public InputAction @MouseClick => m_Wrapper.m_Battle_MouseClick;
+        public InputAction @Continue => m_Wrapper.m_Battle_Continue;
         public InputActionMap Get() { return m_Wrapper.m_Battle; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -114,6 +136,9 @@ public class @Input : IInputActionCollection, IDisposable
                 @MouseClick.started -= m_Wrapper.m_BattleActionsCallbackInterface.OnMouseClick;
                 @MouseClick.performed -= m_Wrapper.m_BattleActionsCallbackInterface.OnMouseClick;
                 @MouseClick.canceled -= m_Wrapper.m_BattleActionsCallbackInterface.OnMouseClick;
+                @Continue.started -= m_Wrapper.m_BattleActionsCallbackInterface.OnContinue;
+                @Continue.performed -= m_Wrapper.m_BattleActionsCallbackInterface.OnContinue;
+                @Continue.canceled -= m_Wrapper.m_BattleActionsCallbackInterface.OnContinue;
             }
             m_Wrapper.m_BattleActionsCallbackInterface = instance;
             if (instance != null)
@@ -121,6 +146,9 @@ public class @Input : IInputActionCollection, IDisposable
                 @MouseClick.started += instance.OnMouseClick;
                 @MouseClick.performed += instance.OnMouseClick;
                 @MouseClick.canceled += instance.OnMouseClick;
+                @Continue.started += instance.OnContinue;
+                @Continue.performed += instance.OnContinue;
+                @Continue.canceled += instance.OnContinue;
             }
         }
     }
@@ -128,5 +156,6 @@ public class @Input : IInputActionCollection, IDisposable
     public interface IBattleActions
     {
         void OnMouseClick(InputAction.CallbackContext context);
+        void OnContinue(InputAction.CallbackContext context);
     }
 }
