@@ -18,6 +18,13 @@ namespace Assets.Scripts
             SetHealth(_maxHealth);
         }
 
+        public void Play()
+        {
+            Debug.Log($"{name} - Play");
+        }
+
+        public bool IsAlive() => _health > 0;
+
         public void Damage(int damage)
         {
             SetHealth(Mathf.Max(_health - damage, 0));
