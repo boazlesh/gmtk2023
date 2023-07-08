@@ -38,10 +38,9 @@ namespace Assets.Scripts
             set => _bodySpriteRenderer.sprite = value;
         }
 
-        public SpriteRenderer HatSpriteRenderer
-        {
-            get => _hatSpriteRenderer;
-        }
+        public Transform HatContainer => _hatSpriteRenderer.transform.parent;
+
+        public SpriteRenderer HatSpriteRenderer => _hatSpriteRenderer;
 
         public Role BodyRole
         {
@@ -136,8 +135,8 @@ namespace Assets.Scripts
         {
             Debug.Log($"{name} - Float hat");
 
-            _originalHatPosition = _hatSpriteRenderer.transform.position;
-            _hatSpriteRenderer.transform.position = _hatFloatPosition.position;
+            _originalHatPosition = HatContainer.position;
+            HatContainer.position = _hatFloatPosition.position;
 
             yield return null;
         }
@@ -146,7 +145,7 @@ namespace Assets.Scripts
         {
             Debug.Log($"{name} - Unfloat hat");
 
-            _hatSpriteRenderer.transform.position = _originalHatPosition;
+            HatContainer.position = _originalHatPosition;
 
             yield return null;
         }
