@@ -36,7 +36,7 @@ namespace Assets.Scripts
 
         public void Start()
         {
-            SetIsPlayerUnits();
+            IntializeUnits();
 
             _fightButton.interactable = false;
             _isHatInteractble = false;
@@ -223,11 +223,16 @@ namespace Assets.Scripts
             }
         }
 
-        private void SetIsPlayerUnits()
+        private void IntializeUnits()
         {
-            foreach (Unit unit in _playerUnits)
+            for (int i = 0; i < _playerUnits.Length; i++)
             {
-                unit.IsPlayerUnit = true;
+                _playerUnits[i].UnitIndex = i;
+                _playerUnits[i].IsPlayerUnit = true;
+            }
+            for (int i = 0; i < _enemyUnits.Length; i++)
+            {
+                _enemyUnits[i].UnitIndex = i;
             }
         }
 
