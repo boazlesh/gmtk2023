@@ -80,7 +80,7 @@ namespace Assets.Scripts
         {
             _bodySpriteRenderer.color = Color.magenta;
 
-            yield return _currentIntention.PerformIntetion();
+            yield return _currentIntention.PerformIntetionRoutine();
 
             Debug.Log($"{name} - Play");
 
