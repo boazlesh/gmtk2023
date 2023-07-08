@@ -28,7 +28,7 @@ namespace Assets.Scripts
             return GameManager.Instance.GetUnitByIntention(this);
         }
 
-        public IEnumerator PerformIntetion()
+        public IEnumerator PerformIntetionRoutine()
         {
             yield return new WaitForSeconds(0.5f);
 

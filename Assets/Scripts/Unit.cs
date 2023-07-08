@@ -74,6 +74,7 @@ namespace Assets.Scripts
             _currentIntention = PlanIntention();
 
             _intentionBubble.SetIntention(_currentIntention.Verb, _currentIntention.ResolveAbility(), _currentIntention.ResolveTargetUnit());
+            _intentionBubble.Show();
 
             yield return null;
         }
@@ -82,13 +83,15 @@ namespace Assets.Scripts
         {
             _bodySpriteRenderer.color = Color.magenta;
 
-            yield return _currentIntention.PerformIntetion();
+            yield return _currentIntention.PerformIntetionRoutine();
 
             Debug.Log($"{name} - Play");
 
             _bodySpriteRenderer.color = Color.white;
 
             _currentIntention = null;
+
+            _intentionBubble.Hide();
 
             yield return null;
         }
