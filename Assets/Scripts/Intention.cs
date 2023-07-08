@@ -50,6 +50,13 @@ namespace Assets.Scripts
 
         private IEnumerator PerformAbilityReoutine(Ability ability, Unit targetUnit)
         {
+            if (ability.IsSwap)
+            {
+                yield return GameManager.Instance.SwapUnitsRoutine(Originator, targetUnit);
+
+                yield break;
+            }
+
             if (ability.Damage != 0)
             {
                 yield return targetUnit.DamageRoutine(ability.Damage);

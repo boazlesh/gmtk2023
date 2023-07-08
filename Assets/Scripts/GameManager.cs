@@ -63,6 +63,28 @@ namespace Assets.Scripts
             return units[intention.TargetIndex];
         }
 
+        public IEnumerator SwapUnitsRoutine(Unit originUnit, Unit targetUnit)
+        {
+            Unit[] team = originUnit.GetTeam();
+            team[originUnit.UnitIndex] = targetUnit;
+            team[targetUnit.UnitIndex] = originUnit;
+
+            int tempIndex = originUnit.UnitIndex;
+            originUnit.UnitIndex = targetUnit.UnitIndex;
+            targetUnit.UnitIndex = tempIndex;
+
+            Vector3 tempPosition = originUnit.transform.position;
+            originUnit.transform.position = targetUnit.transform.position;
+            targetUnit.transform.position = tempPosition;
+
+            foreach (Unit unit in _playerUnits.Concat(_enemyUnits))
+            {
+                unit.InvalidateIntention();
+            }
+
+            yield return null;
+        }
+
         private IEnumerator BuildIntentionsRoutine()
         {
             Debug.Log("Start building intentions");
@@ -219,18 +241,21 @@ namespace Assets.Scripts
 
         private IEnumerable<Unit> GetUnitsInOrder()
         {
-            int maxLength = Mathf.Max(_playerUnits.Length, _enemyUnits.Length);
+            Unit[] playerUnitsClone = _playerUnits.ToArray();
+            Unit[] enemyUnitsClone = _enemyUnits.ToArray();
+
+            int maxLength = Mathf.Max(playerUnitsClone.Length, enemyUnitsClone.Length);
 
             for (int i = 0; i < maxLength; i++)
             {
-                if (i < _playerUnits.Length && _playerUnits[i].IsAlive())
+                if (i < playerUnitsClone.Length && playerUnitsClone[i].IsAlive())
                 {
-                    yield return _playerUnits[i];
+                    yield return playerUnitsClone[i];
                 }
 
-                if (i < _enemyUnits.Length && _enemyUnits[i].IsAlive())
+                if (i < enemyUnitsClone.Length && enemyUnitsClone[i].IsAlive())
                 {
-                    yield return _enemyUnits[i];
+                    yield return enemyUnitsClone[i];
                 }
             }
         }
