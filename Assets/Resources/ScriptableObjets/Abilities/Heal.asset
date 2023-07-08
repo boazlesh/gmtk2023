@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb0d4162eb434c9469f1057433a2c246, type: 3}
   m_Name: Heal
   m_EditorClassIdentifier: 
+  Damage: -75
+  Sprite: {fileID: 0}
