@@ -57,8 +57,6 @@ namespace Assets.Scripts
 
         private void Awake()
         {
-            _originalHatPosition = _hatSpriteRenderer.transform.position;
-
             _healthBar.SetMaxHealth(_maxHealth);
 
             SetHealth(_maxHealth);
@@ -130,6 +128,7 @@ namespace Assets.Scripts
         {
             Debug.Log($"{name} - Float hat");
 
+            _originalHatPosition = _hatSpriteRenderer.transform.position;
             _hatSpriteRenderer.transform.position = _hatFloatPosition.position;
 
             yield return null;
