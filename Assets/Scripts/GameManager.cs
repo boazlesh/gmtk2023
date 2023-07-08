@@ -7,12 +7,13 @@ namespace Assets.Scripts
 {
     public class GameManager : MonoBehaviour
     {
-        [SerializeField] private Unit[] _playerUnits;
-        [SerializeField] private Unit[] _enemyUnits;
+        [SerializeField] public Unit[] _playerUnits;
+        [SerializeField] public Unit[] _enemyUnits;
         [SerializeField] private Button _fightButton;
 
         public void Start()
         {
+            _fightButton.interactable = false;
             BuildIntentions();
         }
 
@@ -41,6 +42,8 @@ namespace Assets.Scripts
             }
 
             Debug.Log("Done building intentions");
+
+            _fightButton.interactable = true;
         }
 
         private IEnumerator SwapHatsRoutine()
@@ -64,8 +67,6 @@ namespace Assets.Scripts
             Debug.Log("Done fighting");
 
             StartCoroutine(BuildIntentionsRoutine());
-
-            _fightButton.interactable = true;
         }
 
         private IEnumerable<Unit> GetUnitsInOrder()

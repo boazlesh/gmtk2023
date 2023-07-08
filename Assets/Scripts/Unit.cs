@@ -1,4 +1,5 @@
 using Assets.Scripts.Enums;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -25,15 +26,15 @@ namespace Assets.Scripts
 
         public IEnumerator ConjureIntentionRoutine()
         {
-            _bodySpriteRenderer.color = Color.yellow;
+            _bodySpriteRenderer.color = Color.green;
 
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.4f);
 
             Debug.Log($"{name} - Conjure");
 
             _bodySpriteRenderer.color = Color.white;
 
-            _currentIntention = new Intention(Verb.Offensive, 0);
+            _currentIntention = PlanIntention();
 
             yield return null;
         }
@@ -42,7 +43,7 @@ namespace Assets.Scripts
         {
             _bodySpriteRenderer.color = Color.magenta;
 
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.4f);
 
             Debug.Log($"{name} - Play");
 
@@ -70,5 +71,14 @@ namespace Assets.Scripts
 
         [ContextMenu("Damage Ten")]
         private void DamageTen() => StartCoroutine(DamageRoutine(10));
+
+        private Intention PlanIntention()
+        {
+            Verb verb = (Verb)UnityEngine.Random.Range(0, Enum.GetValues(typeof(Verb)).Length);
+
+            //int teamSize = (verb)
+
+            return new Intention(Verb.Offensive, 0);
+        }
     }
 }
