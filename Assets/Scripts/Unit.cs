@@ -1,4 +1,5 @@
 using Assets.Scripts.Enums;
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -19,16 +20,20 @@ namespace Assets.Scripts
             SetHealth(_maxHealth);
         }
 
-        public void Play()
+        public IEnumerator PlayRoutine()
         {
             Debug.Log($"{name} - Play");
+
+            yield return null;
         }
 
         public bool IsAlive() => _health > 0;
 
-        public void Damage(int damage)
+        public IEnumerator DamageRoutine(int damage)
         {
             SetHealth(Mathf.Max(_health - damage, 0));
+
+            yield return null;
         }
 
         private void SetHealth(int health)
@@ -38,6 +43,6 @@ namespace Assets.Scripts
         }
 
         [ContextMenu("Damage Ten")]
-        private void DamageTen() => Damage(10);
+        private void DamageTen() => StartCoroutine(DamageRoutine(10));
     }
 }
