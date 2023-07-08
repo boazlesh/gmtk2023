@@ -14,6 +14,7 @@ namespace Assets.Scripts
         [SerializeField] private Role _hatRole;
 
         private int _health;
+        private Intention _currentIntention;
 
         private void Start()
         {
@@ -22,7 +23,22 @@ namespace Assets.Scripts
             SetHealth(_maxHealth);
         }
 
-        public IEnumerator PlayRoutine()
+        public IEnumerator ConjureIntentionRoutine()
+        {
+            _bodySpriteRenderer.color = Color.yellow;
+
+            yield return new WaitForSeconds(1);
+
+            Debug.Log($"{name} - Conjure");
+
+            _bodySpriteRenderer.color = Color.white;
+
+            _currentIntention = new Intention(Verb.Offensive, 0);
+
+            yield return null;
+        }
+
+        public IEnumerator PlayInentionRoutine()
         {
             _bodySpriteRenderer.color = Color.magenta;
 
@@ -31,6 +47,8 @@ namespace Assets.Scripts
             Debug.Log($"{name} - Play");
 
             _bodySpriteRenderer.color = Color.white;
+
+            _currentIntention = null;
 
             yield return null;
         }
@@ -46,7 +64,7 @@ namespace Assets.Scripts
 
         private void SetHealth(int health)
         {
-            _health = health;
+            _health = Mathf.Clamp(health, 0, _maxHealth);
             _healthBar.SetHealth(_health);
         }
 

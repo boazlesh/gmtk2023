@@ -341,8 +341,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5cb3242eea30f4469acbf57a87500da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bodySpriteRenderer: {fileID: 0}
-  _hatSpriteRenderer: {fileID: 0}
+  _bodySpriteRenderer: {fileID: 3651876600057591523}
+  _hatSpriteRenderer: {fileID: 2612055409656997280}
   _maxHealth: 100
   _healthBar: {fileID: 1711652628383523413}
   _bodyRole: 0
