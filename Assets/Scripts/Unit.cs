@@ -14,10 +14,13 @@ namespace Assets.Scripts
         [SerializeField] private Role _hatRole;
         [SerializeField] private Transform _hatFloatPosition;
         [SerializeField] private IntentionBubble _intentionBubble;
+        [SerializeField] private Sprite _iconSprite;
 
         private int _health;
         private Intention _currentIntention;
         private Vector3 _originalHatPosition;
+
+        public Sprite IconSprite => _iconSprite;
 
         public bool IsPlayerUnit { get; set; }
 
@@ -67,7 +70,7 @@ namespace Assets.Scripts
 
             _currentIntention = PlanIntention();
 
-            _intentionBubble.SetIntention(_currentIntention.Verb, _currentIntention.ResolveAbility());
+            _intentionBubble.SetIntention(_currentIntention.Verb, _currentIntention.ResolveAbility(), _currentIntention.ResolveTargetUnit());
 
             yield return null;
         }
