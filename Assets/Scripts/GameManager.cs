@@ -18,6 +18,7 @@ namespace Assets.Scripts
 
         private Input _input;
         private Unit _currentSwappingHat;
+        private bool _isHatInteractble;
 
         private void Awake()
         {
@@ -35,6 +36,7 @@ namespace Assets.Scripts
             SetIsPlayerUnits();
 
             _fightButton.interactable = false;
+            _isHatInteractble = false;
             BuildIntentions();
         }
 
@@ -66,11 +68,13 @@ namespace Assets.Scripts
             Debug.Log("Done building intentions");
 
             _fightButton.interactable = true;
+            _isHatInteractble = true;
         }
 
         private IEnumerator FightRoutine()
         {
             _fightButton.interactable = false;
+            ResetHatSwapRoutine();
 
             Debug.Log("Start fighting");
 
@@ -86,6 +90,11 @@ namespace Assets.Scripts
 
         private void MouseClickPerformed(InputAction.CallbackContext obj)
         {
+            if (!_isHatInteractble)
+            {
+                return;
+            }
+
             Vector2 mouseScreenPosition = Mouse.current.position.ReadValue();
 
             Ray ray = Camera.main.ScreenPointToRay(mouseScreenPosition);
@@ -101,7 +110,6 @@ namespace Assets.Scripts
 
             if (clickedUnit == null)
             {
-                StartCoroutine(ResetHatSwapRoutine());
                 return;
             }
 
@@ -129,6 +137,12 @@ namespace Assets.Scripts
                 yield break;
             }
 
+            if (_currentSwappingHat == unit)
+            {
+                yield return ResetHatSwapRoutine();
+                yield break;
+            }
+
             yield return SwapHatsRoutine(_currentSwappingHat, unit);
             _currentSwappingHat = null;
         }
@@ -136,6 +150,9 @@ namespace Assets.Scripts
         private IEnumerator SwapHatsRoutine(Unit unitA, Unit unitB)
         {
             Debug.Log($"Swapping hats - {unitA.name} x {unitB.name}");
+
+            _isHatInteractble = false;
+            _fightButton.interactable = false;
 
             yield return unitB.FloatHatRoutine();
             yield return new WaitForSeconds(0.5f);
@@ -173,6 +190,9 @@ namespace Assets.Scripts
             unitB.HatRole = roleA;
 
             yield return this.WhenAllRoutine(unitA.UnfloatHatRoutine(), unitB.UnfloatHatRoutine());
+
+            _isHatInteractble = true;
+            _fightButton.interactable = true;
         }
 
         private IEnumerable<Unit> GetUnitsInOrder()
