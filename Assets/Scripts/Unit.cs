@@ -200,6 +200,11 @@ namespace Assets.Scripts
 
         public void InvalidateIntention()
         {
+            if (_currentIntention == null)
+            {
+                return;
+            }
+
             _intentionBubble.SetIntention(_currentIntention.Verb, _currentIntention.ResolveAbility(), _currentIntention.ResolveTargetUnit());
         }
 
