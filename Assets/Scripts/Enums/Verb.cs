@@ -3,6 +3,7 @@
     public enum Verb
     {
         Offensive,
-        Defensive
+        Defensive,
+        Special
     }
 }
