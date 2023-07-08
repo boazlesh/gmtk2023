@@ -5,8 +5,10 @@ namespace Assets.Scripts
     [CreateAssetMenu(menuName = "ScriptableObjects/Ability")]
     public class Ability : ScriptableObject
     {
-        public int Damage;
-
         public Sprite IconSprite;
+
+        public int Damage;
+        public int NeighborDamage;
+        public bool HitEveryone;
     }
 }
