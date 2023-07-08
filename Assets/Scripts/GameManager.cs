@@ -207,6 +207,9 @@ namespace Assets.Scripts
 
             yield return this.WhenAllRoutine(unitA.UnfloatHatRoutine(), unitB.UnfloatHatRoutine());
 
+            unitA.InvalidateIntention();
+            unitB.InvalidateIntention();
+
             _isHatInteractble = true;
             _fightButton.interactable = true;
         }

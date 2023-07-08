@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: a99ef28870adc004cb48eb863595507f
+guid: 4c0def85acb088b4cb3cd7e1875db480
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8855750523011992865
-    second: Ranger_Icons_0
+      213: 8797436551097734075
+    second: Magician_Icons_0
   - first:
-      213: -3378899653903130375
-    second: Ranger_Icons_1
+      213: -7728779019839658389
+    second: Magician_Icons_1
   - first:
-      213: 4238747229251794822
-    second: Ranger_Icons_2
+      213: 1518362251233725392
+    second: Magician_Icons_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -112,7 +112,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ranger_Icons_0
+      name: Magician_Icons_0
       rect:
         serializedVersion: 2
         x: 0
@@ -126,14 +126,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fd2f360b1dd0a1580800000000000000
-      internalID: -8855750523011992865
+      spriteID: bb3d732bee5c61a70800000000000000
+      internalID: 8797436551097734075
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ranger_Icons_1
+      name: Magician_Icons_1
       rect:
         serializedVersion: 2
         x: 320
@@ -147,14 +147,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9f0e96dbaacbb11d0800000000000000
-      internalID: -3378899653903130375
+      spriteID: b6627f62e6cddb490800000000000000
+      internalID: -7728779019839658389
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ranger_Icons_2
+      name: Magician_Icons_2
       rect:
         serializedVersion: 2
         x: 640
@@ -168,8 +168,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 687793ca52e03da30800000000000000
-      internalID: 4238747229251794822
+      spriteID: 0db06214c6e421510800000000000000
+      internalID: 1518362251233725392
       vertices: []
       indices: 
       edges: []

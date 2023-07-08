@@ -75,8 +75,7 @@ namespace Assets.Scripts
             _bodySpriteRenderer.color = Color.white;
 
             _currentIntention = PlanIntention();
-
-            _intentionBubble.SetIntention(_currentIntention.Verb, _currentIntention.ResolveAbility(), _currentIntention.ResolveTargetUnit());
+            InvalidateIntention();
             _intentionBubble.Show();
 
             yield return null;
@@ -198,6 +197,11 @@ namespace Assets.Scripts
         public void EndTurn()
         {
             ClearTunrModifiers();
+        }
+
+        public void InvalidateIntention()
+        {
+            _intentionBubble.SetIntention(_currentIntention.Verb, _currentIntention.ResolveAbility(), _currentIntention.ResolveTargetUnit());
         }
 
         private void ClearTunrModifiers()

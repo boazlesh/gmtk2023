@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb0d4162eb434c9469f1057433a2c246, type: 3}
   m_Name: ArrowRain
   m_EditorClassIdentifier: 
-  IconSprite: {fileID: 0}
+  IconSprite: {fileID: -8855750523011992865, guid: a99ef28870adc004cb48eb863595507f, type: 3}
   Damage: 10
   NeighborDamage: 0
   HitEveryone: 1
+  AddsDamageModifier: 0
+  DamageModifier: 0
+  AddsNeighborDamageModifier: 0
+  NeighborDamageModifier: 0
+  IsDamageModifierPersistent: 0

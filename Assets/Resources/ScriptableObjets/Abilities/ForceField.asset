@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb0d4162eb434c9469f1057433a2c246, type: 3}
   m_Name: ForceField
   m_EditorClassIdentifier: 
-  IconSprite: {fileID: 0}
+  IconSprite: {fileID: -7728779019839658389, guid: 4c0def85acb088b4cb3cd7e1875db480, type: 3}
   Damage: 0
   NeighborDamage: 0
   HitEveryone: 0
