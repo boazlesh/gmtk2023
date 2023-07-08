@@ -710,6 +710,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3325814059919340790, guid: d207d831f1418194a917a8753f9d2bd6, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: f931f9a7aff1b7048bb3d22b010cd258, type: 2}
     - target: {fileID: 4125163573070537937, guid: d207d831f1418194a917a8753f9d2bd6, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -717,6 +721,22 @@ PrefabInstance:
     - target: {fileID: 4125163573070537937, guid: d207d831f1418194a917a8753f9d2bd6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8364287057291962701, guid: d207d831f1418194a917a8753f9d2bd6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6148606654537804165, guid: 44ca81cae44af4341ab89cc577eb7901, type: 3}
+    - target: {fileID: 8364287057291962701, guid: d207d831f1418194a917a8753f9d2bd6, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8364287057291962701, guid: d207d831f1418194a917a8753f9d2bd6, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8364287057291962701, guid: d207d831f1418194a917a8753f9d2bd6, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d207d831f1418194a917a8753f9d2bd6, type: 3}
@@ -783,6 +803,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeroWarrior
       objectReference: {fileID: 0}
+    - target: {fileID: 4171090487656320361, guid: 294868bf2363d9144b0cca5d7bf407db, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 12476ded329a0254daa681b8a269d67b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 294868bf2363d9144b0cca5d7bf407db, type: 3}
 --- !u!1001 &6722536495368890639
@@ -800,6 +824,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3878001422272189199, guid: 0e6ddac7d14d7fe48b924f197025423c, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 90a05098b58807f4fa7385d8798e057f, type: 2}
     - target: {fileID: 4082477072959159275, guid: 0e6ddac7d14d7fe48b924f197025423c, type: 3}
       propertyPath: m_Name
       value: HeroMage
@@ -979,6 +1007,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2058209780389769849, guid: a4089729f56995344a9ca2489e097463, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1340138ea9ba29d478898d43f7552db3, type: 3}
+    - target: {fileID: 7493676371836798391, guid: a4089729f56995344a9ca2489e097463, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8bac2248431556c43ba20caf78076ba0, type: 2}
     - target: {fileID: 7676473591692815699, guid: a4089729f56995344a9ca2489e097463, type: 3}
       propertyPath: m_Name
       value: HeroCleric
