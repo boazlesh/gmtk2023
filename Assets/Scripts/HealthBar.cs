@@ -2,29 +2,32 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour
+namespace Assets.Scripts
 {
-    [SerializeField] private Slider _slider;
-    [SerializeField] private TextMeshProUGUI _text;
-    [SerializeField] private bool _showMaxHealthText;
-
-    public void SetMaxHealth(int maxHealth)
+    public class HealthBar : MonoBehaviour
     {
-        _slider.maxValue = maxHealth;
-        _slider.value = maxHealth;
-    }
+        [SerializeField] private Slider _slider;
+        [SerializeField] private TextMeshProUGUI _text;
+        [SerializeField] private bool _showMaxHealthText;
 
-    public void SetHealth(int health)
-    {
-        _slider.value = health;
-
-        if (_showMaxHealthText)
+        public void SetMaxHealth(int maxHealth)
         {
-            _text.text = $"{health} / {_slider.maxValue}";
-
-            return;
+            _slider.maxValue = maxHealth;
+            _slider.value = maxHealth;
         }
 
-        _text.text = health.ToString();
+        public void SetHealth(int health)
+        {
+            _slider.value = health;
+
+            if (_showMaxHealthText)
+            {
+                _text.text = $"{health} / {_slider.maxValue}";
+
+                return;
+            }
+
+            _text.text = health.ToString();
+        }
     }
 }

@@ -1,30 +1,33 @@
 using UnityEngine;
 
-public class Unit : MonoBehaviour
+namespace Assets.Scripts
 {
-    [SerializeField] private int _maxHealth;
-    [SerializeField] private HealthBar _healthBar;
-
-    private int _health;
-
-    private void Start()
+    public class Unit : MonoBehaviour
     {
-        _healthBar.SetMaxHealth(_maxHealth);
+        [SerializeField] private int _maxHealth;
+        [SerializeField] private HealthBar _healthBar;
 
-        SetHealth(_maxHealth);
-    }
-    
-    public void Damage(int damage)
-    {
-        SetHealth(Mathf.Max(_health - damage, 0));
-    }
+        private int _health;
 
-    private void SetHealth(int health)
-    {
-        _health = health;
-        _healthBar.SetHealth(_health);
-    }
+        private void Start()
+        {
+            _healthBar.SetMaxHealth(_maxHealth);
 
-    [ContextMenu("Damage Ten")]
-    private void DamageTen() => Damage(10);
+            SetHealth(_maxHealth);
+        }
+
+        public void Damage(int damage)
+        {
+            SetHealth(Mathf.Max(_health - damage, 0));
+        }
+
+        private void SetHealth(int health)
+        {
+            _health = health;
+            _healthBar.SetHealth(_health);
+        }
+
+        [ContextMenu("Damage Ten")]
+        private void DamageTen() => Damage(10);
+    }
 }
