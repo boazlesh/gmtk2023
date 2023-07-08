@@ -1,4 +1,5 @@
 using Assets.Scripts.Enums;
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -139,9 +140,19 @@ namespace Assets.Scripts
             yield return unitB.FloatHatRoutine();
             yield return new WaitForSeconds(0.5f);
 
-            Sprite spriteA = unitA.HatSprite;
-            unitA.HatSprite = unitB.HatSprite;
-            unitB.HatSprite = spriteA;
+            float swapDuration = 1f;
+
+            Vector3 aPosition = unitA.HatSpriteRenderer.transform.position;
+            Vector3 bPosition = unitB.HatSpriteRenderer.transform.position;
+
+            unitA.HatSpriteRenderer.transform.DOMove(bPosition, swapDuration);
+            unitB.HatSpriteRenderer.transform.DOMove(aPosition, swapDuration);
+
+            yield return new WaitForSeconds(swapDuration);
+
+            Sprite spriteA = unitA.HatSpriteRenderer.sprite;
+            unitA.HatSpriteRenderer.sprite = unitB.HatSpriteRenderer.sprite;
+            unitB.HatSpriteRenderer.sprite = spriteA;
 
             Role roleA = unitA.HatRole;
             unitA.HatRole = unitB.HatRole;

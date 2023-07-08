@@ -25,10 +25,9 @@ namespace Assets.Scripts
             set => _bodySpriteRenderer.sprite = value;
         }
 
-        public Sprite HatSprite
+        public SpriteRenderer HatSpriteRenderer
         {
-            get => _hatSpriteRenderer.sprite;
-            set => _hatSpriteRenderer.sprite = value;
+            get => _hatSpriteRenderer;
         }
 
         public Role BodyRole
