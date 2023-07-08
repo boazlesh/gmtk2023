@@ -63,7 +63,7 @@ namespace Assets.Scripts
 
         public IEnumerator ConjureIntentionRoutine()
         {
-            _bodySpriteRenderer.color = Color.green;
+            _bodySpriteRenderer.color = Color.cyan;
 
             yield return new WaitForSeconds(0.25f);
 
@@ -107,11 +107,11 @@ namespace Assets.Scripts
 
             _bodySpriteRenderer.color = (damage > 0) ? Color.red : Color.green;
 
+            yield return new WaitForSeconds(0.5f);
+
             Debug.Log($"{name} - Damaged");
 
             _bodySpriteRenderer.color = Color.white;
-
-            yield return new WaitForSeconds(0.5f);
 
             SetHealth(Mathf.Max(_health - damage, 0));
 
@@ -145,9 +145,23 @@ namespace Assets.Scripts
             return targetUnits;
         }
 
+        public Unit[] GetTeam()
+        {
+            return GetVerbPossibleTargetTeam(Verb.Defensive); // hack to get teammates
+        }
+
         public IEnumerable<Unit> GetNeighbors()
         {
-            throw new System.NotImplementedException();
+            Unit[] teammates = GetTeam();
+
+            if (UnitIndex - 1 >= 0)
+            {
+                yield return teammates[UnitIndex - 1];
+            }
+            if (UnitIndex + 1 < teammates.Length)
+            {
+                yield return teammates[UnitIndex + 1];
+            }
         }
 
         private void SetHealth(int health)
