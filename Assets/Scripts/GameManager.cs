@@ -177,6 +177,13 @@ namespace Assets.Scripts
 
             yield return new WaitForSeconds(swapDuration);
 
+            var unfloatDuration = 0.1f;
+
+            unitA.HatSpriteRenderer.transform.DOMove(unitB.OriginalHatPosition, unfloatDuration);
+            unitB.HatSpriteRenderer.transform.DOMove(unitA.OriginalHatPosition, unfloatDuration);
+
+            yield return new WaitForSeconds(unfloatDuration);
+
             if (shouldFlip)
             {
                 unitA.HatSpriteRenderer.transform.DOScaleX(-unitA.HatSpriteRenderer.transform.localScale.x, 0);

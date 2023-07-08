@@ -1,5 +1,4 @@
 using Assets.Scripts.Enums;
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -14,12 +13,15 @@ namespace Assets.Scripts
         [SerializeField] private Role _bodyRole;
         [SerializeField] private Role _hatRole;
         [SerializeField] private Transform _hatFloatPosition;
+        [SerializeField] private IntentionBubble _intentionBubble;
 
         private int _health;
         private Intention _currentIntention;
         private Vector3 _originalHatPosition;
 
         public bool IsPlayerUnit { get; set; }
+
+        public Vector3 OriginalHatPosition => _originalHatPosition;
 
         public Sprite BodySprite
         {
@@ -64,6 +66,8 @@ namespace Assets.Scripts
             _bodySpriteRenderer.color = Color.white;
 
             _currentIntention = PlanIntention();
+
+            _intentionBubble.SetIntention(_currentIntention.Verb, ActionType.FireBall);
 
             yield return null;
         }
