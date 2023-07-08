@@ -3,6 +3,7 @@ using Assets.Scripts.Mappings;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -64,7 +65,7 @@ namespace Assets.Scripts
 
             foreach (Unit unit in GetUnitsInOrder())
             {
-                yield return unit.ConjureIntentionRoutine();
+                yield return unit.PlanIntentionRoutine();
             }
 
             Debug.Log("Done building intentions");
@@ -86,6 +87,11 @@ namespace Assets.Scripts
             }
 
             Debug.Log("Done fighting");
+
+            foreach (Unit unit in _playerUnits.Concat(_enemyUnits))
+            {
+                unit.EndTurn();
+            }
 
             StartCoroutine(BuildIntentionsRoutine());
         }

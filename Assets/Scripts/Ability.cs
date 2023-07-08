@@ -11,7 +11,10 @@ namespace Assets.Scripts
         public int NeighborDamage;
         public bool HitEveryone;
 
-        //public int BlockPercent;
-        //public int NeighborBlockPercent;
+        public bool AddsDamageModifier;
+        public float DamageModifier;
+        public bool AddsNeighborDamageModifier;
+        public float NeighborDamageModifier;
+        public bool IsDamageModifierPersistent;
     }
 }
