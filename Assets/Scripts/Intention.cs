@@ -50,13 +50,29 @@ namespace Assets.Scripts
 
         private IEnumerator PerformAbilityReoutine(Ability ability, Unit targetUnit)
         {
-            yield return targetUnit.DamageRoutine(ability.Damage);
+            if (ability.Damage != 0)
+            {
+                yield return targetUnit.DamageRoutine(ability.Damage);
+            }
 
             if (ability.NeighborDamage != 0)
             {
                 foreach (Unit neighbor in targetUnit.GetNeighbors())
                 {
                     yield return neighbor.DamageRoutine(ability.NeighborDamage);
+                }
+            }
+
+            if (ability.AddsDamageModifier)
+            {
+                yield return targetUnit.AddDamageModifier(ability.DamageModifier, ability.IsDamageModifierPersistent);
+            }
+
+            if (ability.AddsNeighborDamageModifier)
+            {
+                foreach (Unit neighbor in targetUnit.GetNeighbors())
+                {
+                    yield return neighbor.AddDamageModifier(ability.NeighborDamageModifier, ability.IsDamageModifierPersistent);
                 }
             }
         }

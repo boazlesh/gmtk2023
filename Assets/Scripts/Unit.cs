@@ -1,6 +1,7 @@
 using Assets.Scripts.Enums;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -20,6 +21,8 @@ namespace Assets.Scripts
         private int _health;
         private Intention _currentIntention;
         private Vector3 _originalHatPosition;
+        private List<float> _persistantDamageModifiers = new List<float>();
+        private List<float> _turnDamageModifiers = new List<float>();
 
         public Sprite IconSprite => _iconSprite;
 
@@ -61,13 +64,13 @@ namespace Assets.Scripts
             SetHealth(_maxHealth);
         }
 
-        public IEnumerator ConjureIntentionRoutine()
+        public IEnumerator PlanIntentionRoutine()
         {
             _bodySpriteRenderer.color = Color.cyan;
 
             yield return new WaitForSeconds(0.25f);
 
-            Debug.Log($"{name} - Conjure");
+            Debug.Log($"{name} - Plan");
 
             _bodySpriteRenderer.color = Color.white;
 
@@ -113,7 +116,13 @@ namespace Assets.Scripts
 
             _bodySpriteRenderer.color = Color.white;
 
-            SetHealth(Mathf.Max(_health - damage, 0));
+            float actualDamage = damage;
+            foreach (float modifier in _persistantDamageModifiers.Concat(_turnDamageModifiers))
+            {
+                actualDamage *= modifier;
+            }
+
+            SetHealth(Mathf.Max(_health - (int)actualDamage, 0));
 
             yield return null;
         }
@@ -162,6 +171,38 @@ namespace Assets.Scripts
             {
                 yield return teammates[UnitIndex + 1];
             }
+        }
+
+        public IEnumerator AddDamageModifier(float modifier, bool isPersistent)
+        {
+            _bodySpriteRenderer.color = (modifier > 1) ? new Color(0.75f, 0.5f, 0.25f, 1f) : Color.gray;
+
+            Debug.Log($"{name} - Add Damage Modifier");
+
+            yield return new WaitForSeconds(0.25f);
+
+            _bodySpriteRenderer.color = Color.white;
+
+            if (isPersistent)
+            {
+                _persistantDamageModifiers.Add(modifier);
+            }
+            else
+            {
+                _turnDamageModifiers.Add(modifier);
+            }
+
+            yield return null;
+        }
+
+        public void EndTurn()
+        {
+            ClearTunrModifiers();
+        }
+
+        private void ClearTunrModifiers()
+        {
+            _turnDamageModifiers.Clear();
         }
 
         private void SetHealth(int health)

@@ -12,3 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb0d4162eb434c9469f1057433a2c246, type: 3}
   m_Name: ForceField
   m_EditorClassIdentifier: 
+  IconSprite: {fileID: 0}
+  Damage: 0
+  NeighborDamage: 0
+  HitEveryone: 0
+  AddsDamageModifier: 1
+  DamageModifier: 0
+  AddsNeighborDamageModifier: 0
+  NeighborDamageModifier: 0
+  IsDamageModifierPersistent: 0
