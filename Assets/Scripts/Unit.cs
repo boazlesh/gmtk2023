@@ -1,5 +1,4 @@
 using Assets.Scripts.Enums;
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -21,6 +20,8 @@ namespace Assets.Scripts
         private Vector3 _originalHatPosition;
 
         public bool IsPlayerUnit { get; set; }
+
+        public Vector3 OriginalHatPosition => _originalHatPosition;
 
         public Sprite BodySprite
         {
