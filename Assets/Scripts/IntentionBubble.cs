@@ -16,6 +16,7 @@ namespace Assets.Scripts
             _verbSpriteRenderer.sprite = _verbSpriteMapping._sprites[verb];
             _actionSpriteRenderer.sprite = ability.IconSprite;
             _targetSpriteRenderer.sprite = unit.IconSprite;
+            _targetSpriteRenderer.flipX = !unit.IsPlayerUnit;
         }
 
         public void Show()
