@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb0d4162eb434c9469f1057433a2c246, type: 3}
   m_Name: Shield
   m_EditorClassIdentifier: 
+  Damage: 0
+  IconSprite: {fileID: 2130749967399641, guid: 97a47a1a27f738e4da1f3d8bef0fb476, type: 3}

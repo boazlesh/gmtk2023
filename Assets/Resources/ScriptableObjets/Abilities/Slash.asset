@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Slash
   m_EditorClassIdentifier: 
   Damage: 50
-  Sprite: {fileID: 0}
+  IconSprite: {fileID: 6608001358117835361, guid: 97a47a1a27f738e4da1f3d8bef0fb476, type: 3}
