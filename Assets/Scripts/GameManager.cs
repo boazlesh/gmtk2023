@@ -137,6 +137,7 @@ namespace Assets.Scripts
             Debug.Log($"Swapping hats - {unitA.name} x {unitB.name}");
 
             yield return unitB.FloatHatRoutine();
+            yield return new WaitForSeconds(0.5f);
 
             Sprite spriteA = unitA.HatSprite;
             unitA.HatSprite = unitB.HatSprite;
