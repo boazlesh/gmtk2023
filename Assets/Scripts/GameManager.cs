@@ -43,11 +43,6 @@ namespace Assets.Scripts
             StartCoroutine(BuildIntentionsRoutine());
         }
 
-        public void SwapHats()
-        {
-            StartCoroutine(SwapHatsRoutine());
-        }
-
         public void Fight()
         {
             StartCoroutine(FightRoutine());
@@ -71,13 +66,6 @@ namespace Assets.Scripts
             Debug.Log("Done building intentions");
 
             _fightButton.interactable = true;
-        }
-
-        private IEnumerator SwapHatsRoutine()
-        {
-            Debug.Log("Swapping hats");
-
-            yield return null;
         }
 
         private IEnumerator FightRoutine()
