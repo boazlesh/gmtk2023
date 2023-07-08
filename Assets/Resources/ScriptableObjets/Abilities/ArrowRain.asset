@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ArrowRain
   m_EditorClassIdentifier: 
   IconSprite: {fileID: -8855750523011992865, guid: a99ef28870adc004cb48eb863595507f, type: 3}
-  Damage: 10
+  Damage: 15
   NeighborDamage: 0
   HitEveryone: 1
   AddsDamageModifier: 0
@@ -21,3 +21,4 @@ MonoBehaviour:
   AddsNeighborDamageModifier: 0
   NeighborDamageModifier: 0
   IsDamageModifierPersistent: 0
+  IsSwap: 0

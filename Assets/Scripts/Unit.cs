@@ -57,8 +57,6 @@ namespace Assets.Scripts
 
         private void Awake()
         {
-            _originalHatPosition = _hatSpriteRenderer.transform.position;
-
             _healthBar.SetMaxHealth(_maxHealth);
 
             SetHealth(_maxHealth);
@@ -130,6 +128,7 @@ namespace Assets.Scripts
         {
             Debug.Log($"{name} - Float hat");
 
+            _originalHatPosition = _hatSpriteRenderer.transform.position;
             _hatSpriteRenderer.transform.position = _hatFloatPosition.position;
 
             yield return null;
@@ -201,6 +200,11 @@ namespace Assets.Scripts
 
         public void InvalidateIntention()
         {
+            if (_currentIntention == null)
+            {
+                return;
+            }
+
             _intentionBubble.SetIntention(_currentIntention.Verb, _currentIntention.ResolveAbility(), _currentIntention.ResolveTargetUnit());
         }
 
@@ -213,6 +217,17 @@ namespace Assets.Scripts
         {
             _health = Mathf.Clamp(health, 0, _maxHealth);
             _healthBar.SetHealth(_health);
+
+            if (_health == 0)
+            {
+                Die();
+            }
+        }
+
+        private void Die()
+        {
+            StopAllCoroutines();
+            GameManager.Instance.CheckWinLose();
         }
 
         [ContextMenu("Damage Ten")]
@@ -228,7 +243,7 @@ namespace Assets.Scripts
             randomDirection = (randomDirection == 0) ? -1 : 1;
             while (!targetUnits[targetIndex].IsAlive())
             {
-                targetIndex += randomDirection;
+                targetIndex = (targetIndex + randomDirection) % targetUnits.Length;
             }
 
             return new Intention(this, verb, targetIndex);

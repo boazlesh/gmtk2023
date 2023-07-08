@@ -17,6 +17,7 @@ namespace Assets.Scripts
         [SerializeField] public VerbPerRoleMapping _verbPerRoleMapping;
         [SerializeField] private Button _fightButton;
         [SerializeField] private WinWindow _winWindowPrefab;
+        [SerializeField] private LoseWindow _loseWindowPrefab;
 
         public static GameManager Instance { get; private set; }
 
@@ -61,6 +62,45 @@ namespace Assets.Scripts
         {
             Unit[] units = intention.Originator.GetVerbPossibleTargetTeam(intention.Verb);
             return units[intention.TargetIndex];
+        }
+
+        public IEnumerator SwapUnitsRoutine(Unit originUnit, Unit targetUnit)
+        {
+            Unit[] team = originUnit.GetTeam();
+            team[originUnit.UnitIndex] = targetUnit;
+            team[targetUnit.UnitIndex] = originUnit;
+
+            int tempIndex = originUnit.UnitIndex;
+            originUnit.UnitIndex = targetUnit.UnitIndex;
+            targetUnit.UnitIndex = tempIndex;
+
+            Vector3 tempPosition = originUnit.transform.position;
+            originUnit.transform.position = targetUnit.transform.position;
+            targetUnit.transform.position = tempPosition;
+
+            foreach (Unit unit in _playerUnits.Concat(_enemyUnits))
+            {
+                unit.InvalidateIntention();
+            }
+
+            yield return null;
+        }
+
+        public void CheckWinLose()
+        {
+            if (_enemyUnits.All(unity => !unity.IsAlive()))
+            {
+                Win();
+
+                return;
+            }
+
+            if (_playerUnits.All(unity => !unity.IsAlive()))
+            {
+                Lose();
+
+                return;
+            }
         }
 
         private IEnumerator BuildIntentionsRoutine()
@@ -219,18 +259,21 @@ namespace Assets.Scripts
 
         private IEnumerable<Unit> GetUnitsInOrder()
         {
-            int maxLength = Mathf.Max(_playerUnits.Length, _enemyUnits.Length);
+            Unit[] playerUnitsClone = _playerUnits.ToArray();
+            Unit[] enemyUnitsClone = _enemyUnits.ToArray();
+
+            int maxLength = Mathf.Max(playerUnitsClone.Length, enemyUnitsClone.Length);
 
             for (int i = 0; i < maxLength; i++)
             {
-                if (i < _playerUnits.Length && _playerUnits[i].IsAlive())
+                if (i < playerUnitsClone.Length && playerUnitsClone[i].IsAlive())
                 {
-                    yield return _playerUnits[i];
+                    yield return playerUnitsClone[i];
                 }
 
-                if (i < _enemyUnits.Length && _enemyUnits[i].IsAlive())
+                if (i < enemyUnitsClone.Length && enemyUnitsClone[i].IsAlive())
                 {
-                    yield return _enemyUnits[i];
+                    yield return enemyUnitsClone[i];
                 }
             }
         }
@@ -250,7 +293,24 @@ namespace Assets.Scripts
 
         private void Win()
         {
+            Stop();
             Instantiate(_winWindowPrefab);
+        }
+
+        private void Lose()
+        {
+            Stop();
+            Instantiate(_loseWindowPrefab);
+        }
+
+        private void Stop()
+        {
+            StopAllCoroutines();
+
+            foreach (Unit unit in _playerUnits.Concat(_enemyUnits))
+            {
+                unit.StopAllCoroutines();
+            }
         }
     }
 }

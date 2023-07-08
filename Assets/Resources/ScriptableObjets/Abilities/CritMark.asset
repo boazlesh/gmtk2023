@@ -16,8 +16,9 @@ MonoBehaviour:
   Damage: 0
   NeighborDamage: 0
   HitEveryone: 0
-  AddsDamageModifier: 0
-  DamageModifier: 0
+  AddsDamageModifier: 1
+  DamageModifier: 2
   AddsNeighborDamageModifier: 0
   NeighborDamageModifier: 0
-  IsDamageModifierPersistent: 0
+  IsDamageModifierPersistent: 1
+  IsSwap: 0

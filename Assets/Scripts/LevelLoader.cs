@@ -9,6 +9,13 @@ namespace Assets.Scripts
         [SerializeField] private Animator _animator;
         [SerializeField] private float _animationTime = 1f;
 
+        public void ReloadLevel()
+        {
+            gameObject.SetActive(true);
+
+            StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex));
+        }
+
         public void LoadNextLevel()
         {
             gameObject.SetActive(true);

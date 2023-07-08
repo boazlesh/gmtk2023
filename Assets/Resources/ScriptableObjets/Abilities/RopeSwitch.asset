@@ -21,3 +21,4 @@ MonoBehaviour:
   AddsNeighborDamageModifier: 0
   NeighborDamageModifier: 0
   IsDamageModifierPersistent: 0
+  IsSwap: 1

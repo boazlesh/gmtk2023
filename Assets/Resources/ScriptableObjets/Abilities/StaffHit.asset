@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: StaffHit
   m_EditorClassIdentifier: 
   IconSprite: {fileID: -607918759219667201, guid: 7338904f2e4910a43b248d3e8dba2dbf, type: 3}
-  Damage: 1
+  Damage: 0
   NeighborDamage: 0
   HitEveryone: 0
   AddsDamageModifier: 0
@@ -21,3 +21,4 @@ MonoBehaviour:
   AddsNeighborDamageModifier: 0
   NeighborDamageModifier: 0
   IsDamageModifierPersistent: 0
+  IsSwap: 0
