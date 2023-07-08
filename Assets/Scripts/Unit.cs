@@ -142,7 +142,7 @@ namespace Assets.Scripts
                 targetIndex += randomDirection;
             }
 
-            return new Intention(this, Verb.Offensive, targetIndex);
+            return new Intention(this, verb, targetIndex);
         }
 
         public Unit[] GetVerbPossibleTargetTeam(Verb verb)

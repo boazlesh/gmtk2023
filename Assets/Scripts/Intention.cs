@@ -1,4 +1,6 @@
 ﻿using Assets.Scripts.Enums;
+using System.Collections;
+using UnityEngine;
 
 namespace Assets.Scripts
 {
@@ -13,6 +15,16 @@ namespace Assets.Scripts
             Originator = originator;
             Verb = verb;
             TargetIndex = targetIndex;
+        }
+
+        public Ability ResolveAbility()
+        {
+            return GameManager.Instance._verbPerRoleMapping.Mapping[Originator.HatRole].Mapping[Verb];
+        }
+
+        public IEnumerator PerformIntetion()
+        {
+            yield return new WaitForSeconds(0.5f);
         }
     }
 }

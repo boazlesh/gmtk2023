@@ -1,4 +1,5 @@
 using Assets.Scripts.Enums;
+using Assets.Scripts.Mappings;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace Assets.Scripts
     {
         [SerializeField] public Unit[] _playerUnits;
         [SerializeField] public Unit[] _enemyUnits;
+        [SerializeField] public VerbPerRoleMapping _verbPerRoleMapping;
         [SerializeField] private Button _fightButton;
 
         public static GameManager Instance { get; private set; }
