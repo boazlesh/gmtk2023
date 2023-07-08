@@ -11,6 +11,16 @@ namespace Assets.Scripts
         [SerializeField] private Unit[] _enemyUnits;
         [SerializeField] private Button _fightButton;
 
+        public void Start()
+        {
+            BuildIntentions();
+        }
+
+        public void BuildIntentions()
+        {
+            StartCoroutine(BuildIntentionsRoutine());
+        }
+
         public void SwapHats()
         {
             StartCoroutine(SwapHatsRoutine());
@@ -19,6 +29,18 @@ namespace Assets.Scripts
         public void Fight()
         {
             StartCoroutine(FightRoutine());
+        }
+
+        public IEnumerator BuildIntentionsRoutine()
+        {
+            Debug.Log("Start building intentions");
+
+            foreach (Unit unit in GetUnitsInOrder())
+            {
+                yield return unit.ConjureIntentionRoutine();
+            }
+
+            Debug.Log("Done building intentions");
         }
 
         private IEnumerator SwapHatsRoutine()
@@ -36,10 +58,12 @@ namespace Assets.Scripts
 
             foreach (Unit unit in GetUnitsInOrder())
             {
-                yield return unit.PlayRoutine();
+                yield return unit.PlayInentionRoutine();
             }
 
             Debug.Log("Done fighting");
+
+            StartCoroutine(BuildIntentionsRoutine());
 
             _fightButton.interactable = true;
         }
