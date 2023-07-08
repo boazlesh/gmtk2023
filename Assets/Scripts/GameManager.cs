@@ -1,3 +1,4 @@
+using Assets.Scripts.Enums;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,7 @@ namespace Assets.Scripts
         [SerializeField] private Button _fightButton;
 
         private Input _input;
+        private Unit _currentSwappingHat;
 
         private void Awake()
         {
@@ -98,10 +100,53 @@ namespace Assets.Scripts
 
             if (clickedUnit == null)
             {
+                StartCoroutine(ResetHatSwapRoutine());
                 return;
             }
 
-            StartCoroutine(clickedUnit.PrepareHatSwapRoutine());
+            StartCoroutine(UnitClickedRoutine(clickedUnit));
+        }
+
+        private IEnumerator ResetHatSwapRoutine()
+        {
+            if (_currentSwappingHat == null)
+            {
+                yield break;
+            }
+
+            yield return _currentSwappingHat.UnfloatHatRoutine();
+            _currentSwappingHat = null;
+        }
+
+        private IEnumerator UnitClickedRoutine(Unit unit)
+        {
+            if (_currentSwappingHat == null)
+            {
+                _currentSwappingHat = unit;
+
+                yield return unit.FloatHatRoutine();
+                yield break;
+            }
+
+            yield return SwapHatsRoutine(_currentSwappingHat, unit);
+            _currentSwappingHat = null;
+        }
+
+        private IEnumerator SwapHatsRoutine(Unit unitA, Unit unitB)
+        {
+            Debug.Log($"Swapping hats - {unitA.name} x {unitB.name}");
+
+            yield return unitB.FloatHatRoutine();
+
+            Sprite spriteA = unitA.HatSprite;
+            unitA.HatSprite = unitB.HatSprite;
+            unitB.HatSprite = spriteA;
+
+            Role roleA = unitA.HatRole;
+            unitA.HatRole = unitB.HatRole;
+            unitB.HatRole = roleA;
+
+            yield return this.WhenAllRoutine(unitA.UnfloatHatRoutine(), unitB.UnfloatHatRoutine());
         }
 
         private IEnumerable<Unit> GetUnitsInOrder()

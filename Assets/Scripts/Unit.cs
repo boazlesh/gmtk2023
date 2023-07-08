@@ -17,6 +17,30 @@ namespace Assets.Scripts
         private int _health;
         private Intention _currentIntention;
 
+        public Sprite BodySprite
+        {
+            get => _bodySpriteRenderer.sprite;
+            set => _bodySpriteRenderer.sprite = value;
+        }
+
+        public Sprite HatSprite
+        {
+            get => _hatSpriteRenderer.sprite;
+            set => _hatSpriteRenderer.sprite = value;
+        }
+
+        public Role BodyRole
+        {
+            get => _bodyRole;
+            set => _bodyRole = value;
+        }
+
+        public Role HatRole
+        {
+            get => _hatRole;
+            set => _hatRole = value;
+        }
+
         private void Start()
         {
             _healthBar.SetMaxHealth(_maxHealth);
@@ -63,9 +87,16 @@ namespace Assets.Scripts
             yield return null;
         }
 
-        public IEnumerator PrepareHatSwapRoutine()
+        public IEnumerator FloatHatRoutine()
         {
-            Debug.Log("Preparing hat swap");
+            Debug.Log($"{name} - Float hat");
+
+            yield return null;
+        }
+
+        public IEnumerator UnfloatHatRoutine()
+        {
+            Debug.Log($"{name} - Unfloat hat");
 
             yield return null;
         }
