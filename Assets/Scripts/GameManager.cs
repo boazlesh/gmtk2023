@@ -17,6 +17,7 @@ namespace Assets.Scripts
         [SerializeField] public VerbPerRoleMapping _verbPerRoleMapping;
         [SerializeField] private Button _fightButton;
         [SerializeField] private WinWindow _winWindowPrefab;
+        [SerializeField] private LoseWindow _loseWindowPrefab;
 
         public static GameManager Instance { get; private set; }
 
@@ -83,6 +84,23 @@ namespace Assets.Scripts
             }
 
             yield return null;
+        }
+
+        public void CheckWinLose()
+        {
+            if (_enemyUnits.All(unity => !unity.IsAlive()))
+            {
+                Win();
+
+                return;
+            }
+
+            if (_playerUnits.All(unity => !unity.IsAlive()))
+            {
+                Lose();
+
+                return;
+            }
         }
 
         private IEnumerator BuildIntentionsRoutine()
@@ -276,6 +294,11 @@ namespace Assets.Scripts
         private void Win()
         {
             Instantiate(_winWindowPrefab);
+        }
+
+        private void Lose()
+        {
+            Instantiate(_loseWindowPrefab);
         }
     }
 }

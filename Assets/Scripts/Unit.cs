@@ -217,6 +217,11 @@ namespace Assets.Scripts
         {
             _health = Mathf.Clamp(health, 0, _maxHealth);
             _healthBar.SetHealth(_health);
+
+            if (_health == 0)
+            {
+                GameManager.Instance.CheckWinLose();
+            }
         }
 
         [ContextMenu("Damage Ten")]
