@@ -220,8 +220,14 @@ namespace Assets.Scripts
 
             if (_health == 0)
             {
-                GameManager.Instance.CheckWinLose();
+                Die();
             }
+        }
+
+        private void Die()
+        {
+            StopAllCoroutines();
+            GameManager.Instance.CheckWinLose();
         }
 
         [ContextMenu("Damage Ten")]

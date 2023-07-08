@@ -293,12 +293,24 @@ namespace Assets.Scripts
 
         private void Win()
         {
+            Stop();
             Instantiate(_winWindowPrefab);
         }
 
         private void Lose()
         {
+            Stop();
             Instantiate(_loseWindowPrefab);
+        }
+
+        private void Stop()
+        {
+            StopAllCoroutines();
+
+            foreach (Unit unit in _playerUnits.Concat(_enemyUnits))
+            {
+                unit.StopAllCoroutines();
+            }
         }
     }
 }
