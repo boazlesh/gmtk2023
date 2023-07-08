@@ -6,6 +6,7 @@ namespace Assets.Scripts
     public class Ability : ScriptableObject
     {
         public int Damage;
-        public Sprite Sprite;
+
+        public Sprite IconSprite;
     }
 }

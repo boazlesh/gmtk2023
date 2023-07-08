@@ -14,7 +14,7 @@ namespace Assets.Scripts
         public void SetIntention(Verb verb, Ability ability)
         {
             _verbSpriteRenderer.sprite = _verbSpriteMapping._sprites[verb];
-            _actionSpriteRenderer.sprite = ability.Sprite;
+            _actionSpriteRenderer.sprite = ability.IconSprite;
             // TODO: Target icon
         }
     }

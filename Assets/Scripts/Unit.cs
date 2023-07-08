@@ -67,7 +67,7 @@ namespace Assets.Scripts
 
             _currentIntention = PlanIntention();
 
-            _intentionBubble.SetIntention(_currentIntention.Verb, ScriptableObject.CreateInstance<Ability>());
+            _intentionBubble.SetIntention(_currentIntention.Verb, _currentIntention.ResolveAbility());
 
             yield return null;
         }
