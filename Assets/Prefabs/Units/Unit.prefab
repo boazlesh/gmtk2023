@@ -522,6 +522,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7344491484128543675}
   - component: {fileID: 4327926789672171383}
+  - component: {fileID: 5159357723788920462}
   m_Layer: 0
   m_Name: Unit
   m_TagString: Untagged
@@ -567,6 +568,25 @@ MonoBehaviour:
   _hatFloatPosition: {fileID: 1364972099054560105}
   _intentionBubble: {fileID: 8579617433433796716}
   _iconSprite: {fileID: 0}
+--- !u!95 &5159357723788920462
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7344491484128543676}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8380308156645169259
 GameObject:
   m_ObjectHideFlags: 0

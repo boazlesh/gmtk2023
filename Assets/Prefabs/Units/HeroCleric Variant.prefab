@@ -27,6 +27,10 @@ PrefabInstance:
       propertyPath: _iconSprite
       value: 
       objectReference: {fileID: 21300000, guid: 7b9416ae3adaa3843b0b08475b4a6b79, type: 3}
+    - target: {fileID: 5159357723788920462, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8bac2248431556c43ba20caf78076ba0, type: 2}
     - target: {fileID: 7344491484128543675, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -81,7 +85,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7344491484128543676, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
       propertyPath: m_Name
-      value: Cleric
+      value: HeroCleric Variant
       objectReference: {fileID: 0}
     - target: {fileID: 9188045561242499967, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
       propertyPath: m_AnchorMax.x
