@@ -18,6 +18,7 @@ namespace Assets.Scripts
         private int _health;
         private Intention _currentIntention;
         private Vector3 _originalHatPosition;
+        public bool _isPlayerUnit;
 
         public Sprite BodySprite
         {
@@ -55,7 +56,7 @@ namespace Assets.Scripts
         {
             _bodySpriteRenderer.color = Color.green;
 
-            yield return new WaitForSeconds(0.4f);
+            yield return new WaitForSeconds(0.25f);
 
             Debug.Log($"{name} - Conjure");
 
@@ -70,7 +71,9 @@ namespace Assets.Scripts
         {
             _bodySpriteRenderer.color = Color.magenta;
 
-            yield return new WaitForSeconds(0.4f);
+            yield return new WaitForSeconds(0.5f);
+
+            yield return GameManager.Instance.GetUnitByIntention(_currentIntention).DamageRoutine(10);
 
             Debug.Log($"{name} - Play");
 
@@ -85,6 +88,14 @@ namespace Assets.Scripts
 
         public IEnumerator DamageRoutine(int damage)
         {
+            _bodySpriteRenderer.color = Color.red;
+
+            yield return new WaitForSeconds(0.5f);
+
+            Debug.Log($"{name} - Damaged");
+
+            _bodySpriteRenderer.color = Color.white;
+
             SetHealth(Mathf.Max(_health - damage, 0));
 
             yield return null;
@@ -119,11 +130,27 @@ namespace Assets.Scripts
 
         private Intention PlanIntention()
         {
-            Verb verb = (Verb)UnityEngine.Random.Range(0, Enum.GetValues(typeof(Verb)).Length);
+            Verb verb = (Verb)UnityEngine.Random.Range(0, 2); // no special -- TODO: special bar, and require body-hat match, which overrides the regular intention?
+            Unit[] targetUnits = GetVerbPossibleTargetTeam(verb);
+            int targetIndex = UnityEngine.Random.Range(0, targetUnits.Length);
 
-            //int teamSize = (verb)
+            int randomDirection = UnityEngine.Random.Range(0, 2);
+            randomDirection = (randomDirection == 0) ? -1 : 1;
+            while (!targetUnits[targetIndex].IsAlive())
+            {
+                targetIndex += randomDirection;
+            }
 
-            return new Intention(Verb.Offensive, 0);
+            return new Intention(this, Verb.Offensive, targetIndex);
+        }
+
+        public Unit[] GetVerbPossibleTargetTeam(Verb verb)
+        {
+            Unit[] friendlyUnits = _isPlayerUnit ? GameManager.Instance._playerUnits : GameManager.Instance._enemyUnits;
+            Unit[] enemyUnits = _isPlayerUnit ? GameManager.Instance._enemyUnits : GameManager.Instance._playerUnits;
+            Unit[] targetUnits = (verb == Verb.Defensive) ? friendlyUnits : enemyUnits;
+
+            return targetUnits;
         }
     }
 }

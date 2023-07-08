@@ -14,11 +14,15 @@ namespace Assets.Scripts
         [SerializeField] public Unit[] _enemyUnits;
         [SerializeField] private Button _fightButton;
 
+        public static GameManager Instance { get; private set; }
+
         private Input _input;
         private Unit _currentSwappingHat;
 
         private void Awake()
         {
+            Instance = gameObject.GetComponent<GameManager>();
+
             _input = new Input();
 
             _input.Battle.MouseClick.performed += MouseClickPerformed;
@@ -28,6 +32,8 @@ namespace Assets.Scripts
 
         public void Start()
         {
+            SetIsPlayerUnits();
+
             _fightButton.interactable = false;
             BuildIntentions();
         }
@@ -47,7 +53,13 @@ namespace Assets.Scripts
             StartCoroutine(FightRoutine());
         }
 
-        public IEnumerator BuildIntentionsRoutine()
+        public Unit GetUnitByIntention(Intention intention)
+        {
+            Unit[] units = intention.Originator.GetVerbPossibleTargetTeam(intention.Verb);
+            return units[intention.TargetIndex];
+        }
+
+        private IEnumerator BuildIntentionsRoutine()
         {
             Debug.Log("Start building intentions");
 
@@ -176,6 +188,14 @@ namespace Assets.Scripts
                 {
                     yield return _enemyUnits[i];
                 }
+            }
+        }
+
+        private void SetIsPlayerUnits()
+        {
+            foreach (Unit unit in _playerUnits)
+            {
+                unit._isPlayerUnit = true;
             }
         }
     }
