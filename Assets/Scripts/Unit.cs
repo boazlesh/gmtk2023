@@ -6,6 +6,7 @@ namespace Assets.Scripts
 {
     public class Unit : MonoBehaviour
     {
+        [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private int _maxHealth;
         [SerializeField] private HealthBar _healthBar;
         [SerializeField] private Role _bodyRole;
@@ -22,7 +23,13 @@ namespace Assets.Scripts
 
         public IEnumerator PlayRoutine()
         {
+            _spriteRenderer.color = Color.magenta;
+
+            yield return new WaitForSeconds(1);
+
             Debug.Log($"{name} - Play");
+
+            _spriteRenderer.color = Color.white;
 
             yield return null;
         }
