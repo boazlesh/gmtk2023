@@ -1403,10 +1403,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hero01
       objectReference: {fileID: 0}
-    - target: {fileID: 7620119563749432480, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9188045561242499967, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
