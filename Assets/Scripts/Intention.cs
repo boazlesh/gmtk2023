@@ -31,6 +31,10 @@ namespace Assets.Scripts
         public IEnumerator PerformIntetion()
         {
             yield return new WaitForSeconds(0.5f);
+
+            Ability ability = ResolveAbility();
+
+            yield return ResolveTargetUnit().DamageRoutine(ability.Damage);
         }
     }
 }

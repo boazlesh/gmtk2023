@@ -79,9 +79,7 @@ namespace Assets.Scripts
         {
             _bodySpriteRenderer.color = Color.magenta;
 
-            yield return new WaitForSeconds(0.5f);
-
-            yield return _currentIntention.ResolveTargetUnit().DamageRoutine(10);
+            yield return _currentIntention.PerformIntetion();
 
             Debug.Log($"{name} - Play");
 
@@ -96,7 +94,7 @@ namespace Assets.Scripts
 
         public IEnumerator DamageRoutine(int damage)
         {
-            _bodySpriteRenderer.color = Color.red;
+            _bodySpriteRenderer.color = (damage > 0) ? Color.red : Color.green;
 
             yield return new WaitForSeconds(0.5f);
 
@@ -138,11 +136,11 @@ namespace Assets.Scripts
 
         private Intention PlanIntention()
         {
-            Verb verb = (Verb)UnityEngine.Random.Range(0, 2); // no special -- TODO: special bar, and require body-hat match, which overrides the regular intention?
+            Verb verb = (Verb)Random.Range(0, 2); // no special -- TODO: special bar, and require body-hat match, which overrides the regular intention?
             Unit[] targetUnits = GetVerbPossibleTargetTeam(verb);
-            int targetIndex = UnityEngine.Random.Range(0, targetUnits.Length);
+            int targetIndex = Random.Range(0, targetUnits.Length);
 
-            int randomDirection = UnityEngine.Random.Range(0, 2);
+            int randomDirection = Random.Range(0, 2);
             randomDirection = (randomDirection == 0) ? -1 : 1;
             while (!targetUnits[targetIndex].IsAlive())
             {
