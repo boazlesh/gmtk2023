@@ -55,7 +55,7 @@ namespace Assets.Scripts
             set => _hatRole = value;
         }
 
-        private void Start()
+        private void Awake()
         {
             _originalHatPosition = _hatSpriteRenderer.transform.position;
 
