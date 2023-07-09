@@ -30,6 +30,7 @@ namespace Assets.Scripts
         public Vector3 TargetRotation;
         public AnimationCurve ProjectileRotationCurve;
         public bool DontFlipForEnemy;
+        public bool UseCustomSource;
         public Vector3 CustomSourcePointRelativeToTarget;
         public Vector3 SourceScale;
         public Vector3 TargetScale;
