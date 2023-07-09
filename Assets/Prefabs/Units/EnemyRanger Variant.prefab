@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 3651876600057591523, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -7013267200590776088, guid: 770705cfdc9b008408131e8ea5a5da9a, type: 3}
     - target: {fileID: 4327926789672171383, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
       propertyPath: _hatRole
       value: 2
@@ -30,7 +34,7 @@ PrefabInstance:
     - target: {fileID: 5159357723788920462, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 22100000, guid: f931f9a7aff1b7048bb3d22b010cd258, type: 2}
+      objectReference: {fileID: 22100000, guid: 52214ad41e76f084d95aa36164c5de82, type: 2}
     - target: {fileID: 7344491484128543674, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
       propertyPath: m_FlipX
       value: 1
