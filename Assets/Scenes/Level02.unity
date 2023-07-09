@@ -318,6 +318,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f072f5a0b9bdcd44a8c6ad0db53c41a, type: 3}
+--- !u!20 &503416221026379214 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 503416221396884914, guid: 8f072f5a0b9bdcd44a8c6ad0db53c41a, type: 3}
+  m_PrefabInstance: {fileID: 503416221026379213}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &930142446640536606
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -329,6 +334,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 727488150}
+    - target: {fileID: 930142448359789490, guid: 4a6459cb99f534749b3db89d561a9145, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 503416221026379214}
     - target: {fileID: 930142448359789491, guid: 4a6459cb99f534749b3db89d561a9145, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -419,6 +428,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a6459cb99f534749b3db89d561a9145, type: 3}
+--- !u!114 &930142446640536607 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5650027205781416009, guid: 4a6459cb99f534749b3db89d561a9145, type: 3}
+  m_PrefabInstance: {fileID: 930142446640536606}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b54a012894de110439d2a4af7543cdf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5097503754361247447
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -852,6 +872,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8466798297543727629, guid: 0232e74ca15b11b4f8678eca6d4f6a83, type: 3}
+      propertyPath: _roleTable
+      value: 
+      objectReference: {fileID: 930142446640536607}
     - target: {fileID: 8466798297543727629, guid: 0232e74ca15b11b4f8678eca6d4f6a83, type: 3}
       propertyPath: _fightButton
       value: 
