@@ -29,6 +29,7 @@ namespace Assets.Scripts
         [SerializeField] private AudioClip _hurtClip;
         [SerializeField] private AudioClip _healClip;
         [SerializeField] private AudioClip _dieClip;
+        [SerializeField] private AudioClip _ideaClip;
 
         private int _health;
         private Intention _currentIntention;
@@ -101,6 +102,8 @@ namespace Assets.Scripts
             {
                 _additionalBubble.Show();
             }
+
+            _audioSource.PlayOneShot(_ideaClip);
 
             if (!_idleStarted)
             {
@@ -321,6 +324,8 @@ namespace Assets.Scripts
             _persistantDamageModifiers.Clear();
             _statusEffectsBar.SetStatusEffects(_persistantDamageModifiers.Concat(_turnDamageModifiers).ToArray());
             _intentionBubble.Hide();
+
+            _audioSource.PlayOneShot(_dieClip);
 
             _animator.SetTrigger("die");
 
