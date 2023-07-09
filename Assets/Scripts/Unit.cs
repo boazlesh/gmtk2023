@@ -25,6 +25,7 @@ namespace Assets.Scripts
         private Vector3 _originalHatPosition;
         private List<float> _persistantDamageModifiers = new List<float>();
         private List<float> _turnDamageModifiers = new List<float>();
+        private bool _idleStarted;
 
         public Sprite IconSprite => _iconSprite;
 
@@ -63,32 +64,21 @@ namespace Assets.Scripts
             SetHealth(_maxHealth);
         }
 
-        private void Start()
-        {
-            StartCoroutine(RandomDelayIdleRoutine());
-        }
-
-        private IEnumerator RandomDelayIdleRoutine()
-        {
-            yield return new WaitForSeconds(Random.Range(0f, 0.66f));
-            _animator.SetTrigger("startIdle");
-        }
-
         public IEnumerator PlanIntentionRoutine()
         {
-            _bodySpriteRenderer.color = Color.cyan;
-
-            yield return new WaitForSeconds(0.25f);
-
             Debug.Log($"{name} - Plan");
-
-            _bodySpriteRenderer.color = Color.white;
 
             _currentIntention = PlanIntention();
             InvalidateIntention();
             _intentionBubble.Show();
 
-            yield return null;
+            if (!_idleStarted)
+            {
+                _animator.SetTrigger("startIdle");
+                _idleStarted = true;
+            }
+
+            yield return new WaitForSeconds(1.2f);
         }
 
         public IEnumerator PlayInentionRoutine()

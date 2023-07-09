@@ -46,6 +46,7 @@ namespace Assets.Scripts
 
             Debug.Log($"Loaded {_playerUnits.Length} players and {_enemyUnits.Length} enemies");
 
+
             BuildIntentions();
         }
 
