@@ -311,6 +311,12 @@ namespace Assets.Scripts
 
         private IEnumerator UnitClickedRoutine(Unit unit)
         {
+            if (unit.BodyRole == Role.Boss)
+            {
+                // TODO: Laugh
+                yield break;
+            }
+
             if (_currentSwappingHat == null)
             {
                 _currentSwappingHat = unit;
