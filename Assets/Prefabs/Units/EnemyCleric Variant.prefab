@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &6538437261926154841
+--- !u!1001 &6817898733168185099
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -11,30 +11,38 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 1464752454730974769, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 2612055409656997280, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 66e89864c2e0b7240a63e9e554949081, type: 3}
+      objectReference: {fileID: 21300000, guid: 1340138ea9ba29d478898d43f7552db3, type: 3}
     - target: {fileID: 3651876600057591523, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 169370529255220823, guid: ddf164c99efdfec40a91dcdfaa0eba11, type: 3}
+      objectReference: {fileID: -5305741940252088095, guid: 511235dcb1e0d764bbcdbc7e5e3d0aad, type: 3}
     - target: {fileID: 4327926789672171383, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
       propertyPath: _hatRole
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4327926789672171383, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
       propertyPath: _bodyRole
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4327926789672171383, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
       propertyPath: _iconSprite
       value: 
-      objectReference: {fileID: 21300000, guid: d4104ea15343c584fbd25827ecacc714, type: 3}
+      objectReference: {fileID: 21300000, guid: 1ceb930715a544446885bc72093611e6, type: 3}
     - target: {fileID: 5159357723788920462, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 22100000, guid: 4737507c83445194b80d899344fdce68, type: 2}
+      objectReference: {fileID: 22100000, guid: 1092fb2d1a173544a9083cef5c67ba63, type: 2}
+    - target: {fileID: 7344491484128543674, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7344491484128543675, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -89,7 +97,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7344491484128543676, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
       propertyPath: m_Name
-      value: EnemyMage Variant
+      value: EnemyCleric Variant
       objectReference: {fileID: 0}
     - target: {fileID: 9188045561242499967, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
       propertyPath: m_AnchorMax.x
