@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
@@ -19,6 +20,8 @@ namespace Assets.Scripts
         [SerializeField] private IntentionBubble _intentionBubble;
         [SerializeField] private Sprite _iconSprite;
         [SerializeField] private Animator _animator;
+        [SerializeField] private Transform _allyHighlight;
+        [SerializeField] private Transform _enemyHighlight;
         [SerializeField] private StatusEffectsBar _statusEffectsBar;
         [SerializeField] private Projectile _projectilePrefab;
 
@@ -232,6 +235,22 @@ namespace Assets.Scripts
             }
 
             _intentionBubble.SetIntention(_currentIntention.Verb, _currentIntention.ResolveAbility(), _currentIntention.ResolveTargetUnit());
+        }
+
+        public void HighlightAlly()
+        {
+            _allyHighlight.gameObject.SetActive(true);
+        }
+
+        public void HighlightEnemy()
+        {
+            _enemyHighlight.gameObject.SetActive(true);
+        }
+
+        public void Unhighlight()
+        {
+            _allyHighlight.gameObject.SetActive(false);
+            _enemyHighlight.gameObject.SetActive(false);
         }
 
         public Projectile CreateProjectile()

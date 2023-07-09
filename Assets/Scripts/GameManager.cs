@@ -201,9 +201,38 @@ namespace Assets.Scripts
 
         private void Higlight(Collider2D collider)
         {
+            _roleTable.ClearHighlights();
+
+            foreach (Unit unit in _enemyUnits)
+            {
+                unit.Unhighlight();
+            }
+
+            foreach (Unit unit in _playerUnits)
+            {
+                unit.Unhighlight();
+            }
+
             if (collider == null)
             {
-                _roleTable.ClearHighlights();
+                return;
+            }
+
+            TargetUnitUI targetUI = collider.GetComponent<TargetUnitUI>();
+
+            if (targetUI != null)
+            {
+                Unit originatingUnit = targetUI.GetComponentInParent<Unit>();
+
+                if (originatingUnit.IsPlayerUnit == targetUI.TargetUnit.IsPlayerUnit)
+                {
+                    targetUI.TargetUnit.HighlightAlly();
+                }
+                else
+                {
+                    targetUI.TargetUnit.HighlightEnemy();
+                }
+                
                 return;
             }
 
@@ -223,19 +252,20 @@ namespace Assets.Scripts
                 return;
             }
 
-            TargetUnitUI targetUI = collider.GetComponent<TargetUnitUI>();
-
-            if (targetUI != null)
-            {
-                // TODO:
-                return;
-            }
-
             Unit hoveredUnit = collider.gameObject.GetComponentInParent<Unit>();
 
             if (hoveredUnit != null)
             {
                 _roleTable.HighlightRole(hoveredUnit.HatRole);
+
+                if (hoveredUnit.IsPlayerUnit)
+                {
+                    hoveredUnit.HighlightAlly();
+                }
+                else
+                {
+                    hoveredUnit.HighlightEnemy();
+                }
             }
         }
         private IEnumerator ResetHatSwapRoutine()
