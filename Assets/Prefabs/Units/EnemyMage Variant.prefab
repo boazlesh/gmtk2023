@@ -30,7 +30,7 @@ PrefabInstance:
     - target: {fileID: 4327926789672171383, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
       propertyPath: _iconSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 6e0abcad62e3ea94185736cd4a0f8233, type: 3}
+      objectReference: {fileID: 21300000, guid: d4104ea15343c584fbd25827ecacc714, type: 3}
     - target: {fileID: 5159357723788920462, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
       propertyPath: m_Controller
       value: 
