@@ -30,11 +30,11 @@ namespace Assets.Scripts
         {
             if (modifiedHealthNumber == 0)
             {
-                _text.faceColor = _neutralColor;
+                _text.color = _neutralColor;
             }
             else
             {
-                _text.faceColor = modifiedHealthNumber > 0 ? _damagedColor : _healedColor;
+                _text.color = modifiedHealthNumber > 0 ? _damagedColor : _healedColor;
             }
 
             _text.text = Math.Abs(modifiedHealthNumber).ToString();
@@ -49,11 +49,11 @@ namespace Assets.Scripts
         {
             if (modifiedHealthNumber == 1)
             {
-                _text.faceColor = _neutralColor;
+                _text.color = _neutralColor;
             }
             else
             {
-                _text.faceColor = modifiedHealthNumber > 1 ? _damagedColor : _healedColor;
+                _text.color = modifiedHealthNumber > 1 ? _damagedColor : _healedColor;
             }
 
             _text.text = $"*{ Mathf.Abs(modifiedHealthNumber)}";
