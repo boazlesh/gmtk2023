@@ -599,6 +599,7 @@ MonoBehaviour:
   _hatFloatPosition: {fileID: 1364972099054560105}
   _intentionBubble: {fileID: 8579617433433796716}
   _iconSprite: {fileID: 0}
+  _animator: {fileID: 5159357723788920462}
 --- !u!95 &5159357723788920462
 Animator:
   serializedVersion: 3

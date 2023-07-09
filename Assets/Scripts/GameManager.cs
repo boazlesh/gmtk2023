@@ -42,9 +42,10 @@ namespace Assets.Scripts
             IntializeUnits();
 
             _fightButton.interactable = false;
-            _isHatInteractble = false;
+            _isHatInteractble = true;
 
             Debug.Log($"Loaded {_playerUnits.Length} players and {_enemyUnits.Length} enemies");
+
 
             BuildIntentions();
         }
@@ -67,6 +68,16 @@ namespace Assets.Scripts
 
         public IEnumerator SwapUnitsRoutine(Unit originUnit, Unit targetUnit)
         {
+            float swapDuration = 0.5f;
+
+            Vector3 originPosition = originUnit.transform.position;
+            Vector3 targetPosition = targetUnit.transform.position;
+
+            originUnit.transform.DOMove(targetPosition, swapDuration);
+            targetUnit.transform.DOMove(originPosition, swapDuration);
+
+            yield return new WaitForSeconds(swapDuration);
+
             Unit[] team = originUnit.GetTeam();
             team[originUnit.UnitIndex] = targetUnit;
             team[targetUnit.UnitIndex] = originUnit;
@@ -75,9 +86,10 @@ namespace Assets.Scripts
             originUnit.UnitIndex = targetUnit.UnitIndex;
             targetUnit.UnitIndex = tempIndex;
 
-            Vector3 tempPosition = originUnit.transform.position;
-            originUnit.transform.position = targetUnit.transform.position;
-            targetUnit.transform.position = tempPosition;
+            // No need - DOMove already did it
+            //Vector3 tempPosition = originUnit.transform.position;
+            //originUnit.transform.position = targetUnit.transform.position;
+            //targetUnit.transform.position = tempPosition;
 
             foreach (Unit unit in _playerUnits.Concat(_enemyUnits))
             {
@@ -116,13 +128,13 @@ namespace Assets.Scripts
             Debug.Log("Done building intentions");
 
             _fightButton.interactable = true;
-            _isHatInteractble = true;
         }
 
         private IEnumerator FightRoutine()
         {
             _fightButton.interactable = false;
-            ResetHatSwapRoutine();
+            yield return ResetHatSwapRoutine();
+            _isHatInteractble = false;
 
             Debug.Log("Start fighting");
 
@@ -137,6 +149,8 @@ namespace Assets.Scripts
             {
                 unit.EndTurn();
             }
+
+            _isHatInteractble = true;
 
             StartCoroutine(BuildIntentionsRoutine());
         }
@@ -208,15 +222,17 @@ namespace Assets.Scripts
             _fightButton.interactable = false;
 
             yield return unitB.FloatHatRoutine();
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.2f);
 
-            float swapDuration = 1f;
+            float swapDuration = 0.7f;
 
             Vector3 aPosition = unitA.HatContainer.position;
             Vector3 bPosition = unitB.HatContainer.position;
 
             unitA.HatContainer.DOMove(bPosition, swapDuration);
             unitB.HatContainer.DOMove(aPosition, swapDuration);
+            unitA.HatContainer.DORotateQuaternion(unitB.OriginalHatRotation, swapDuration);
+            unitB.HatContainer.DORotateQuaternion(unitA.OriginalHatRotation, swapDuration);
 
             bool shouldFlip = unitA.IsPlayerUnit != unitB.IsPlayerUnit;
 
@@ -263,20 +279,22 @@ namespace Assets.Scripts
             Unit[] playerUnitsClone = _playerUnits.ToArray();
             Unit[] enemyUnitsClone = _enemyUnits.ToArray();
 
-            int maxLength = Mathf.Max(playerUnitsClone.Length, enemyUnitsClone.Length);
+            //int maxLength = Mathf.Max(playerUnitsClone.Length, enemyUnitsClone.Length);
 
-            for (int i = 0; i < maxLength; i++)
-            {
-                if (i < playerUnitsClone.Length && playerUnitsClone[i].IsAlive())
-                {
-                    yield return playerUnitsClone[i];
-                }
+            //for (int i = 0; i < maxLength; i++)
+            //{
+            //    if (i < playerUnitsClone.Length && playerUnitsClone[i].IsAlive())
+            //    {
+            //        yield return playerUnitsClone[i];
+            //    }
 
-                if (i < enemyUnitsClone.Length && enemyUnitsClone[i].IsAlive())
-                {
-                    yield return enemyUnitsClone[i];
-                }
-            }
+            //    if (i < enemyUnitsClone.Length && enemyUnitsClone[i].IsAlive())
+            //    {
+            //        yield return enemyUnitsClone[i];
+            //    }
+            //}
+
+            return playerUnitsClone.Concat(enemyUnitsClone).Where(unit => unit.IsAlive());
         }
 
         private void IntializeUnits()
@@ -312,6 +330,9 @@ namespace Assets.Scripts
             {
                 unit.StopAllCoroutines();
             }
+
+            _fightButton.interactable = false;
+            _isHatInteractble = false;
         }
     }
 }

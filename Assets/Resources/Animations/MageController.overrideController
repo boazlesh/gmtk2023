@@ -6,10 +6,10 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RangerController
+  m_Name: MageController
   m_Controller: {fileID: 9100000, guid: a36b1b4b89d0a71408c7ca8c10e26534, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: f67bc2c91d21a3347a2e9302b19bec4b, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 251204ff17ebb71468be1b11ffe3dc75, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 96815ffcb4b5f7d49aeab25e085c89e1, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 513e5d0f2177e7549b2c9be0a3075764, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 7654f1e23ce35504285bf7ea4611933c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f3d58544493159e4bb2d557331cff5e2, type: 2}

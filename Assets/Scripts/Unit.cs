@@ -1,4 +1,5 @@
 using Assets.Scripts.Enums;
+using Assets.Scripts.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,12 +18,15 @@ namespace Assets.Scripts
         [SerializeField] private Transform _hatFloatPosition;
         [SerializeField] private IntentionBubble _intentionBubble;
         [SerializeField] private Sprite _iconSprite;
+        [SerializeField] private Animator _animator;
 
         private int _health;
         private Intention _currentIntention;
         private Vector3 _originalHatPosition;
+        private Quaternion _originalHatRotation;
         private List<float> _persistantDamageModifiers = new List<float>();
         private List<float> _turnDamageModifiers = new List<float>();
+        private bool _idleStarted;
 
         public Sprite IconSprite => _iconSprite;
 
@@ -31,6 +35,8 @@ namespace Assets.Scripts
         public bool IsPlayerUnit { get; set; }
 
         public Vector3 OriginalHatPosition => _originalHatPosition;
+
+        public Quaternion OriginalHatRotation => _originalHatRotation;
 
         public Sprite BodySprite
         {
@@ -63,36 +69,43 @@ namespace Assets.Scripts
 
         public IEnumerator PlanIntentionRoutine()
         {
-            _bodySpriteRenderer.color = Color.cyan;
-
-            yield return new WaitForSeconds(0.25f);
+            if (!IsAlive())
+            {
+                yield break;
+            }
 
             Debug.Log($"{name} - Plan");
-
-            _bodySpriteRenderer.color = Color.white;
 
             _currentIntention = PlanIntention();
             InvalidateIntention();
             _intentionBubble.Show();
 
-            yield return null;
+            if (!_idleStarted)
+            {
+                _animator.SetTrigger("startIdle");
+                _idleStarted = true;
+            }
+
+            yield return new WaitForSeconds(0.6f);
         }
 
         public IEnumerator PlayInentionRoutine()
         {
-            _bodySpriteRenderer.color = Color.magenta;
-
             yield return _currentIntention.PerformIntetionRoutine();
 
             Debug.Log($"{name} - Play");
-
-            _bodySpriteRenderer.color = Color.white;
 
             _currentIntention = null;
 
             _intentionBubble.Hide();
 
             yield return null;
+        }
+
+        public IEnumerator PlayAbilityAnimationRoutine(Ability ability)
+        {
+            _animator.SetTrigger("attack");
+            yield return new WaitForSeconds(0.5f);
         }
 
         public bool IsAlive() => _health > 0;
@@ -136,6 +149,7 @@ namespace Assets.Scripts
             Debug.Log($"{name} - Float hat");
 
             _originalHatPosition = HatContainer.position;
+            _originalHatRotation = HatContainer.rotation;
             HatContainer.position = _hatFloatPosition.position;
 
             yield return null;
@@ -146,6 +160,7 @@ namespace Assets.Scripts
             Debug.Log($"{name} - Unfloat hat");
 
             HatContainer.position = _originalHatPosition;
+            HatContainer.rotation = _originalHatRotation;
 
             yield return null;
         }
@@ -228,6 +243,12 @@ namespace Assets.Scripts
 
         private void Die()
         {
+            _turnDamageModifiers.Clear();
+            _persistantDamageModifiers.Clear();
+            _intentionBubble.Hide();
+
+            _animator.SetTrigger("die");
+
             StopAllCoroutines();
             GameManager.Instance.CheckWinLose();
         }
@@ -246,6 +267,10 @@ namespace Assets.Scripts
             while (!targetUnits[targetIndex].IsAlive())
             {
                 targetIndex = (targetIndex + randomDirection) % targetUnits.Length;
+                if (targetIndex == -1)
+                {
+                    targetIndex = targetUnits.Length;
+                }
             }
 
             return new Intention(this, verb, targetIndex);

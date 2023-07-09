@@ -11,6 +11,9 @@ TextureImporter:
   - first:
       213: -6148606654537804165
     second: Ranger_2
+  - first:
+      213: 2984787494311394480
+    second: Ranger_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -170,6 +173,27 @@ TextureImporter:
       bones: []
       spriteID: b76dbac03d2cbaaa0800000000000000
       internalID: -6148606654537804165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ranger_3
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bc757879681c6920800000000000000
+      internalID: 2984787494311394480
       vertices: []
       indices: 
       edges: []
