@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: ArrowRain
   m_EditorClassIdentifier: 
   IconSprite: {fileID: -8855750523011992865, guid: a99ef28870adc004cb48eb863595507f, type: 3}
+  DisplayName: Arrow Rain
+  Description: Damage all enemies
   Damage: 15
   NeighborDamage: 0
   HitEveryone: 1

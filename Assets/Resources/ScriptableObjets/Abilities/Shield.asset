@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: Shield
   m_EditorClassIdentifier: 
   IconSprite: {fileID: 2130749967399641, guid: 97a47a1a27f738e4da1f3d8bef0fb476, type: 3}
+  DisplayName: Shield
+  Description: Protects target ally and neighbors
   Damage: 0
   NeighborDamage: 0
   HitEveryone: 0
   AddsDamageModifier: 1
   DamageModifier: 0.5
   AddsNeighborDamageModifier: 1
-  NeighborDamageModifier: 0.5
   IsDamageModifierPersistent: 0
+  IsSwap: 0

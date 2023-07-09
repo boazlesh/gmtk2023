@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Fireball
   m_EditorClassIdentifier: 
   IconSprite: {fileID: 8797436551097734075, guid: 4c0def85acb088b4cb3cd7e1875db480, type: 3}
+  DisplayName: Fire Ball
+  Description: Damage single enemy
   Damage: 30
   NeighborDamage: 20
   HitEveryone: 0
