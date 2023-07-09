@@ -42,7 +42,7 @@ namespace Assets.Scripts
             IntializeUnits();
 
             _fightButton.interactable = false;
-            _isHatInteractble = false;
+            _isHatInteractble = true;
 
             Debug.Log($"Loaded {_playerUnits.Length} players and {_enemyUnits.Length} enemies");
 
@@ -117,13 +117,13 @@ namespace Assets.Scripts
             Debug.Log("Done building intentions");
 
             _fightButton.interactable = true;
-            _isHatInteractble = true;
         }
 
         private IEnumerator FightRoutine()
         {
             _fightButton.interactable = false;
-            ResetHatSwapRoutine();
+            yield return ResetHatSwapRoutine();
+            _isHatInteractble = false;
 
             Debug.Log("Start fighting");
 
@@ -138,6 +138,8 @@ namespace Assets.Scripts
             {
                 unit.EndTurn();
             }
+
+            _isHatInteractble = true;
 
             StartCoroutine(BuildIntentionsRoutine());
         }
@@ -209,15 +211,17 @@ namespace Assets.Scripts
             _fightButton.interactable = false;
 
             yield return unitB.FloatHatRoutine();
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.2f);
 
-            float swapDuration = 1f;
+            float swapDuration = 0.7f;
 
             Vector3 aPosition = unitA.HatContainer.position;
             Vector3 bPosition = unitB.HatContainer.position;
 
             unitA.HatContainer.DOMove(bPosition, swapDuration);
             unitB.HatContainer.DOMove(aPosition, swapDuration);
+            unitA.HatContainer.DORotateQuaternion(unitB.OriginalHatRotation, swapDuration);
+            unitB.HatContainer.DORotateQuaternion(unitA.OriginalHatRotation, swapDuration);
 
             bool shouldFlip = unitA.IsPlayerUnit != unitB.IsPlayerUnit;
 

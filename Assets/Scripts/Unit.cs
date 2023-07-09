@@ -23,6 +23,7 @@ namespace Assets.Scripts
         private int _health;
         private Intention _currentIntention;
         private Vector3 _originalHatPosition;
+        private Quaternion _originalHatRotation;
         private List<float> _persistantDamageModifiers = new List<float>();
         private List<float> _turnDamageModifiers = new List<float>();
         private bool _idleStarted;
@@ -34,6 +35,8 @@ namespace Assets.Scripts
         public bool IsPlayerUnit { get; set; }
 
         public Vector3 OriginalHatPosition => _originalHatPosition;
+
+        public Quaternion OriginalHatRotation => _originalHatRotation;
 
         public Sprite BodySprite
         {
@@ -146,6 +149,7 @@ namespace Assets.Scripts
             Debug.Log($"{name} - Float hat");
 
             _originalHatPosition = HatContainer.position;
+            _originalHatRotation = HatContainer.rotation;
             HatContainer.position = _hatFloatPosition.position;
 
             yield return null;
@@ -156,6 +160,7 @@ namespace Assets.Scripts
             Debug.Log($"{name} - Unfloat hat");
 
             HatContainer.position = _originalHatPosition;
+            HatContainer.rotation = _originalHatRotation;
 
             yield return null;
         }
