@@ -34,11 +34,11 @@ PrefabInstance:
     - target: {fileID: 4327926789672171383, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
       propertyPath: _iconSprite
       value: 
-      objectReference: {fileID: 21300000, guid: eacda78c43c86384fab0edee9a3588d4, type: 3}
+      objectReference: {fileID: 21300000, guid: 35f0d15bce6baba459c8023e71909822, type: 3}
     - target: {fileID: 5159357723788920462, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 22100000, guid: 7a3ba50574a332447873ea956bafbdc9, type: 2}
+      objectReference: {fileID: 22100000, guid: c1944d51ad21f734f8506424bd823283, type: 2}
     - target: {fileID: 7344491484128543674, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
       propertyPath: m_FlipX
       value: 1
