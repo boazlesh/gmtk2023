@@ -31,6 +31,7 @@ namespace Assets.Scripts
         private Unit _currentSwappingHat;
         private bool _isHatInteractble;
         private Ability _hoveringAbility;
+        private bool _isBuildingIntentions;
 
         private void Awake()
         {
@@ -127,6 +128,7 @@ namespace Assets.Scripts
 
         private IEnumerator BuildIntentionsRoutine()
         {
+            _isBuildingIntentions = true;
             Debug.Log("Start building intentions");
 
             foreach (Unit unit in GetUnitsInOrder())
@@ -136,6 +138,7 @@ namespace Assets.Scripts
 
             Debug.Log("Done building intentions");
 
+            _isBuildingIntentions = false;
             _fightButton.interactable = true;
         }
 
@@ -383,7 +386,7 @@ namespace Assets.Scripts
             unitB.InvalidateIntention();
 
             _isHatInteractble = true;
-            _fightButton.interactable = true;
+            _fightButton.interactable = !_isBuildingIntentions;
         }
 
         private IEnumerable<Unit> GetUnitsInOrder()

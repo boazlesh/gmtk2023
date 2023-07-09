@@ -18,10 +18,22 @@ namespace Assets.Scripts
         public bool AddsNeighborDamageModifier;
         public bool IsDamageModifierPersistent;
 
+        public bool HitEveryoneDontWaitForEachHitToCompleteBeforeNext;
+        public float HitEveryoneCustomWaitBetweenEachHit;
+
         public bool IsSwap;
 
         public Sprite ProjectileSprite;
         public float ProjectileTime;
         public AnimationCurve ProjectileCurve;
+        public Vector3 SourceRotation;
+        public Vector3 TargetRotation;
+        public AnimationCurve ProjectileRotationCurve;
+        public bool DontFlipForEnemy;
+        public Vector3 CustomSourcePointRelativeToTarget;
+        public Vector3 SourceScale;
+        public Vector3 TargetScale;
+        public AnimationCurve ProjectileScaleCurve;
+
     }
 }
