@@ -10,6 +10,7 @@ namespace Assets.Scripts
         [SerializeField] private SpriteRenderer _actionSpriteRenderer;
         [SerializeField] private SpriteRenderer _targetSpriteRenderer;
         [SerializeField] private VerbSpriteMapping _verbSpriteMapping;
+        [SerializeField] private ModifiedHealthNumberIndicator _healthNumberIndicator;
 
         public void SetIntention(Verb verb, Ability ability, Unit unit)
         {
@@ -17,6 +18,7 @@ namespace Assets.Scripts
             _actionSpriteRenderer.sprite = ability.IconSprite;
             _targetSpriteRenderer.sprite = unit.IconSprite;
             _targetSpriteRenderer.flipX = !unit.IsPlayerUnit;
+            _healthNumberIndicator.IndicateModifiedHealthNumber(ability.Damage);
         }
 
         public void Show()
