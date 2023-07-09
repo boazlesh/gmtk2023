@@ -1,5 +1,10 @@
 using Assets.Scripts.Enums;
+using Assets.Scripts.Utils;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Assets.Scripts
@@ -31,85 +36,88 @@ namespace Assets.Scripts
         [SerializeField] private Image _healHighlight;
         [SerializeField] private Image _multiHealHighlight;
 
+        [SerializeField] private List<Ability> _abilities;
+
+        private Dictionary<Verb, Image> _verbToImage;
+        private Dictionary<Role, Image> _roleToImage;
+        private Dictionary<string, Image> _abilityToImage;
+        private Dictionary<string, Ability> _abilityMap;
+
+        public event Action<Ability> OnAbilityHovered;
+        public event Action<Ability> OnAbilityUnhovered;
+
+        private void Awake()
+        {
+            _verbToImage = new Dictionary<Verb, Image>()
+            {
+                { Verb.Offensive, _offensiveHighlight },
+                { Verb.Defensive, _defensiveHighlight },
+                { Verb.Special, _specialHighlight },
+            };
+
+            _roleToImage = new Dictionary<Role, Image>()
+            {
+                { Role.Warrior, _warriorRowHighlight },
+                { Role.Mage, _mageRowHighlight },
+                { Role.Ranger, _rangerRowHighlight },
+                { Role.Cleric, _clericRowHighlight },
+            };
+
+            _abilityToImage = new Dictionary<string, Image>()
+            {
+                { "Slash", _slashHighlight },
+                { "Shield", _shieldHighlight },
+                { "SlashFlurry", _slashFlurryHighlight },
+                { "Fireball", _fireballHighlight },
+                { "ForceField", _forceFieldHighlight },
+                { "LightningNuke", _lightningNukeHighlight },
+                { "ArrowRain", _arrowRainHighlight },
+                { "RopeSwitch", _ropeSwitchHighlight },
+                { "CritMark", _critMarkHighlight },
+                { "StaffHit", _staffHitHighlight },
+                { "Heal", _healHighlight },
+                { "MultiHeal", _multiHealHighlight }
+            };
+
+            _abilityMap = _abilities.ToDictionary(x => x.name);
+
+            foreach (string abilityName in _abilityToImage.Keys)
+            {
+                Ability ability = _abilityMap[abilityName];
+
+                Hoverable hoverable = _abilityToImage[abilityName].GetComponentInParent<Hoverable>();
+
+                hoverable.OnHoverEnter.AddListener(() =>
+                {
+                    if (OnAbilityHovered != null)
+                    {
+                        OnAbilityHovered(ability);
+                    }
+                });
+
+                hoverable.OnHoverExit.AddListener(() =>
+                {
+                    if (OnAbilityUnhovered != null)
+                    {
+                        OnAbilityUnhovered(ability);
+                    }
+                });
+            }
+        }
+
         public void HighlightRole(Role role)
 		{
-			switch (role)
-			{
-				case Role.Warrior:
-					_warriorRowHighlight.enabled = true;
-					break;
-                case Role.Mage:
-                    _mageRowHighlight.enabled = true;
-                    break;
-                case Role.Ranger:
-                    _rangerRowHighlight.enabled = true;
-                    break;
-                case Role.Cleric:
-                    _clericRowHighlight.enabled = true;
-                    break;
-            }
+            _roleToImage[role].enabled = true;
 		}
 
         public void HighlightVerb(Verb verb)
         {
-            switch (verb)
-            {
-                case Verb.Offensive:
-                    _offensiveHighlight.enabled = true;
-                    break;
-                case Verb.Defensive:
-                    _defensiveHighlight.enabled = true;
-                    break;
-                case Verb.Special:
-                    _specialHighlight.enabled = true;
-                    break;
-            }
+            _verbToImage[verb].enabled = true;
         }
 
         public void HighlightAbility(Ability ability)
         {
-            switch (ability.name)
-            {
-                case "Slash":
-                    _slashHighlight.enabled = true;
-                    break;
-                case "Shield":
-                    _shieldHighlight.enabled = true;
-                    break;
-                case "SlashFlurry":
-                    _slashFlurryHighlight.enabled = true;
-                    break;
-
-                case "Fireball":
-                    _fireballHighlight.enabled = true;
-                    break;
-                case "ForceField":
-                    _forceFieldHighlight.enabled = true;
-                    break;
-                case "LightningNuke":
-                    _lightningNukeHighlight.enabled = true;
-                    break;
-
-                case "ArrowRain":
-                    _arrowRainHighlight.enabled = true;
-                    break;
-                case "RopeSwitch":
-                    _ropeSwitchHighlight.enabled = true;
-                    break;
-                case "CritMark":
-                    _critMarkHighlight.enabled = true;
-                    break;
-
-                case "StaffHit":
-                    _staffHitHighlight.enabled = true;
-                    break;
-                case "Heal":
-                    _healHighlight.enabled = true;
-                    break;
-                case "MultiHeal":
-                    _multiHealHighlight.enabled = true;
-                    break;
-            }
+            _abilityToImage[ability.name].enabled = true;
         }
 
         public void ClearHighlights()
@@ -139,5 +147,5 @@ namespace Assets.Scripts
             _healHighlight.enabled = false;
             _multiHealHighlight.enabled = false;
         }
-	}
+    }
 }

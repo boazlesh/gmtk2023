@@ -22,12 +22,86 @@ MonoBehaviour:
   DamageModifier: 0
   AddsNeighborDamageModifier: 0
   IsDamageModifierPersistent: 0
+  HitEveryoneDontWaitForEachHitToCompleteBeforeNext: 1
+  HitEveryoneCustomWaitBetweenEachHit: 0.1
   IsSwap: 0
-  ProjectileSprite: {fileID: 0}
-  ProjectileTime: 0
+  ProjectileSprite: {fileID: 6095532798768231063, guid: 6b2194c42f4d2044483dd8b62df00d01, type: 3}
+  ProjectileTime: 0.25
   ProjectileCurve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  SourceRotation: {x: 0, y: 0, z: -90}
+  TargetRotation: {x: 0, y: 0, z: -90}
+  ProjectileRotationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.12231174
+      inSlope: 0.34517288
+      outSlope: 0.34517288
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.1831187
+    - serializedVersion: 3
+      time: 1
+      value: 0.8881582
+      inSlope: 0.22252908
+      outSlope: 0.22252908
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.18651485
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  DontFlipForEnemy: 1
+  CustomSourcePointRelativeToTarget: {x: 0, y: 2.5, z: 0}
+  SourceScale: {x: 0.5, y: 0.5, z: 1}
+  TargetScale: {x: 0.5, y: 0.5, z: 1}
+  ProjectileScaleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.12231174
+      inSlope: 0.34517288
+      outSlope: 0.34517288
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.1831187
+    - serializedVersion: 3
+      time: 1
+      value: 0.8881582
+      inSlope: 0.22252908
+      outSlope: 0.22252908
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.18651485
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
