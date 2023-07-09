@@ -107,15 +107,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Slash
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cf59d999dcb4e1d40beeec3e6e720331, type: 2}
-  m_sharedMaterial: {fileID: -1328096674909256400, guid: cf59d999dcb4e1d40beeec3e6e720331, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2caee247cc4f62444bb9cd0c086be91c, type: 2}
+  m_sharedMaterial: {fileID: -2509913447012518400, guid: 2caee247cc4f62444bb9cd0c086be91c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -529,15 +529,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Something ineteresting about a slash
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cf59d999dcb4e1d40beeec3e6e720331, type: 2}
-  m_sharedMaterial: {fileID: -1328096674909256400, guid: cf59d999dcb4e1d40beeec3e6e720331, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2caee247cc4f62444bb9cd0c086be91c, type: 2}
+  m_sharedMaterial: {fileID: -2509913447012518400, guid: 2caee247cc4f62444bb9cd0c086be91c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -554,7 +554,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20.45
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
