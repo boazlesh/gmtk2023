@@ -36,7 +36,7 @@ namespace Assets.Scripts
         {
             float lerpAlpha = (float)(DateTime.UtcNow - _startTime).TotalSeconds / _ability.ProjectileTime;
 
-            if (lerpAlpha >= 1)
+            if (lerpAlpha >= 0.93f)
             {
                 _didReachDestination = true;
 
