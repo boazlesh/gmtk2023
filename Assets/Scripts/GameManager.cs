@@ -1,5 +1,6 @@
 using Assets.Scripts.Enums;
 using Assets.Scripts.Mappings;
+using Assets.Scripts.Utils;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace Assets.Scripts
         [SerializeField] private LoseWindow _loseWindowPrefab;
         [SerializeField] public ModifiedHealthNumberIndicator _modifiedHealthNumberIndicatorPrefab;
         [SerializeField] private RoleTable _roleTable;
+        [SerializeField] private AudioSource _audioSource;
 
         public static GameManager Instance { get; private set; }
 
@@ -355,6 +357,7 @@ namespace Assets.Scripts
 
             _fightButton.interactable = false;
             _isHatInteractble = false;
+            _audioSource.FadeOut(0.1f);
         }
     }
 }
