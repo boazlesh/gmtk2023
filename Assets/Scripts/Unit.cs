@@ -25,6 +25,10 @@ namespace Assets.Scripts
         [SerializeField] private Transform _enemyHighlight;
         [SerializeField] private StatusEffectsBar _statusEffectsBar;
         [SerializeField] private Projectile _projectilePrefab;
+        [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private AudioClip _hurtClip;
+        [SerializeField] private AudioClip _healClip;
+        [SerializeField] private AudioClip _dieClip;
 
         private int _health;
         private Intention _currentIntention;
@@ -148,6 +152,7 @@ namespace Assets.Scripts
 
             bool damageOrHeal = damage > 0;
             _animator.SetTrigger(damageOrHeal ? "hurt" : "heal");
+            _audioSource.PlayOneShot(damageOrHeal ? _hurtClip : _healClip);
             yield return new WaitForSeconds(0.33f);
 
             Debug.Log($"{name} - Damaged");
