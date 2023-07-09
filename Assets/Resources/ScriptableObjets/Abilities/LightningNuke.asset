@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IconSprite: {fileID: 1518362251233725392, guid: 4c0def85acb088b4cb3cd7e1875db480, type: 3}
   DisplayName: Lightning
-  Description: Greatly damages single enemy
+  Description: Greatly damages single enemy (Not Implemented)
   Damage: 150
   NeighborDamage: 0
   HitEveryone: 0
@@ -114,3 +114,5 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  StartClip: {fileID: 0}
+  HitClip: {fileID: 0}

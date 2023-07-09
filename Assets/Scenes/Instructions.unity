@@ -1035,7 +1035,6 @@ MonoBehaviour:
   _parts:
   - {fileID: 679563570}
   - {fileID: 1922914689}
-  - {fileID: 896580547}
 --- !u!4 &383441282
 Transform:
   m_ObjectHideFlags: 0
