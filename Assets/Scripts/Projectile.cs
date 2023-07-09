@@ -28,11 +28,6 @@ namespace Assets.Scripts
             _shouldFlip = !source.IsPlayerUnit && !ability.DontFlipForEnemy;
             _originalAlpha = _spriteRenderer.color.a;
 
-            if (_ability.StartClip != null)
-            {
-                _audioSource.PlayOneShot(_ability.StartClip);
-            }
-
             yield return new WaitUntil(() => _didReachDestination);
 
             _spriteRenderer.enabled = false;

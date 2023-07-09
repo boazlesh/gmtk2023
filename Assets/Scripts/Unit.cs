@@ -72,6 +72,11 @@ namespace Assets.Scripts
             set => _hatRole = value;
         }
 
+        public AudioSource AudioSource
+        {
+            get  => _audioSource;
+        }
+
         private void Awake()
         {
             _healthBar.SetMaxHealth(_maxHealth);

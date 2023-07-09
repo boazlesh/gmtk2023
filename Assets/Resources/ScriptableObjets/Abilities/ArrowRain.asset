@@ -80,6 +80,7 @@ MonoBehaviour:
   DontFlipForEnemy: 1
   UseCustomSource: 1
   CustomSourcePointRelativeToTarget: {x: 0, y: 2.5, z: 0}
+  CustomSourcePointRelativeToSource: {x: 0, y: 0, z: 0}
   SourceScale: {x: 0.5, y: 0.5, z: 1}
   TargetScale: {x: 0.5, y: 0.5, z: 1}
   ProjectileScaleCurve:
@@ -106,3 +107,12 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  CustomFade: 0
+  ProjectileFadeCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  StartClip: {fileID: 8300000, guid: 622ac5d5ac8bf294fb5c7ffd79d07b6c, type: 3}
+  HitClip: {fileID: 0}
