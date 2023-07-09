@@ -242,6 +242,8 @@ namespace Assets.Scripts
             _persistantDamageModifiers.Clear();
             _intentionBubble.Hide();
 
+            _animator.SetTrigger("die");
+
             StopAllCoroutines();
             GameManager.Instance.CheckWinLose();
         }
