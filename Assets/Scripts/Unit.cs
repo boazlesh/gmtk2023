@@ -18,6 +18,7 @@ namespace Assets.Scripts
         [SerializeField] private Role _hatRole;
         [SerializeField] private Transform _hatFloatPosition;
         [SerializeField] private IntentionBubble _intentionBubble;
+        [SerializeField] private IntentionBubble _additionalBubble;
         [SerializeField] private Sprite _iconSprite;
         [SerializeField] private Animator _animator;
         [SerializeField] private Transform _allyHighlight;
@@ -32,6 +33,7 @@ namespace Assets.Scripts
 
         private int _health;
         private Intention _currentIntention;
+        private Intention _additionalIntention;
         private Vector3 _originalHatPosition;
         private Quaternion _originalHatRotation;
         private List<Ability> _persistantDamageModifiers = new List<Ability>();
@@ -87,8 +89,20 @@ namespace Assets.Scripts
             Debug.Log($"{name} - Plan");
 
             _currentIntention = PlanIntention();
+
+            if (_bodyRole == Role.Boss)
+            {
+                _additionalIntention = PlanIntention();
+            }
+
             InvalidateIntention();
             _intentionBubble.Show();
+            
+            if (_additionalIntention != null)
+            {
+                _additionalBubble.Show();
+            }
+
             _audioSource.PlayOneShot(_ideaClip);
 
             if (!_idleStarted)
@@ -102,6 +116,19 @@ namespace Assets.Scripts
 
         public IEnumerator PlayInentionRoutine()
         {
+            if (BodyRole == Role.Boss)
+            {
+                Unit unitA = GameManager.Instance._playerUnits[Random.Range(0, GameManager.Instance._playerUnits.Length)];
+
+                List<Unit> remainingUnits = GameManager.Instance._playerUnits.Except(new[] { unitA }).ToList();
+
+                Unit unitB = remainingUnits[Random.Range(0, remainingUnits.Count)]; ;
+
+                yield return unitA.FloatHatRoutine();
+
+                yield return GameManager.Instance.SwapHatsRoutine(unitA, unitB);
+            }
+
             yield return _currentIntention.PerformIntetionRoutine();
 
             Debug.Log($"{name} - Play");
@@ -109,6 +136,17 @@ namespace Assets.Scripts
             _currentIntention = null;
 
             _intentionBubble.Hide();
+
+            if (_additionalIntention != null)
+            {
+                yield return _additionalIntention.PerformIntetionRoutine();
+
+                Debug.Log($"{name} - Play");
+
+                _additionalIntention = null;
+
+                _additionalBubble.Hide();
+            }
 
             yield return null;
         }
@@ -240,6 +278,11 @@ namespace Assets.Scripts
             }
 
             _intentionBubble.SetIntention(_currentIntention.Verb, _currentIntention.ResolveAbility(), _currentIntention.ResolveTargetUnit());
+
+            if (_additionalBubble != null)
+            {
+                _additionalBubble.SetIntention(_additionalIntention.Verb, _additionalIntention.ResolveAbility(), _additionalIntention.ResolveTargetUnit());
+            }
         }
 
         public void HighlightAlly()

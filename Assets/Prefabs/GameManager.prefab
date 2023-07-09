@@ -61,6 +61,16 @@ MonoBehaviour:
   _modifiedHealthNumberIndicatorPrefab: {fileID: 3367046372168809192, guid: 5330fb3c84b23b24bac57453c6acc82f, type: 3}
   _roleTable: {fileID: 0}
   _audioSource: {fileID: 0}
+  _infoDisplayManager: {fileID: 0}
+  _bossOffensiveAbilities:
+  - {fileID: 11400000, guid: d0aa73f4ca161b341b79c981644b7726, type: 2}
+  - {fileID: 11400000, guid: 9edf5144abdb1cd47aab0cfd91fa1ac2, type: 2}
+  - {fileID: 11400000, guid: 66aceb1d7c56f2f4d99876656901b087, type: 2}
+  _bossDefensiveAbilities:
+  - {fileID: 11400000, guid: d90955f2bd1a3eb44beac34d8721d59b, type: 2}
+  - {fileID: 11400000, guid: 0301ecb960d2cb54386b0e96d38e35ec, type: 2}
+  _bossSpecialAbilities:
+  - {fileID: 11400000, guid: 8bac60c43a6054b4ca2a8c38a7f20b55, type: 2}
 --- !u!82 &5421974735138942139
 AudioSource:
   m_ObjectHideFlags: 0
