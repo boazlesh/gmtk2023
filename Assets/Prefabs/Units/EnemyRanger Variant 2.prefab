@@ -18,7 +18,11 @@ PrefabInstance:
     - target: {fileID: 3651876600057591523, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -7013267200590776088, guid: 770705cfdc9b008408131e8ea5a5da9a, type: 3}
+      objectReference: {fileID: 4383229607707112711, guid: 2eed82cc697fa3f419e16721904442e4, type: 3}
+    - target: {fileID: 3651876600057591523, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4327926789672171383, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
       propertyPath: _hatRole
       value: 2
@@ -30,11 +34,11 @@ PrefabInstance:
     - target: {fileID: 4327926789672171383, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
       propertyPath: _iconSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 598ea32ce9de92b4ba99b3108574a209, type: 3}
+      objectReference: {fileID: 21300000, guid: 3b41f83fb388ddc49be1e8fb93063174, type: 3}
     - target: {fileID: 5159357723788920462, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 22100000, guid: 52214ad41e76f084d95aa36164c5de82, type: 2}
+      objectReference: {fileID: 22100000, guid: 24b5054d26f34dc4885686b35555ee98, type: 2}
     - target: {fileID: 7344491484128543674, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
       propertyPath: m_FlipX
       value: 1
@@ -93,7 +97,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7344491484128543676, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
       propertyPath: m_Name
-      value: EnemyRanger Variant
+      value: EnemyRanger Variant 2
       objectReference: {fileID: 0}
     - target: {fileID: 8836708224315702385, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
       propertyPath: m_IsActive

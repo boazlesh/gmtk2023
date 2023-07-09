@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 2eed82cc697fa3f419e16721904442e4
+guid: 9572193fd3db8dd40aacd7a35a2a47bb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5783699787901729487
-    second: Enemy_Ranger_2_0
+      213: -143760000500013801
+    second: Enemy_Magician_2_0
   - first:
-      213: 4383229607707112711
-    second: Enemy_Ranger_2_1
+      213: 6338403548441087908
+    second: Enemy_Magician_2_1
   - first:
-      213: 1999083903390879609
-    second: Enemy_Ranger_2_2
+      213: -4531004611429936804
+    second: Enemy_Magician_2_2
   - first:
-      213: -9192882101789208536
-    second: Enemy_Ranger_2_3
+      213: -3622836213862290684
+    second: Enemy_Magician_2_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -115,7 +115,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Enemy_Ranger_2_0
+      name: Enemy_Magician_2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -129,14 +129,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fca72615054d34050800000000000000
-      internalID: 5783699787901729487
+      spriteID: 715694d8a03410ef0800000000000000
+      internalID: -143760000500013801
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_Ranger_2_1
+      name: Enemy_Magician_2_1
       rect:
         serializedVersion: 2
         x: 320
@@ -150,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7057b58da1c54dc30800000000000000
-      internalID: 4383229607707112711
+      spriteID: 4af08ebe17886f750800000000000000
+      internalID: 6338403548441087908
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_Ranger_2_2
+      name: Enemy_Magician_2_2
       rect:
         serializedVersion: 2
         x: 640
@@ -171,14 +171,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97f80d1f73c2ebb10800000000000000
-      internalID: 1999083903390879609
+      spriteID: c51df0cef43ae11c0800000000000000
+      internalID: -4531004611429936804
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_Ranger_2_3
+      name: Enemy_Magician_2_3
       rect:
         serializedVersion: 2
         x: 960
@@ -192,8 +192,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 820dec43f625c6080800000000000000
-      internalID: -9192882101789208536
+      spriteID: 40b215978a919bdc0800000000000000
+      internalID: -3622836213862290684
       vertices: []
       indices: 
       edges: []

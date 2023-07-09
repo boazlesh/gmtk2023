@@ -297,7 +297,7 @@ namespace Assets.Scripts
                 targetIndex = (targetIndex + randomDirection) % targetUnits.Length;
                 if (targetIndex == -1)
                 {
-                    targetIndex = targetUnits.Length;
+                    targetIndex = targetUnits.Length - 1;
                 }
             }
 
