@@ -99,6 +99,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyCleric Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 8836708224315702385, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9188045561242499967, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
