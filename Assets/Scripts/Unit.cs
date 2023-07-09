@@ -63,6 +63,17 @@ namespace Assets.Scripts
             SetHealth(_maxHealth);
         }
 
+        private void Start()
+        {
+            StartCoroutine(RandomDelayIdleRoutine());
+        }
+
+        private IEnumerator RandomDelayIdleRoutine()
+        {
+            yield return new WaitForSeconds(Random.Range(0f, 0.66f));
+            _animator.SetTrigger("startIdle");
+        }
+
         public IEnumerator PlanIntentionRoutine()
         {
             _bodySpriteRenderer.color = Color.cyan;
@@ -96,7 +107,6 @@ namespace Assets.Scripts
         public IEnumerator PlayAbilityAnimationRoutine(Ability ability)
         {
             _animator.SetTrigger("attack");
-            //yield return _animator.WaitForAnimationToEndRoutine();
             yield return new WaitForSeconds(0.5f);
         }
 
