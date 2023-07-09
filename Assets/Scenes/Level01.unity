@@ -200,6 +200,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5cb3242eea30f4469acbf57a87500da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &727488150 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8466798297543727629, guid: 0232e74ca15b11b4f8678eca6d4f6a83, type: 3}
+  m_PrefabInstance: {fileID: 8466798297957616795}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82596117dc5a4724ca80c994991a77a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &728124402
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -467,6 +478,18 @@ PrefabInstance:
     - target: {fileID: 369792391872341313, guid: 4a6459cb99f534749b3db89d561a9145, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -3.3000183
+      objectReference: {fileID: 0}
+    - target: {fileID: 930142446706805010, guid: 4a6459cb99f534749b3db89d561a9145, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 727488150}
+    - target: {fileID: 930142446706805010, guid: 4a6459cb99f534749b3db89d561a9145, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Fight
+      objectReference: {fileID: 0}
+    - target: {fileID: 930142446706805010, guid: 4a6459cb99f534749b3db89d561a9145, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Assets.Scripts.GameManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 930142448359789490, guid: 4a6459cb99f534749b3db89d561a9145, type: 3}
       propertyPath: m_Camera
