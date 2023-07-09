@@ -713,6 +713,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a6459cb99f534749b3db89d561a9145, type: 3}
+--- !u!114 &930142446640536607 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5650027205781416009, guid: 4a6459cb99f534749b3db89d561a9145, type: 3}
+  m_PrefabInstance: {fileID: 930142446640536606}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b54a012894de110439d2a4af7543cdf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6722536495368890639
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -951,6 +962,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8466798297543727629, guid: 0232e74ca15b11b4f8678eca6d4f6a83, type: 3}
+      propertyPath: _roleTable
+      value: 
+      objectReference: {fileID: 930142446640536607}
     - target: {fileID: 8466798297543727629, guid: 0232e74ca15b11b4f8678eca6d4f6a83, type: 3}
       propertyPath: _fightButton
       value: 

@@ -19,6 +19,7 @@ namespace Assets.Scripts
         [SerializeField] private WinWindow _winWindowPrefab;
         [SerializeField] private LoseWindow _loseWindowPrefab;
         [SerializeField] public ModifiedHealthNumberIndicator _modifiedHealthNumberIndicatorPrefab;
+        [SerializeField] private RoleTable _roleTable;
 
         public static GameManager Instance { get; private set; }
 
@@ -33,6 +34,7 @@ namespace Assets.Scripts
             _input = new Input();
 
             _input.Battle.MouseClick.performed += MouseClickPerformed;
+            _input.Battle.MouseMove.performed += MouseMovePerformed;
 
             _input.Enable();
         }
@@ -182,6 +184,26 @@ namespace Assets.Scripts
 
             StartCoroutine(UnitClickedRoutine(clickedUnit));
         }
+
+        private void MouseMovePerformed(InputAction.CallbackContext obj)
+        {
+            Vector2 mouseScreenPosition = Mouse.current.position.ReadValue();
+
+            Ray ray = Camera.main.ScreenPointToRay(mouseScreenPosition);
+
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+
+            if (hit.collider == null)
+            {
+                _roleTable.ClearHighlights();
+                return;
+            }
+
+            Unit hoveredUnit = hit.collider.gameObject.GetComponentInParent<Unit>();
+
+            _roleTable.HighlightRole(hoveredUnit.HatRole);
+        }
+
 
         private IEnumerator ResetHatSwapRoutine()
         {
