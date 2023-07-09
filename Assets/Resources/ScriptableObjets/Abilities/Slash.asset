@@ -141,3 +141,5 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  StartClip: {fileID: 8300000, guid: 0fba1cb23d9b039409487d995e4ecac2, type: 3}
+  HitClip: {fileID: 0}

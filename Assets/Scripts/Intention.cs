@@ -76,6 +76,10 @@ namespace Assets.Scripts
 
         private IEnumerator PerformAbilityReoutine(Ability ability, Unit targetUnit)
         {
+            if (ability.StartClip != null)
+            {
+                Originator.AudioSource.PlayOneShot(ability.StartClip);
+            }
             if (ability.ProjectileSprite != null)
             {
                 Projectile projectile = Originator.CreateProjectile();
