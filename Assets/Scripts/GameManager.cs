@@ -30,6 +30,7 @@ namespace Assets.Scripts
         private Input _input;
         private Unit _currentSwappingHat;
         private bool _isHatInteractble;
+        private Ability _hoveringAbility;
 
         private void Awake()
         {
@@ -52,6 +53,8 @@ namespace Assets.Scripts
 
             Debug.Log($"Loaded {_playerUnits.Length} players and {_enemyUnits.Length} enemies");
 
+            _roleTable.OnAbilityHovered += OnRoleTableAbilityHovered;
+            _roleTable.OnAbilityUnhovered += OnRoleTableAbilityUnhovered;
 
             BuildIntentions();
         }
@@ -202,6 +205,11 @@ namespace Assets.Scripts
 
         private void Higlight(Collider2D collider)
         {
+            if (_hoveringAbility != null)
+            {
+                return;
+            }
+
             _roleTable.ClearHighlights();
 
             foreach (Unit unit in _enemyUnits)
@@ -272,6 +280,21 @@ namespace Assets.Scripts
                 }
             }
         }
+
+        private void OnRoleTableAbilityHovered(Ability ability)
+        {
+            _hoveringAbility = ability;
+            _roleTable.HighlightAbility(ability);
+            _infoDisplayManager.SetAbility(ability);
+        }
+
+        private void OnRoleTableAbilityUnhovered(Ability ability)
+        {
+            _hoveringAbility = null;
+            _roleTable.ClearHighlights();
+            _infoDisplayManager.Hide();
+        }
+
         private IEnumerator ResetHatSwapRoutine()
         {
             if (_currentSwappingHat == null)
