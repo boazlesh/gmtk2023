@@ -21,7 +21,7 @@ namespace Assets.Scripts
             _spriteRenderer.sprite = ability.ProjectileSprite;
             _startTime = DateTime.UtcNow;
 
-            _sourcePosition = (ability.CustomSourcePointRelativeToTarget == null ? source.transform.position : (target.transform.position + ability.CustomSourcePointRelativeToTarget));
+            _sourcePosition = (!ability.UseCustomSource ? source.transform.position : (target.transform.position + ability.CustomSourcePointRelativeToTarget));
             _targetPosition = target.transform.position;
             _shouldFlip = !source.IsPlayerUnit && !ability.DontFlipForEnemy;
 
@@ -41,10 +41,9 @@ namespace Assets.Scripts
                 return;
             }
 
-            // TODO: use the curves, idiot.
-            transform.position = Vector3.Lerp(_sourcePosition, _targetPosition, lerpAlpha);
-            transform.rotation = Quaternion.Euler(Vector3.Lerp(_ability.SourceRotation, _ability.TargetRotation, lerpAlpha) + new Vector3(0, 0, _shouldFlip ? 180 : 0));
-            transform.localScale = Vector3.Lerp(_ability.SourceScale, _ability.TargetScale, lerpAlpha);
+            transform.position = Vector3.Lerp(_sourcePosition, _targetPosition, _ability.ProjectileCurve.Evaluate(lerpAlpha));
+            transform.rotation = Quaternion.Euler(Vector3.Lerp(_ability.SourceRotation, _ability.TargetRotation, _ability.ProjectileRotationCurve.Evaluate(lerpAlpha)) + new Vector3(0, 0, _shouldFlip ? 180 : 0));
+            transform.localScale = Vector3.Lerp(_ability.SourceScale, _ability.TargetScale, _ability.ProjectileScaleCurve.Evaluate(lerpAlpha));
         }
     }
 }

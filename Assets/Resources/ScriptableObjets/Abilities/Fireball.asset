@@ -22,9 +22,11 @@ MonoBehaviour:
   DamageModifier: 0
   AddsNeighborDamageModifier: 0
   IsDamageModifierPersistent: 0
+  HitEveryoneDontWaitForEachHitToCompleteBeforeNext: 0
+  HitEveryoneCustomWaitBetweenEachHit: 0
   IsSwap: 0
   ProjectileSprite: {fileID: -4666927688053034149, guid: 6b2194c42f4d2044483dd8b62df00d01, type: 3}
-  ProjectileTime: 0.35
+  ProjectileTime: 0.3
   ProjectileCurve:
     serializedVersion: 2
     m_Curve:
@@ -76,6 +78,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   DontFlipForEnemy: 0
+  UseCustomSource: 0
   CustomSourcePointRelativeToTarget: {x: 0, y: 0, z: 0}
   SourceScale: {x: 1, y: 1, z: 1}
   TargetScale: {x: 1, y: 1, z: 1}

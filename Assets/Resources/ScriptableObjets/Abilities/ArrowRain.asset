@@ -41,7 +41,7 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 1
+      value: 0.8938201
       inSlope: 2
       outSlope: 2
       tangentMode: 0
@@ -58,26 +58,27 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.12231174
-      inSlope: 0.34517288
-      outSlope: 0.34517288
+      value: 0
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.1831187
+      outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 0.8881582
-      inSlope: 0.22252908
-      outSlope: 0.22252908
+      value: 0.8938201
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.18651485
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   DontFlipForEnemy: 1
+  UseCustomSource: 1
   CustomSourcePointRelativeToTarget: {x: 0, y: 2.5, z: 0}
   SourceScale: {x: 0.5, y: 0.5, z: 1}
   TargetScale: {x: 0.5, y: 0.5, z: 1}
@@ -86,21 +87,21 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.12231174
-      inSlope: 0.34517288
-      outSlope: 0.34517288
+      value: 0
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.1831187
+      outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 0.8881582
-      inSlope: 0.22252908
-      outSlope: 0.22252908
+      value: 0.8938201
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.18651485
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

@@ -22,29 +22,31 @@ MonoBehaviour:
   DamageModifier: 0
   AddsNeighborDamageModifier: 0
   IsDamageModifierPersistent: 0
+  HitEveryoneDontWaitForEachHitToCompleteBeforeNext: 0
+  HitEveryoneCustomWaitBetweenEachHit: 0
   IsSwap: 0
-  ProjectileSprite: {fileID: 0}
-  ProjectileTime: 0
+  ProjectileSprite: {fileID: -2680212052074382635, guid: 6b2194c42f4d2044483dd8b62df00d01, type: 3}
+  ProjectileTime: 0.2
   ProjectileCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.12231174
-      inSlope: 0.34517288
-      outSlope: 0.34517288
+      value: 0.6002504
+      inSlope: 0.21054655
+      outSlope: 0.21054655
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.1831187
+      outWeight: 0.15235457
     - serializedVersion: 3
       time: 1
       value: 0.8881582
-      inSlope: 0.22252908
-      outSlope: 0.22252908
+      inSlope: 0.03618668
+      outSlope: 0.03618668
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.18651485
+      inWeight: 0.16620499
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -56,49 +58,59 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.12231174
-      inSlope: 0.34517288
-      outSlope: 0.34517288
-      tangentMode: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.1831187
+      outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 0.8881582
-      inSlope: 0.22252908
-      outSlope: 0.22252908
-      tangentMode: 0
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
       weightedMode: 0
-      inWeight: 0.18651485
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   DontFlipForEnemy: 0
+  UseCustomSource: 0
   CustomSourcePointRelativeToTarget: {x: 0, y: 0, z: 0}
-  SourceScale: {x: 1, y: 1, z: 1}
+  SourceScale: {x: 0, y: 1, z: 1}
   TargetScale: {x: 1, y: 1, z: 1}
   ProjectileScaleCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.12231174
-      inSlope: 0.34517288
-      outSlope: 0.34517288
+      value: 0.28000998
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.1831187
+      outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 0.8881582
-      inSlope: 0.22252908
-      outSlope: 0.22252908
+      time: 0.83984727
+      value: 0.9669437
+      inSlope: -0.044073123
+      outSlope: -0.044073123
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.18651485
+      inWeight: 0.33333334
+      outWeight: 0.5238311
+    - serializedVersion: 3
+      time: 1
+      value: 0.049753428
+      inSlope: -5.3212514
+      outSlope: -5.3212514
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.07695978
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
