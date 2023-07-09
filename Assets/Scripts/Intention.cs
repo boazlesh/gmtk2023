@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Enums;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -10,6 +11,8 @@ namespace Assets.Scripts
         public Verb Verb { get; set; }
         public int TargetIndex { get; set; }
 
+        private Ability _bossAbility;
+
         public Intention(Unit originator, Verb verb, int targetIndex)
         {
             Originator = originator;
@@ -19,6 +22,18 @@ namespace Assets.Scripts
 
         public Ability ResolveAbility()
         {
+            if (Originator.BodyRole == Role.Boss)
+            {
+                if (_bossAbility != null)
+                {
+                    return _bossAbility;
+                }
+
+                _bossAbility = RollBossAbility();
+
+                return _bossAbility;
+            }
+
             return GameManager.Instance._verbPerRoleMapping.Mapping[Originator.HatRole].Mapping[Verb];
         }
 
@@ -99,6 +114,30 @@ namespace Assets.Scripts
                     yield return neighbor.AddDamageModifier(ability);
                 }
             }
+        }
+
+        private Ability RollBossAbility()
+        {
+            List<Ability> abilities;
+
+            switch (Verb)
+            {
+                case Verb.Offensive:
+                    abilities = GameManager.Instance._bossOffensiveAbilities;
+                    break;
+                case Verb.Defensive:
+                    abilities = GameManager.Instance._bossDefensiveAbilities;
+                    break;
+                case Verb.Special:
+                    abilities = GameManager.Instance._bossSpecialAbilities;
+                    break;
+                default:
+                    throw new System.NotSupportedException($"{Verb} not supported");
+            }
+
+            int targetIndex = Random.Range(0, abilities.Count);
+
+            return abilities[targetIndex];
         }
     }
 }

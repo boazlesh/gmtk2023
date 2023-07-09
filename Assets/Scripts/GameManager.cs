@@ -33,6 +33,10 @@ namespace Assets.Scripts
         private Ability _hoveringAbility;
         private bool _isBuildingIntentions;
 
+        [SerializeField] public List<Ability> _bossOffensiveAbilities;
+        [SerializeField] public List<Ability> _bossDefensiveAbilities;
+        [SerializeField] public List<Ability> _bossSpecialAbilities;
+
         private void Awake()
         {
             Instance = gameObject.GetComponent<GameManager>();
