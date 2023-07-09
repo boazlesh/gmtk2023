@@ -12,5 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb0d4162eb434c9469f1057433a2c246, type: 3}
   m_Name: Slash
   m_EditorClassIdentifier: 
-  Damage: 50
   IconSprite: {fileID: 6608001358117835361, guid: 97a47a1a27f738e4da1f3d8bef0fb476, type: 3}
+  DisplayName: Slash
+  Description: Damages single enemy
+  Damage: 50
+  NeighborDamage: 0
+  HitEveryone: 0
+  AddsDamageModifier: 0
+  DamageModifier: 0
+  AddsNeighborDamageModifier: 0
+  IsDamageModifierPersistent: 0
+  IsSwap: 0

@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: LightningNuke
   m_EditorClassIdentifier: 
   IconSprite: {fileID: 1518362251233725392, guid: 4c0def85acb088b4cb3cd7e1875db480, type: 3}
+  DisplayName: Lightning Nuke
+  Description: Damages single enemy greatly
   Damage: 150
   NeighborDamage: 0
   HitEveryone: 0
   AddsDamageModifier: 0
   DamageModifier: 0
   AddsNeighborDamageModifier: 0
-  NeighborDamageModifier: 0
   IsDamageModifierPersistent: 0
+  IsSwap: 0

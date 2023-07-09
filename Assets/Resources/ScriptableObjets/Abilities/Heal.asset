@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: Heal
   m_EditorClassIdentifier: 
   IconSprite: {fileID: -490988033631999908, guid: 7338904f2e4910a43b248d3e8dba2dbf, type: 3}
+  DisplayName: Heal
+  Description: Heal single ally
   Damage: -75
   NeighborDamage: 0
   HitEveryone: 0
   AddsDamageModifier: 0
   DamageModifier: 0
   AddsNeighborDamageModifier: 0
-  NeighborDamageModifier: 0
   IsDamageModifierPersistent: 0
+  IsSwap: 0

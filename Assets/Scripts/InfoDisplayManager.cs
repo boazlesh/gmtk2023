@@ -20,7 +20,7 @@ namespace Assets.Scripts
         public void SetAbility(Ability ability)
         {
             _portraitImage.sprite = ability.IconSprite;
-            _headerText.text = ability.name;
+            _headerText.text = ability.DisplayName;
             _descriptionText.text = ability.Description;
 
             Show();

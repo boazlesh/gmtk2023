@@ -23,6 +23,7 @@ namespace Assets.Scripts
         [SerializeField] public ModifiedHealthNumberIndicator _modifiedHealthNumberIndicatorPrefab;
         [SerializeField] private RoleTable _roleTable;
         [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private InfoDisplayManager _infoDisplayManager;
 
         public static GameManager Instance { get; private set; }
 
@@ -213,6 +214,8 @@ namespace Assets.Scripts
                 unit.Unhighlight();
             }
 
+            _infoDisplayManager.Hide();
+
             if (collider == null)
             {
                 return;
@@ -249,6 +252,7 @@ namespace Assets.Scripts
             if (abilityUI != null)
             {
                 _roleTable.HighlightAbility(abilityUI.Ability);
+                _infoDisplayManager.SetAbility(abilityUI.Ability);
                 return;
             }
 
