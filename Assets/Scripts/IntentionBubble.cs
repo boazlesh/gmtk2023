@@ -18,7 +18,20 @@ namespace Assets.Scripts
             _actionSpriteRenderer.sprite = ability.IconSprite;
             _targetSpriteRenderer.sprite = unit.IconSprite;
             _targetSpriteRenderer.flipX = !unit.IsPlayerUnit;
-            _healthNumberIndicator.IndicateModifiedHealthNumber(ability.Damage);
+
+            _healthNumberIndicator.gameObject.SetActive(true);
+            if (ability.Damage != 0)
+            {
+                _healthNumberIndicator.IndicateModifiedHealthNumber(ability.Damage);
+            }
+            else if (ability.AddsDamageModifier)
+            {
+                _healthNumberIndicator.IndicateModifiedHealthNumber(ability.DamageModifier);
+            }
+            else
+            {
+                _healthNumberIndicator.gameObject.SetActive(false);
+            }
         }
 
         public void Show()

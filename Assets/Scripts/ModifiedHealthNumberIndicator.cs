@@ -45,6 +45,25 @@ namespace Assets.Scripts
             }
         }
 
+        public void IndicateModifiedHealthNumber(float modifiedHealthNumber)
+        {
+            if (modifiedHealthNumber == 1)
+            {
+                _text.faceColor = _neutralColor;
+            }
+            else
+            {
+                _text.faceColor = modifiedHealthNumber > 1 ? _damagedColor : _healedColor;
+            }
+
+            _text.text = $"*{ Mathf.Abs(modifiedHealthNumber)}";
+
+            if (!_notAnimated)
+            {
+                StartCoroutine(DestoryAfterAnimation());
+            }
+        }
+
         private IEnumerator DestoryAfterAnimation()
         {
             yield return _animator.WaitForAnimationToEndRoutine();
