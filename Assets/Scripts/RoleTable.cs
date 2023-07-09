@@ -107,6 +107,11 @@ namespace Assets.Scripts
 
         public void HighlightRole(Role role)
 		{
+            if (!_roleToImage.ContainsKey(role))
+            {
+                return;
+            }
+
             _roleToImage[role].enabled = true;
 		}
 
