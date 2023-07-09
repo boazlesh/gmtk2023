@@ -45,7 +45,7 @@ PrefabInstance:
     - target: {fileID: 748287663634264804, guid: fd2c92f5fd7267c4792022315c54a242, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 2caee247cc4f62444bb9cd0c086be91c, type: 2}
     - target: {fileID: 748287663634264804, guid: fd2c92f5fd7267c4792022315c54a242, type: 3}
       propertyPath: m_fontStyle
       value: 1
@@ -60,7 +60,7 @@ PrefabInstance:
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 748287663634264804, guid: fd2c92f5fd7267c4792022315c54a242, type: 3}
       propertyPath: m_hasFontAssetChanged
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1724408326185323942, guid: fd2c92f5fd7267c4792022315c54a242, type: 3}
       propertyPath: m_LocalScale.x
@@ -167,6 +167,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 1711652628383523413, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
+      propertyPath: _showMaxHealthText
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2612055409656997280, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -199,6 +203,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 22100000, guid: c1944d51ad21f734f8506424bd823283, type: 2}
+    - target: {fileID: 6358562130675121219, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7344491484128543674, guid: 460c0caf3e7e8ef409edebdbc267dc6b, type: 3}
       propertyPath: m_FlipX
       value: 1

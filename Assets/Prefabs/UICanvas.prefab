@@ -200,15 +200,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Fight!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cf59d999dcb4e1d40beeec3e6e720331, type: 2}
-  m_sharedMaterial: {fileID: -1328096674909256400, guid: cf59d999dcb4e1d40beeec3e6e720331, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2caee247cc4f62444bb9cd0c086be91c, type: 2}
+  m_sharedMaterial: {fileID: -2509913447012518400, guid: 2caee247cc4f62444bb9cd0c086be91c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -564,7 +564,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3519274159474588125, guid: 1d23ccb9bd4b2524f8b49d27361686a9, type: 3}
       propertyPath: m_fontSize
-      value: 20.15
+      value: 19.6
       objectReference: {fileID: 0}
     - target: {fileID: 6820520510566926959, guid: 1d23ccb9bd4b2524f8b49d27361686a9, type: 3}
       propertyPath: m_Pivot.x

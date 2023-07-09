@@ -766,6 +766,7 @@ MonoBehaviour:
   _hatRole: 0
   _hatFloatPosition: {fileID: 1364972099054560105}
   _intentionBubble: {fileID: 8579617433433796716}
+  _additionalBubble: {fileID: 0}
   _iconSprite: {fileID: 0}
   _animator: {fileID: 5159357723788920462}
   _allyHighlight: {fileID: 6140114997360454701}
@@ -936,7 +937,7 @@ PrefabInstance:
     - target: {fileID: 748287663634264804, guid: fd2c92f5fd7267c4792022315c54a242, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 2caee247cc4f62444bb9cd0c086be91c, type: 2}
     - target: {fileID: 748287663634264804, guid: fd2c92f5fd7267c4792022315c54a242, type: 3}
       propertyPath: m_fontStyle
       value: 1
@@ -951,7 +952,7 @@ PrefabInstance:
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 748287663634264804, guid: fd2c92f5fd7267c4792022315c54a242, type: 3}
       propertyPath: m_hasFontAssetChanged
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8727914419025328100, guid: fd2c92f5fd7267c4792022315c54a242, type: 3}
       propertyPath: m_RootOrder
