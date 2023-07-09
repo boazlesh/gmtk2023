@@ -466,5 +466,12 @@ namespace Assets.Scripts
             _isHatInteractble = false;
             _audioSource.FadeOut(0.1f);
         }
+
+        public void fuckyouitsbosstime()
+        {
+            // disable after boss hat swap because fuck you
+            _fightButton.interactable = false;
+            _isHatInteractble = false;
+        }
     }
 }

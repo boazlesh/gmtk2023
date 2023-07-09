@@ -132,6 +132,7 @@ namespace Assets.Scripts
                 yield return unitA.FloatHatRoutine();
 
                 yield return GameManager.Instance.SwapHatsRoutine(unitA, unitB);
+                GameManager.Instance.fuckyouitsbosstime();
             }
 
             yield return _currentIntention.PerformIntetionRoutine();
