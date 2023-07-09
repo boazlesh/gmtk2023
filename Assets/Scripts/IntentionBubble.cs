@@ -17,7 +17,7 @@ namespace Assets.Scripts
             _targetUnitUI.SetTarget(unit);
 
             _healthNumberIndicator.gameObject.SetActive(true);
-            if (ability.Damage != 0)
+            if (ability.Damage != 0 || ability.name == "StaffHit")
             {
                 _healthNumberIndicator.IndicateModifiedHealthNumber(ability.Damage);
             }
