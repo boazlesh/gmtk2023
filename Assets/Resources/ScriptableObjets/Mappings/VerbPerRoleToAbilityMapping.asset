@@ -58,4 +58,15 @@ MonoBehaviour:
           - Key: 2
             Value: {fileID: 11400000, guid: 2a0b733a708c9c944957e47e8e31f652, type: 2}
           keyCollision: 0
+    - Key: 4
+      Value:
+        _verbToAbility:
+          list:
+          - Key: 0
+            Value: {fileID: 11400000, guid: 9edf5144abdb1cd47aab0cfd91fa1ac2, type: 2}
+          - Key: 1
+            Value: {fileID: 11400000, guid: d90955f2bd1a3eb44beac34d8721d59b, type: 2}
+          - Key: 2
+            Value: {fileID: 11400000, guid: d0aa73f4ca161b341b79c981644b7726, type: 2}
+          keyCollision: 0
     keyCollision: 0

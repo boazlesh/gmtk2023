@@ -5,6 +5,7 @@
         Warrior,
         Mage,
         Ranger,
-        Cleric
+        Cleric,
+        Boss
     }
 }
