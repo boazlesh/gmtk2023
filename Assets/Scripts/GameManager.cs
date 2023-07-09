@@ -268,20 +268,22 @@ namespace Assets.Scripts
             Unit[] playerUnitsClone = _playerUnits.ToArray();
             Unit[] enemyUnitsClone = _enemyUnits.ToArray();
 
-            int maxLength = Mathf.Max(playerUnitsClone.Length, enemyUnitsClone.Length);
+            //int maxLength = Mathf.Max(playerUnitsClone.Length, enemyUnitsClone.Length);
 
-            for (int i = 0; i < maxLength; i++)
-            {
-                if (i < playerUnitsClone.Length && playerUnitsClone[i].IsAlive())
-                {
-                    yield return playerUnitsClone[i];
-                }
+            //for (int i = 0; i < maxLength; i++)
+            //{
+            //    if (i < playerUnitsClone.Length && playerUnitsClone[i].IsAlive())
+            //    {
+            //        yield return playerUnitsClone[i];
+            //    }
 
-                if (i < enemyUnitsClone.Length && enemyUnitsClone[i].IsAlive())
-                {
-                    yield return enemyUnitsClone[i];
-                }
-            }
+            //    if (i < enemyUnitsClone.Length && enemyUnitsClone[i].IsAlive())
+            //    {
+            //        yield return enemyUnitsClone[i];
+            //    }
+            //}
+
+            return playerUnitsClone.Concat(enemyUnitsClone).Where(unit => unit.IsAlive());
         }
 
         private void IntializeUnits()
