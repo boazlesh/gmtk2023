@@ -23,6 +23,7 @@ namespace Assets.Scripts
         [SerializeField] private Transform _allyHighlight;
         [SerializeField] private Transform _enemyHighlight;
         [SerializeField] private StatusEffectsBar _statusEffectsBar;
+        [SerializeField] private Projectile _projectilePrefab;
 
         private int _health;
         private Intention _currentIntention;
@@ -250,6 +251,11 @@ namespace Assets.Scripts
         {
             _allyHighlight.gameObject.SetActive(false);
             _enemyHighlight.gameObject.SetActive(false);
+        }
+
+        public Projectile CreateProjectile()
+        {
+            return Instantiate(_projectilePrefab);
         }
 
         private void ClearTunrModifiers()

@@ -770,6 +770,7 @@ MonoBehaviour:
   _allyHighlight: {fileID: 6140114997360454701}
   _enemyHighlight: {fileID: 1541073592721640070}
   _statusEffectsBar: {fileID: 8144956827177076662}
+  _projectilePrefab: {fileID: 1461108974370507714, guid: dce9c3c826a4f6c45af0002378b03ae8, type: 3}
 --- !u!95 &5159357723788920462
 Animator:
   serializedVersion: 3

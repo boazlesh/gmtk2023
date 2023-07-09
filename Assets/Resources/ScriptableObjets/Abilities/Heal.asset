@@ -23,3 +23,11 @@ MonoBehaviour:
   AddsNeighborDamageModifier: 0
   IsDamageModifierPersistent: 0
   IsSwap: 0
+  ProjectileSprite: {fileID: 0}
+  ProjectileTime: 0
+  ProjectileCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

@@ -49,6 +49,12 @@ namespace Assets.Scripts
 
         private IEnumerator PerformAbilityReoutine(Ability ability, Unit targetUnit)
         {
+            if (ability.ProjectileSprite != null)
+            {
+                Projectile projectile = Originator.CreateProjectile();
+                yield return projectile.ProjectAbilityRoutine(Originator, targetUnit, ability);
+            }
+
             if (ability.IsSwap)
             {
                 yield return GameManager.Instance.SwapUnitsRoutine(Originator, targetUnit);
