@@ -39,5 +39,7 @@ namespace Assets.Scripts
         public bool CustomFade;
         public AnimationCurve ProjectileFadeCurve;
 
+        public AudioClip StartClip;
+        public AudioClip HitClip;
     }
 }

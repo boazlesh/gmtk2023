@@ -7,6 +7,7 @@ namespace Assets.Scripts
     public class Projectile : MonoBehaviour
     {
         [SerializeField] private SpriteRenderer _spriteRenderer;
+        [SerializeField] private AudioSource _audioSource;
 
         private Ability _ability;
         private DateTime _startTime;
@@ -27,9 +28,24 @@ namespace Assets.Scripts
             _shouldFlip = !source.IsPlayerUnit && !ability.DontFlipForEnemy;
             _originalAlpha = _spriteRenderer.color.a;
 
+            if (_ability.StartClip != null)
+            {
+                _audioSource.PlayOneShot(_ability.StartClip);
+            }
+
             yield return new WaitUntil(() => _didReachDestination);
 
-            Destroy(gameObject);
+            _spriteRenderer.enabled = false;
+
+            if (_ability.HitClip != null)
+            {
+                _audioSource.PlayOneShot(_ability.HitClip);
+                Destroy(gameObject, _ability.HitClip.length);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
 
         public void Update()

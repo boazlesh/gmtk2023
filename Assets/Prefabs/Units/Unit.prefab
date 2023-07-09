@@ -776,6 +776,7 @@ MonoBehaviour:
   _hurtClip: {fileID: 8300000, guid: d5bb11e1686383247a2b3971624d78f4, type: 3}
   _healClip: {fileID: 8300000, guid: 3381c171a57a1964289a0ad96a18899b, type: 3}
   _dieClip: {fileID: 8300000, guid: 25127df4fdfb2164f8e6fe7fe6bdd040, type: 3}
+  _ideaClip: {fileID: 8300000, guid: 3a8db943e4ccfbc42b1663c46b19d587, type: 3}
 --- !u!95 &5159357723788920462
 Animator:
   serializedVersion: 3
