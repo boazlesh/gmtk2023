@@ -30,9 +30,10 @@ namespace Assets.Scripts
 
         public IEnumerator PerformIntetionRoutine()
         {
-            yield return new WaitForSeconds(0.5f);
-
             Ability ability = ResolveAbility();
+
+            yield return Originator.PlayAbilityAnimationRoutine();
+
             Unit targetUnit = ResolveTargetUnit();
 
             if (!ability.HitEveryone)

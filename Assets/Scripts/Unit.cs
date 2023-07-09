@@ -1,4 +1,5 @@
 using Assets.Scripts.Enums;
+using Assets.Scripts.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace Assets.Scripts
         [SerializeField] private Transform _hatFloatPosition;
         [SerializeField] private IntentionBubble _intentionBubble;
         [SerializeField] private Sprite _iconSprite;
+        [SerializeField] private Animator _animator;
 
         private int _health;
         private Intention _currentIntention;
@@ -80,19 +82,21 @@ namespace Assets.Scripts
 
         public IEnumerator PlayInentionRoutine()
         {
-            _bodySpriteRenderer.color = Color.magenta;
-
             yield return _currentIntention.PerformIntetionRoutine();
 
             Debug.Log($"{name} - Play");
-
-            _bodySpriteRenderer.color = Color.white;
 
             _currentIntention = null;
 
             _intentionBubble.Hide();
 
             yield return null;
+        }
+
+        public IEnumerator PlayAbilityAnimationRoutine()
+        {
+            _animator.SetTrigger("attack");
+            yield return _animator.WaitForAnimationToEndRoutine();
         }
 
         public bool IsAlive() => _health > 0;

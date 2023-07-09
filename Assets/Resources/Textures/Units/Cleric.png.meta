@@ -11,6 +11,9 @@ TextureImporter:
   - first:
       213: -1519525364621444245
     second: Cleric_2
+  - first:
+      213: 211497326420027533
+    second: Cleric_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -170,6 +173,27 @@ TextureImporter:
       bones: []
       spriteID: b6bfa8e4bbf89eae0800000000000000
       internalID: -1519525364621444245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cleric_3
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d88e534a2b36fe200800000000000000
+      internalID: 211497326420027533
       vertices: []
       indices: 
       edges: []

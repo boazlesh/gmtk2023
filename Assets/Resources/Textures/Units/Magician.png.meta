@@ -11,6 +11,9 @@ TextureImporter:
   - first:
       213: -1069742958041569222
     second: Magician_2
+  - first:
+      213: -7347209513500919106
+    second: Magician_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -170,6 +173,27 @@ TextureImporter:
       bones: []
       spriteID: a38e4f882728721f0800000000000000
       internalID: -1069742958041569222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magician_3
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eba3869efd7790a90800000000000000
+      internalID: -7347209513500919106
       vertices: []
       indices: 
       edges: []
