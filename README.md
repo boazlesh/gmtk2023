@@ -1,5 +1,7 @@
 # GMTK2023 - Role Roll Cave
 
+itch url: https://remoba.itch.io/role-and-roll
+
 ![Pitch](/Pitch.png)
 
 ![BattleConcept](/BattleConcept.png)
