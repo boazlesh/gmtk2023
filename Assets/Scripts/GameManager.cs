@@ -344,6 +344,7 @@ namespace Assets.Scripts
             Debug.Log($"Swapping hats - {unitA.name} x {unitB.name}");
 
             _isHatInteractble = false;
+            bool wasFightButtonOff = !_fightButton.interactable;
             _fightButton.interactable = false;
 
             yield return unitB.FloatHatRoutine();
@@ -396,7 +397,7 @@ namespace Assets.Scripts
             unitB.InvalidateIntention();
 
             _isHatInteractble = true;
-            _fightButton.interactable = !_isBuildingIntentions;
+            _fightButton.interactable = !_isBuildingIntentions && !wasFightButtonOff;
         }
 
         private IEnumerable<Unit> GetUnitsInOrder()
