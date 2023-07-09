@@ -12,12 +12,18 @@ namespace Assets.Scripts
         [SerializeField] private Color _neutralColor;
         [SerializeField] private Color _damagedColor;
         [SerializeField] private Color _healedColor;
+        [SerializeField] private bool _notAnimated;
 
         private Animator _animator;
 
         private void Awake()
         {
             _animator = _text.GetComponent<Animator>();
+
+            if (_notAnimated)
+            {
+                _animator.enabled = false;
+            }
         }
 
         public void IndicateModifiedHealthNumber(int modifiedHealthNumber)
@@ -33,7 +39,10 @@ namespace Assets.Scripts
 
             _text.text = Math.Abs(modifiedHealthNumber).ToString();
 
-            StartCoroutine(DestoryAfterAnimation());
+            if (!_notAnimated)
+            {
+                StartCoroutine(DestoryAfterAnimation());
+            }
         }
 
         private IEnumerator DestoryAfterAnimation()

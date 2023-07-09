@@ -83,7 +83,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!222 &2235114356353053802
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -105,9 +105,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 1867855330375624224}
-  _neutralColor: {r: 0.6784314, g: 0.6784314, b: 0.6784314, a: 1}
-  _damagedColor: {r: 1, g: 0.15686275, b: 0.078431375, a: 1}
-  _healedColor: {r: 0.09803922, g: 1, b: 0.19607843, a: 1}
+  _neutralColor: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 1}
+  _damagedColor: {r: 0.7830189, g: 0.06366008, b: 0, a: 1}
+  _healedColor: {r: 0, g: 0.7264151, b: 0.07853132, a: 1}
+  _notAnimated: 0
 --- !u!1 &8616992801870261996
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,7 +208,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
