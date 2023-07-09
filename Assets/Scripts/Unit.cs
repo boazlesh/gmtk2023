@@ -86,7 +86,7 @@ namespace Assets.Scripts
                 _idleStarted = true;
             }
 
-            yield return new WaitForSeconds(1.2f);
+            yield return new WaitForSeconds(0.6f);
         }
 
         public IEnumerator PlayInentionRoutine()

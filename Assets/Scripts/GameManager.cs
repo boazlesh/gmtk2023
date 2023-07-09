@@ -68,6 +68,16 @@ namespace Assets.Scripts
 
         public IEnumerator SwapUnitsRoutine(Unit originUnit, Unit targetUnit)
         {
+            float swapDuration = 0.5f;
+
+            Vector3 originPosition = originUnit.transform.position;
+            Vector3 targetPosition = targetUnit.transform.position;
+
+            originUnit.transform.DOMove(targetPosition, swapDuration);
+            targetUnit.transform.DOMove(originPosition, swapDuration);
+
+            yield return new WaitForSeconds(swapDuration);
+
             Unit[] team = originUnit.GetTeam();
             team[originUnit.UnitIndex] = targetUnit;
             team[targetUnit.UnitIndex] = originUnit;
@@ -76,9 +86,10 @@ namespace Assets.Scripts
             originUnit.UnitIndex = targetUnit.UnitIndex;
             targetUnit.UnitIndex = tempIndex;
 
-            Vector3 tempPosition = originUnit.transform.position;
-            originUnit.transform.position = targetUnit.transform.position;
-            targetUnit.transform.position = tempPosition;
+            // No need - DOMove already did it
+            //Vector3 tempPosition = originUnit.transform.position;
+            //originUnit.transform.position = targetUnit.transform.position;
+            //targetUnit.transform.position = tempPosition;
 
             foreach (Unit unit in _playerUnits.Concat(_enemyUnits))
             {
@@ -268,20 +279,22 @@ namespace Assets.Scripts
             Unit[] playerUnitsClone = _playerUnits.ToArray();
             Unit[] enemyUnitsClone = _enemyUnits.ToArray();
 
-            int maxLength = Mathf.Max(playerUnitsClone.Length, enemyUnitsClone.Length);
+            //int maxLength = Mathf.Max(playerUnitsClone.Length, enemyUnitsClone.Length);
 
-            for (int i = 0; i < maxLength; i++)
-            {
-                if (i < playerUnitsClone.Length && playerUnitsClone[i].IsAlive())
-                {
-                    yield return playerUnitsClone[i];
-                }
+            //for (int i = 0; i < maxLength; i++)
+            //{
+            //    if (i < playerUnitsClone.Length && playerUnitsClone[i].IsAlive())
+            //    {
+            //        yield return playerUnitsClone[i];
+            //    }
 
-                if (i < enemyUnitsClone.Length && enemyUnitsClone[i].IsAlive())
-                {
-                    yield return enemyUnitsClone[i];
-                }
-            }
+            //    if (i < enemyUnitsClone.Length && enemyUnitsClone[i].IsAlive())
+            //    {
+            //        yield return enemyUnitsClone[i];
+            //    }
+            //}
+
+            return playerUnitsClone.Concat(enemyUnitsClone).Where(unit => unit.IsAlive());
         }
 
         private void IntializeUnits()
