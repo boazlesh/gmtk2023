@@ -66,6 +66,11 @@ namespace Assets.Scripts
 
         public IEnumerator PlanIntentionRoutine()
         {
+            if (!IsAlive())
+            {
+                yield break;
+            }
+
             Debug.Log($"{name} - Plan");
 
             _currentIntention = PlanIntention();
@@ -233,6 +238,10 @@ namespace Assets.Scripts
 
         private void Die()
         {
+            _turnDamageModifiers.Clear();
+            _persistantDamageModifiers.Clear();
+            _intentionBubble.Hide();
+
             StopAllCoroutines();
             GameManager.Instance.CheckWinLose();
         }
@@ -251,6 +260,10 @@ namespace Assets.Scripts
             while (!targetUnits[targetIndex].IsAlive())
             {
                 targetIndex = (targetIndex + randomDirection) % targetUnits.Length;
+                if (targetIndex == -1)
+                {
+                    targetIndex = targetUnits.Length;
+                }
             }
 
             return new Intention(this, verb, targetIndex);
