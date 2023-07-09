@@ -17,5 +17,9 @@ namespace Assets.Scripts
         public bool IsDamageModifierPersistent;
 
         public bool IsSwap;
+
+        public Sprite ProjectileSprite;
+        public float ProjectileTime;
+        public AnimationCurve ProjectileCurve;
     }
 }

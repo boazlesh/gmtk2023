@@ -19,6 +19,31 @@ MonoBehaviour:
   AddsDamageModifier: 0
   DamageModifier: 0
   AddsNeighborDamageModifier: 0
-  NeighborDamageModifier: 0
   IsDamageModifierPersistent: 0
   IsSwap: 0
+  ProjectileSprite: {fileID: -4666927688053034149, guid: 6b2194c42f4d2044483dd8b62df00d01, type: 3}
+  ProjectileTime: 1
+  ProjectileCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

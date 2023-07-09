@@ -20,6 +20,7 @@ namespace Assets.Scripts
         [SerializeField] private Sprite _iconSprite;
         [SerializeField] private Animator _animator;
         [SerializeField] private StatusEffectsBar _statusEffectsBar;
+        [SerializeField] private Projectile _projectilePrefab;
 
         private int _health;
         private Intention _currentIntention;
@@ -231,6 +232,11 @@ namespace Assets.Scripts
             }
 
             _intentionBubble.SetIntention(_currentIntention.Verb, _currentIntention.ResolveAbility(), _currentIntention.ResolveTargetUnit());
+        }
+
+        public Projectile CreateProjectile()
+        {
+            return Instantiate(_projectilePrefab);
         }
 
         private void ClearTunrModifiers()
