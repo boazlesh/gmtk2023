@@ -19,13 +19,14 @@ namespace Assets.Scripts
         [SerializeField] private IntentionBubble _intentionBubble;
         [SerializeField] private Sprite _iconSprite;
         [SerializeField] private Animator _animator;
+        [SerializeField] private StatusEffectsBar _statusEffectsBar;
 
         private int _health;
         private Intention _currentIntention;
         private Vector3 _originalHatPosition;
         private Quaternion _originalHatRotation;
-        private List<float> _persistantDamageModifiers = new List<float>();
-        private List<float> _turnDamageModifiers = new List<float>();
+        private List<Ability> _persistantDamageModifiers = new List<Ability>();
+        private List<Ability> _turnDamageModifiers = new List<Ability>();
         private bool _idleStarted;
 
         public Sprite IconSprite => _iconSprite;
@@ -126,7 +127,7 @@ namespace Assets.Scripts
             _bodySpriteRenderer.color = Color.white;
 
             float actualDamage = damage;
-            foreach (float modifier in _persistantDamageModifiers.Concat(_turnDamageModifiers))
+            foreach (float modifier in _persistantDamageModifiers.Concat(_turnDamageModifiers).Select(ability => ability.DamageModifier))
             {
                 actualDamage *= modifier;
             }
@@ -193,9 +194,9 @@ namespace Assets.Scripts
             }
         }
 
-        public IEnumerator AddDamageModifier(float modifier, bool isPersistent)
+        public IEnumerator AddDamageModifier(Ability ability)
         {
-            _bodySpriteRenderer.color = (modifier > 1) ? new Color(0.75f, 0.5f, 0.25f, 1f) : Color.gray;
+            _bodySpriteRenderer.color = (ability.DamageModifier > 1) ? new Color(0.75f, 0.5f, 0.25f, 1f) : Color.gray;
 
             Debug.Log($"{name} - Add Damage Modifier");
 
@@ -203,14 +204,16 @@ namespace Assets.Scripts
 
             _bodySpriteRenderer.color = Color.white;
 
-            if (isPersistent)
+            if (ability.IsDamageModifierPersistent)
             {
-                _persistantDamageModifiers.Add(modifier);
+                _persistantDamageModifiers.Add(ability);
             }
             else
             {
-                _turnDamageModifiers.Add(modifier);
+                _turnDamageModifiers.Add(ability);
             }
+
+            _statusEffectsBar.SetStatusEffects(_persistantDamageModifiers.Concat(_turnDamageModifiers).ToArray());
 
             yield return null;
         }
@@ -233,6 +236,7 @@ namespace Assets.Scripts
         private void ClearTunrModifiers()
         {
             _turnDamageModifiers.Clear();
+            _statusEffectsBar.SetStatusEffects(_persistantDamageModifiers.Concat(_turnDamageModifiers).ToArray());
         }
 
         private void SetHealth(int health)
@@ -245,6 +249,7 @@ namespace Assets.Scripts
         {
             _turnDamageModifiers.Clear();
             _persistantDamageModifiers.Clear();
+            _statusEffectsBar.SetStatusEffects(_persistantDamageModifiers.Concat(_turnDamageModifiers).ToArray());
             _intentionBubble.Hide();
 
             _animator.SetTrigger("die");

@@ -1,7 +1,5 @@
 ﻿using Assets.Scripts.Enums;
 using System.Collections;
-using System.Dynamic;
-using UnityEngine;
 
 namespace Assets.Scripts
 {
@@ -73,14 +71,14 @@ namespace Assets.Scripts
 
             if (ability.AddsDamageModifier)
             {
-                yield return targetUnit.AddDamageModifier(ability.DamageModifier, ability.IsDamageModifierPersistent);
+                yield return targetUnit.AddDamageModifier(ability);
             }
 
             if (ability.AddsNeighborDamageModifier)
             {
                 foreach (Unit neighbor in targetUnit.GetNeighbors())
                 {
-                    yield return neighbor.AddDamageModifier(ability.NeighborDamageModifier, ability.IsDamageModifierPersistent);
+                    yield return neighbor.AddDamageModifier(ability);
                 }
             }
         }
