@@ -46,6 +46,7 @@ namespace Assets.Scripts
 
             Debug.Log($"Loaded {_playerUnits.Length} players and {_enemyUnits.Length} enemies");
 
+
             BuildIntentions();
         }
 
@@ -312,6 +313,9 @@ namespace Assets.Scripts
             {
                 unit.StopAllCoroutines();
             }
+
+            _fightButton.interactable = false;
+            _isHatInteractble = false;
         }
     }
 }

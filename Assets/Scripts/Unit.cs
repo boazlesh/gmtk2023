@@ -25,6 +25,7 @@ namespace Assets.Scripts
         private Vector3 _originalHatPosition;
         private List<float> _persistantDamageModifiers = new List<float>();
         private List<float> _turnDamageModifiers = new List<float>();
+        private bool _idleStarted;
 
         public Sprite IconSprite => _iconSprite;
 
@@ -65,19 +66,24 @@ namespace Assets.Scripts
 
         public IEnumerator PlanIntentionRoutine()
         {
-            _bodySpriteRenderer.color = Color.cyan;
-
-            yield return new WaitForSeconds(0.25f);
+            if (!IsAlive())
+            {
+                yield break;
+            }
 
             Debug.Log($"{name} - Plan");
-
-            _bodySpriteRenderer.color = Color.white;
 
             _currentIntention = PlanIntention();
             InvalidateIntention();
             _intentionBubble.Show();
 
-            yield return null;
+            if (!_idleStarted)
+            {
+                _animator.SetTrigger("startIdle");
+                _idleStarted = true;
+            }
+
+            yield return new WaitForSeconds(1.2f);
         }
 
         public IEnumerator PlayInentionRoutine()
@@ -93,10 +99,10 @@ namespace Assets.Scripts
             yield return null;
         }
 
-        public IEnumerator PlayAbilityAnimationRoutine()
+        public IEnumerator PlayAbilityAnimationRoutine(Ability ability)
         {
             _animator.SetTrigger("attack");
-            yield return _animator.WaitForAnimationToEndRoutine();
+            yield return new WaitForSeconds(0.5f);
         }
 
         public bool IsAlive() => _health > 0;
@@ -232,6 +238,12 @@ namespace Assets.Scripts
 
         private void Die()
         {
+            _turnDamageModifiers.Clear();
+            _persistantDamageModifiers.Clear();
+            _intentionBubble.Hide();
+
+            _animator.SetTrigger("die");
+
             StopAllCoroutines();
             GameManager.Instance.CheckWinLose();
         }
@@ -250,6 +262,10 @@ namespace Assets.Scripts
             while (!targetUnits[targetIndex].IsAlive())
             {
                 targetIndex = (targetIndex + randomDirection) % targetUnits.Length;
+                if (targetIndex == -1)
+                {
+                    targetIndex = targetUnits.Length;
+                }
             }
 
             return new Intention(this, verb, targetIndex);
