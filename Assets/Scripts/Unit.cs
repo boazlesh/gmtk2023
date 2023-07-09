@@ -93,10 +93,11 @@ namespace Assets.Scripts
             yield return null;
         }
 
-        public IEnumerator PlayAbilityAnimationRoutine()
+        public IEnumerator PlayAbilityAnimationRoutine(Ability ability)
         {
             _animator.SetTrigger("attack");
-            yield return _animator.WaitForAnimationToEndRoutine();
+            //yield return _animator.WaitForAnimationToEndRoutine();
+            yield return new WaitForSeconds(0.5f);
         }
 
         public bool IsAlive() => _health > 0;

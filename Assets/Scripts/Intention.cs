@@ -32,7 +32,7 @@ namespace Assets.Scripts
         {
             Ability ability = ResolveAbility();
 
-            yield return Originator.PlayAbilityAnimationRoutine();
+            yield return Originator.PlayAbilityAnimationRoutine(ability);
 
             Unit targetUnit = ResolveTargetUnit();
 
