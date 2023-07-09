@@ -122,13 +122,11 @@ namespace Assets.Scripts
                 yield break;
             }
 
-            _bodySpriteRenderer.color = (damage > 0) ? Color.red : Color.green;
-
-            yield return new WaitForSeconds(0.5f);
+            bool damageOrHeal = damage > 0;
+            _animator.SetTrigger(damageOrHeal ? "hurt" : "heal");
+            yield return new WaitForSeconds(0.33f);
 
             Debug.Log($"{name} - Damaged");
-
-            _bodySpriteRenderer.color = Color.white;
 
             float actualDamage = damage;
             foreach (float modifier in _persistantDamageModifiers.Concat(_turnDamageModifiers).Select(ability => ability.DamageModifier))
