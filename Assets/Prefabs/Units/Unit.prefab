@@ -827,6 +827,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4590770380957600418}
     m_Modifications:
+    - target: {fileID: 748287663634264804, guid: fd2c92f5fd7267c4792022315c54a242, type: 3}
+      propertyPath: m_fontSize
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 748287663634264804, guid: fd2c92f5fd7267c4792022315c54a242, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 748287663634264804, guid: fd2c92f5fd7267c4792022315c54a242, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 748287663634264804, guid: fd2c92f5fd7267c4792022315c54a242, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 748287663634264804, guid: fd2c92f5fd7267c4792022315c54a242, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 748287663634264804, guid: fd2c92f5fd7267c4792022315c54a242, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8727914419025328100, guid: fd2c92f5fd7267c4792022315c54a242, type: 3}
       propertyPath: m_RootOrder
       value: 0
