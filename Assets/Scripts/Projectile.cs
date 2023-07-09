@@ -13,6 +13,7 @@ namespace Assets.Scripts
         private bool _didReachDestination;
         private Vector3 _sourcePosition;
         private Vector3 _targetPosition;
+        private bool _shouldFlip;
 
         public IEnumerator ProjectAbilityRoutine(Unit source, Unit target, Ability ability)
         {
@@ -22,6 +23,7 @@ namespace Assets.Scripts
 
             _sourcePosition = source.transform.position;
             _targetPosition = target.transform.position;
+            _shouldFlip = !source.IsPlayerUnit;
 
             yield return new WaitUntil(() => _didReachDestination);
 
@@ -35,9 +37,12 @@ namespace Assets.Scripts
             if (lerpAlpha >= 1)
             {
                 _didReachDestination = true;
+
+                return;
             }
 
             transform.position = Vector3.Lerp(_sourcePosition, _targetPosition, lerpAlpha);
+            transform.rotation = Quaternion.Euler(Vector3.Lerp(_ability.SourceRotation, _ability.TargetRotation, lerpAlpha) + new Vector3(0, 0, _shouldFlip ? 180 : 0));
         }
     }
 }

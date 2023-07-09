@@ -23,5 +23,9 @@ namespace Assets.Scripts
         public Sprite ProjectileSprite;
         public float ProjectileTime;
         public AnimationCurve ProjectileCurve;
+        public Vector3 SourceRotation;
+        public Vector3 TargetRotation;
+        public Vector3 CustomSourcePointRelativeToTarget;
+        
     }
 }
