@@ -14,7 +14,6 @@ namespace Assets.Scripts
         public bool AddsDamageModifier;
         public float DamageModifier;
         public bool AddsNeighborDamageModifier;
-        public float NeighborDamageModifier;
         public bool IsDamageModifierPersistent;
 
         public bool IsSwap;
