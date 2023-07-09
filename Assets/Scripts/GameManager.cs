@@ -68,6 +68,16 @@ namespace Assets.Scripts
 
         public IEnumerator SwapUnitsRoutine(Unit originUnit, Unit targetUnit)
         {
+            float swapDuration = 0.5f;
+
+            Vector3 originPosition = originUnit.transform.position;
+            Vector3 targetPosition = targetUnit.transform.position;
+
+            originUnit.transform.DOMove(targetPosition, swapDuration);
+            targetUnit.transform.DOMove(originPosition, swapDuration);
+
+            yield return new WaitForSeconds(swapDuration);
+
             Unit[] team = originUnit.GetTeam();
             team[originUnit.UnitIndex] = targetUnit;
             team[targetUnit.UnitIndex] = originUnit;
@@ -76,9 +86,10 @@ namespace Assets.Scripts
             originUnit.UnitIndex = targetUnit.UnitIndex;
             targetUnit.UnitIndex = tempIndex;
 
-            Vector3 tempPosition = originUnit.transform.position;
-            originUnit.transform.position = targetUnit.transform.position;
-            targetUnit.transform.position = tempPosition;
+            // No need - DOMove already did it
+            //Vector3 tempPosition = originUnit.transform.position;
+            //originUnit.transform.position = targetUnit.transform.position;
+            //targetUnit.transform.position = tempPosition;
 
             foreach (Unit unit in _playerUnits.Concat(_enemyUnits))
             {
