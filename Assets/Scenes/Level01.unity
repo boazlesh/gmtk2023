@@ -348,6 +348,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2ce52e06cf3cc9418e4136902970878, type: 3}
+--- !u!20 &1518930881 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 503416221396884914, guid: 8f072f5a0b9bdcd44a8c6ad0db53c41a, type: 3}
+  m_PrefabInstance: {fileID: 503416221026379213}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1536649020 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8841158517205821657, guid: d207d831f1418194a917a8753f9d2bd6, type: 3}
@@ -600,6 +605,10 @@ PrefabInstance:
       propertyPath: m_enableAutoSizing
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 930142448359789490, guid: 4a6459cb99f534749b3db89d561a9145, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1518930881}
     - target: {fileID: 930142448359789491, guid: 4a6459cb99f534749b3db89d561a9145, type: 3}
       propertyPath: m_Pivot.x
       value: 0
