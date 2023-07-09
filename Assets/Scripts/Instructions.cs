@@ -1,4 +1,5 @@
-using System.Collections;
+using Assets.Scripts.Utils;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +9,9 @@ namespace Assets.Scripts
     {
         [SerializeField] private LevelLoader _levelLoader;
         [SerializeField] private AudioSource _audioSource;
+
+        [SerializeField] List<Transform> _parts;
+        private int _currentPart = 0;
 
         private Input _input;
 
@@ -32,23 +36,17 @@ namespace Assets.Scripts
 
         private void ContinuePerformed(InputAction.CallbackContext obj)
         {
-            StartCoroutine(FadeOut(1f));
-            _levelLoader.LoadNextLevel();
-        }
-
-        public IEnumerator FadeOut(float fadeTimeSeconds)
-        {
-            float startVolume = _audioSource.volume;
-
-            while (_audioSource.volume > 0)
+            if (_currentPart == _parts.Count - 1)
             {
-                _audioSource.volume -= startVolume * Time.deltaTime / fadeTimeSeconds;
+                StartCoroutine(_audioSource.FadeOut(1f));
+                _levelLoader.LoadNextLevel();
 
-                yield return null;
+                return;
             }
 
-            _audioSource.Stop();
-            _audioSource.volume = startVolume;
+            _parts[_currentPart].gameObject.SetActive(false);
+            _currentPart++;
+            _parts[_currentPart].gameObject.SetActive(true);
         }
     }
 }
