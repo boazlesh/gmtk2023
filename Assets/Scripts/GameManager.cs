@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.HID;
 using UnityEngine.UI;
 
 namespace Assets.Scripts
@@ -195,18 +196,48 @@ namespace Assets.Scripts
 
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
 
-            if (hit.collider == null)
+            Higlight(hit.collider);
+        }
+
+        private void Higlight(Collider2D collider)
+        {
+            if (collider == null)
             {
                 _roleTable.ClearHighlights();
                 return;
             }
 
-            Unit hoveredUnit = hit.collider.gameObject.GetComponentInParent<Unit>();
+            VerbUI verbHit = collider.GetComponent<VerbUI>();
 
-            _roleTable.HighlightRole(hoveredUnit.HatRole);
+            if (verbHit != null)
+            {
+                _roleTable.HighlightVerb(verbHit.Verb);
+                return;
+            }
+
+            AbilityUI abilityUI = collider.GetComponent<AbilityUI>();
+
+            if (abilityUI != null)
+            {
+                _roleTable.HighlightAbility(abilityUI.Ability);
+                return;
+            }
+
+            TargetUnitUI targetUI = collider.GetComponent<TargetUnitUI>();
+
+            if (targetUI != null)
+            {
+                // TODO:
+                return;
+            }
+
+            Unit hoveredUnit = collider.gameObject.GetComponentInParent<Unit>();
+
+            if (hoveredUnit != null)
+            {
+                _roleTable.HighlightRole(hoveredUnit.HatRole);
+            }
         }
-
-
         private IEnumerator ResetHatSwapRoutine()
         {
             if (_currentSwappingHat == null)
