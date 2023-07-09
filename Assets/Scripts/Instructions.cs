@@ -1,4 +1,4 @@
-using System.Collections;
+using Assets.Scripts.Utils;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -38,7 +38,7 @@ namespace Assets.Scripts
         {
             if (_currentPart == _parts.Count - 1)
             {
-                StartCoroutine(FadeOut(1f));
+                StartCoroutine(_audioSource.FadeOut(1f));
                 _levelLoader.LoadNextLevel();
 
                 return;
@@ -47,21 +47,6 @@ namespace Assets.Scripts
             _parts[_currentPart].gameObject.SetActive(false);
             _currentPart++;
             _parts[_currentPart].gameObject.SetActive(true);
-        }
-
-        public IEnumerator FadeOut(float fadeTimeSeconds)
-        {
-            float startVolume = _audioSource.volume;
-
-            while (_audioSource.volume > 0)
-            {
-                _audioSource.volume -= startVolume * Time.deltaTime / fadeTimeSeconds;
-
-                yield return null;
-            }
-
-            _audioSource.Stop();
-            _audioSource.volume = startVolume;
         }
     }
 }
