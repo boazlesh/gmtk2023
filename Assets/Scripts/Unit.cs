@@ -113,6 +113,19 @@ namespace Assets.Scripts
 
         public IEnumerator PlayInentionRoutine()
         {
+            if (BodyRole == Role.Boss)
+            {
+                Unit unitA = GameManager.Instance._playerUnits[Random.Range(0, GameManager.Instance._playerUnits.Length)];
+
+                List<Unit> remainingUnits = GameManager.Instance._playerUnits.Except(new[] { unitA }).ToList();
+
+                Unit unitB = remainingUnits[Random.Range(0, remainingUnits.Count)]; ;
+
+                yield return unitA.FloatHatRoutine();
+
+                yield return GameManager.Instance.SwapHatsRoutine(unitA, unitB);
+            }
+
             yield return _currentIntention.PerformIntetionRoutine();
 
             Debug.Log($"{name} - Play");

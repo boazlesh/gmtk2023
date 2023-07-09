@@ -339,7 +339,7 @@ namespace Assets.Scripts
             _currentSwappingHat = null;
         }
 
-        private IEnumerator SwapHatsRoutine(Unit unitA, Unit unitB)
+        public IEnumerator SwapHatsRoutine(Unit unitA, Unit unitB)
         {
             Debug.Log($"Swapping hats - {unitA.name} x {unitB.name}");
 
@@ -418,6 +418,12 @@ namespace Assets.Scripts
             //        yield return enemyUnitsClone[i];
             //    }
             //}
+
+            // Boss always goes first
+            if (enemyUnitsClone.Any(x => x.BodyRole == Role.Boss))
+            {
+                return enemyUnitsClone.Concat(playerUnitsClone).Where(unit => unit.IsAlive());
+            }
 
             return playerUnitsClone.Concat(enemyUnitsClone).Where(unit => unit.IsAlive());
         }
