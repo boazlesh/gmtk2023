@@ -32,9 +32,12 @@ namespace Assets.Scripts
         public bool DontFlipForEnemy;
         public bool UseCustomSource;
         public Vector3 CustomSourcePointRelativeToTarget;
+        public Vector3 CustomSourcePointRelativeToSource;
         public Vector3 SourceScale;
         public Vector3 TargetScale;
         public AnimationCurve ProjectileScaleCurve;
+        public bool CustomFade;
+        public AnimationCurve ProjectileFadeCurve;
 
     }
 }
