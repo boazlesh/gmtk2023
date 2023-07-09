@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Enums;
 using System.Collections;
+using UnityEngine;
 
 namespace Assets.Scripts
 {
@@ -40,9 +41,20 @@ namespace Assets.Scripts
             }
             else
             {
-                foreach (Unit unit in targetUnit.GetTeam())
+                Unit[] team = targetUnit.GetTeam();
+                for (int i = 0; i < team.Length; i++)
                 {
-                    yield return PerformAbilityReoutine(ability, unit);
+                    Unit unit = team[i];
+                    IEnumerator enumerator = PerformAbilityReoutine(ability, unit);
+                    if (!ability.HitEveryoneDontWaitForEachHitToCompleteBeforeNext || i == team.Length - 1)
+                    {
+                        yield return enumerator;
+                    }
+                    else
+                    {
+                        Originator.StartCoroutine(enumerator);
+                        yield return new WaitForSeconds(ability.HitEveryoneCustomWaitBetweenEachHit);
+                    }
                 }
             }
         }
