@@ -588,8 +588,8 @@ PrefabInstance:
       value: UICanvas
       objectReference: {fileID: 0}
     - target: {fileID: 1481566889943292359, guid: 4a6459cb99f534749b3db89d561a9145, type: 3}
-      propertyPath: m_fontSize
-      value: 40.75
+      propertyPath: m_fontSizeBase
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2838297537529332615, guid: 4a6459cb99f534749b3db89d561a9145, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -605,7 +605,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6955314487833586978, guid: 4a6459cb99f534749b3db89d561a9145, type: 3}
       propertyPath: m_fontSize
-      value: 19.3
+      value: 20.15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a6459cb99f534749b3db89d561a9145, type: 3}

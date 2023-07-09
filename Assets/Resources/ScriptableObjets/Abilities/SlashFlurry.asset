@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SlashFlurry
   m_EditorClassIdentifier: 
   IconSprite: {fileID: -509965756677247445, guid: 97a47a1a27f738e4da1f3d8bef0fb476, type: 3}
-  DisplayName: Slash Flurry
+  DisplayName: Flurry
   Description: Damages all enemies
   Damage: 50
   NeighborDamage: 0
@@ -22,6 +22,8 @@ MonoBehaviour:
   DamageModifier: 0
   AddsNeighborDamageModifier: 0
   IsDamageModifierPersistent: 0
+  HitEveryoneDontWaitForEachHitToCompleteBeforeNext: 0
+  HitEveryoneCustomWaitBetweenEachHit: 0
   IsSwap: 0
   ProjectileSprite: {fileID: 0}
   ProjectileTime: 0

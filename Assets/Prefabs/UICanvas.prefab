@@ -201,7 +201,7 @@ MonoBehaviour:
   m_text: Fight!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf59d999dcb4e1d40beeec3e6e720331, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -1328096674909256400, guid: cf59d999dcb4e1d40beeec3e6e720331, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -564,11 +564,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3519274159474588125, guid: 1d23ccb9bd4b2524f8b49d27361686a9, type: 3}
       propertyPath: m_fontSize
-      value: 12.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 4962775071162600760, guid: 1d23ccb9bd4b2524f8b49d27361686a9, type: 3}
-      propertyPath: m_fontSize
-      value: 27.15
+      value: 20.15
       objectReference: {fileID: 0}
     - target: {fileID: 6820520510566926959, guid: 1d23ccb9bd4b2524f8b49d27361686a9, type: 3}
       propertyPath: m_Pivot.x
