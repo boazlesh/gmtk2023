@@ -313,6 +313,9 @@ namespace Assets.Scripts
             {
                 unit.StopAllCoroutines();
             }
+
+            _fightButton.interactable = false;
+            _isHatInteractble = false;
         }
     }
 }
